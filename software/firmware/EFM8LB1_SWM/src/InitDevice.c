@@ -436,6 +436,10 @@ TIMER01_0_enter_DefaultMode_from_RESET (void)
   // [TL0 - Timer 0 Low Byte]$
 
   // $[TH1 - Timer 1 High Byte]
+  /***********************************************************************
+   - Timer 1 High Byte = 0x96
+   ***********************************************************************/
+  TH1 = (0x96 << TH1_TH1__SHIFT);
   // [TH1 - Timer 1 High Byte]$
 
   // $[TL1 - Timer 1 Low Byte]
