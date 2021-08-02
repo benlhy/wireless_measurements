@@ -28,7 +28,7 @@ async def run():
         await client.start_notify(CHARACTERISTIC_UUID, notification_handler)
         #loop = asyncio.get_event_loop()
         while 1:
-            await asyncio.sleep(1)
+            await asyncio.sleep(1) # never exit
 
 loop = asyncio.get_event_loop()
 loop.create_task(run())

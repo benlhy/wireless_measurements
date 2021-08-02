@@ -664,4 +664,26 @@ Text GLabel 6600 4550 2    50   Input ~ 0
 BATT
 Text GLabel 6200 4650 0    50   Input ~ 0
 VIN
+$Comp
+L Mechanical:MountingHole_Pad H1
+U 1 1 6108948B
+P 5550 2350
+F 0 "H1" H 5650 2399 50  0000 L CNN
+F 1 "MountingHole_Pad" H 5650 2308 50  0000 L CNN
+F 2 "MountingHole:MountingHole_2.2mm_M2_ISO7380_Pad" H 5550 2350 50  0001 C CNN
+F 3 "~" H 5550 2350 50  0001 C CNN
+	1    5550 2350
+	1    0    0    -1  
+$EndComp
+$Comp
+L Mechanical:MountingHole_Pad H2
+U 1 1 61089F2F
+P 5900 2350
+F 0 "H2" H 6000 2399 50  0000 L CNN
+F 1 "MountingHole_Pad" H 6000 2308 50  0000 L CNN
+F 2 "MountingHole:MountingHole_2.2mm_M2_ISO7380_Pad" H 5900 2350 50  0001 C CNN
+F 3 "~" H 5900 2350 50  0001 C CNN
+	1    5900 2350
+	1    0    0    -1  
+$EndComp
 $EndSCHEMATC
