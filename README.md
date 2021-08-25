@@ -10,9 +10,9 @@ The SWM board uses an EFM8LB12 microcontroller from Silabs to do the analog meas
 
 The SWM board uses the JDY-08 Bluetooth module because it provides a simple and transparent way to communicate readings over BLE: just connect and send the data over UART. It is also a very low-cost module (< $4).
 
-It is powered by the MCP16415 boost module which can take input ranges from 0.8V to 5.5V, which means that it can be powered by anything from a single AA recharagble to USB. 
+It is powered by the MCP16415 boost module which can take input ranges from 0.8V to 5.5V, which means that it can be powered by anything from a single AA rechargable to a 5V input from another board. 
 
-The total cost of the board comes up to roughly $15, which makes it cheap enough to throw permanently into a system to do wireless reporting of voltage and current. 
+The total cost of the board comes up to roughly $15, which makes it cheap enough to throw permanently into a system to do wireless reporting of voltage and current. The board size is also small - about the size of two postage stamps placed side by side, which allows it to be embedded in other applications.
 
 | Use case | Description |
 |----------|-------------|
@@ -20,5 +20,12 @@ The total cost of the board comes up to roughly $15, which makes it cheap enough
 |Robotics| Keep an eye on motors and batteries|
 |IoT| Monitor battries remotely|
 |Distributed systems| Monitor various test points in the system simultaneously to get a holistic picture of what is going on|
+|Rocketry| Monitor your wireless systems as you mount the rocket. Never wonder again if your system is dead.|
+
+## Specs
+| Current draw | Voltage | Status| 
+|--------------|---------|-------|
+| 48 mA | 1.2V | Fully On|
+| 15 mA | 3.3V | Fully On|
 
 # Arduino Version
