@@ -191,7 +191,7 @@ F 3 "~" H 9500 3100 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 Text GLabel 9300 3300 0    50   Input ~ 0
-A3
+VHIGH
 Text GLabel 9300 3200 0    50   Input ~ 0
 A2
 $Comp
@@ -725,4 +725,46 @@ Wire Wire Line
 	9100 3400 9300 3400
 Wire Wire Line
 	9100 3500 9300 3500
+$Comp
+L Device:R R7
+U 1 1 6131256B
+P 7350 3200
+F 0 "R7" V 7450 3150 50  0000 L CNN
+F 1 "110k" V 7250 3150 50  0000 L CNN
+F 2 "Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder" V 7280 3200 50  0001 C CNN
+F 3 "~" H 7350 3200 50  0001 C CNN
+	1    7350 3200
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R R8
+U 1 1 61316095
+P 7350 3600
+F 0 "R8" V 7450 3550 50  0000 L CNN
+F 1 "10k" V 7250 3550 50  0000 L CNN
+F 2 "Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder" V 7280 3600 50  0001 C CNN
+F 3 "~" H 7350 3600 50  0001 C CNN
+	1    7350 3600
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR0110
+U 1 1 613169FE
+P 7350 3750
+F 0 "#PWR0110" H 7350 3500 50  0001 C CNN
+F 1 "GND" H 7355 3577 50  0000 C CNN
+F 2 "" H 7350 3750 50  0001 C CNN
+F 3 "" H 7350 3750 50  0001 C CNN
+	1    7350 3750
+	1    0    0    -1  
+$EndComp
+Text GLabel 7350 3050 1    50   Input ~ 0
+VHIGH
+Wire Wire Line
+	7350 3350 7350 3450
+Text GLabel 7000 3450 0    50   Input ~ 0
+A3
+Wire Wire Line
+	7350 3450 7000 3450
+Connection ~ 7350 3450
 $EndSCHEMATC
