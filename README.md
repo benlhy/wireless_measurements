@@ -36,3 +36,9 @@ The total cost of the board comes up to roughly $15, which makes it cheap enough
 | 15 mA        | 3.3V    | Fully On |
 
 # Arduino Version
+
+The Arduino Version is a simplified version of the full board but can be programmed directly in Arduino. It has a lower ADC resolution and a lower UART baud rate because it is using Software Serial.
+
+# Software
+
+The python code is searches for a specific device and prints the TX-RX characteristic on the JDY-08.
