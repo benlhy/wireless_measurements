@@ -20,6 +20,6 @@ lib/bsp/efm8_retargetserial/%.OBJ: ../lib/bsp/efm8_retargetserial/%.c
 	@echo 'Finished building: $<'
 	@echo ' '
 
-lib/bsp/efm8_retargetserial/retargetserial.OBJ: C:/Users/lilda/Documents/Bens\ file/Silabs/EFM8LB1_ADC_ExternalInput/lib/bsp/efm8_retargetserial/retargetserial.h C:/SiliconLabs/SimplicityStudio/v5/developer/toolchains/keil_8051/9.60/INC/REG51.H C:/SiliconLabs/SimplicityStudio/v5/developer/toolchains/keil_8051/9.60/INC/STDIO.H
+lib/bsp/efm8_retargetserial/retargetserial.OBJ: C:/Users/Ben/Documents/Git/wireless_measurements/software/firmware/EFM8_SWM/lib/bsp/efm8_retargetserial/retargetserial.h C:/SiliconLabs/SimplicityStudio/v5/developer/toolchains/keil_8051/9.60/INC/REG51.H C:/SiliconLabs/SimplicityStudio/v5/developer/toolchains/keil_8051/9.60/INC/STDIO.H
 
 

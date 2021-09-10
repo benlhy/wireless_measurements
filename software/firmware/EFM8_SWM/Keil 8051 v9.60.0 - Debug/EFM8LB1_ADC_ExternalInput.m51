@@ -1,4 +1,4 @@
-LX51 LINKER/LOCATER V4.66.97.0                                                          09/08/2021  17:12:17  PAGE 1
+LX51 LINKER/LOCATER V4.66.97.0                                                          09/10/2021  08:59:36  PAGE 1
 
 
 LX51 LINKER/LOCATER V4.66.97.0, INVOKED BY:
@@ -64,7 +64,7 @@ INPUT MODULES INCLUDED:
          COMMENT TYPE 1: A51 / ASM51 Assembler
   C:\SILICONLABS\SIMPLICITYSTUDIO\V5\DEVELOPER\TOOLCHAINS\KEIL_8051\9.60\LIB\C51S.LIB (?C?LLDIIDATA)
          COMMENT TYPE 1: A51 / ASM51 Assembler
-LX51 LINKER/LOCATER V4.66.97.0                                                        09/08/2021  17:12:17  PAGE 2
+LX51 LINKER/LOCATER V4.66.97.0                                                        09/10/2021  08:59:36  PAGE 2
 
 
   C:\SILICONLABS\SIMPLICITYSTUDIO\V5\DEVELOPER\TOOLCHAINS\KEIL_8051\9.60\LIB\C51S.LIB (?C?PLDIIDATA)
@@ -129,7 +129,7 @@ START     STOP      LENGTH    ALIGN  RELOC    MEMORY CLASS   SEGMENT NAME
 000E20H   000EBEH   00009FH   BYTE   UNIT     CODE           ?PR?__DELAY_MS?EFM8LB1_ADC_EXTERNALINPUT
 000EBFH   000F4DH   00008FH   BYTE   UNIT     CODE           ?C_C51STARTUP
 000F4EH   000FB2H   000065H   BYTE   UNIT     CODE           ?PR?INIT_DEVICE?EFM8LB1_ADC_EXTERNALINPUT
-LX51 LINKER/LOCATER V4.66.97.0                                                        09/08/2021  17:12:17  PAGE 3
+LX51 LINKER/LOCATER V4.66.97.0                                                        09/10/2021  08:59:36  PAGE 3
 
 
 000FB3H   00100EH   00005CH   BYTE   UNIT     CODE           ?PR?WDT_0_ENTER_DEFAULTMODE_FROM_RESET?INITDEVICE
@@ -194,7 +194,7 @@ ENTER_DEFAULTMODE_FROM_RESET/INITDEVICE       ----- -----  ----- -----
   +--> ADC_0_ENTER_DEFAULTMODE_FROM_RESET/INITDEVICE
   +--> VREF_0_ENTER_DEFAULTMODE_FROM_RESET/INITDEVICE
   +--> CLOCK_0_ENTER_DEFAULTMODE_FROM_RESET/INITDEVICE
-LX51 LINKER/LOCATER V4.66.97.0                                                        09/08/2021  17:12:17  PAGE 4
+LX51 LINKER/LOCATER V4.66.97.0                                                        09/10/2021  08:59:36  PAGE 4
 
 
   +--> TIMER01_0_ENTER_DEFAULTMODE_FROM_RESET/INITDEVICE
@@ -259,7 +259,7 @@ _RETARGET_WRITECHAR/RETARGETSERIAL            ----- -----  ----- -----
 ?C_INITSEG                                    ----- -----  ----- -----
 
 
-LX51 LINKER/LOCATER V4.66.97.0                                                        09/08/2021  17:12:17  PAGE 5
+LX51 LINKER/LOCATER V4.66.97.0                                                        09/10/2021  08:59:36  PAGE 5
 
 
 
@@ -324,7 +324,7 @@ PUBLIC SYMBOLS OF MODULE:  EFM8LB1_ADC_EXTERNALINPUT.OMF.CRBUILD (RETARGETIO)
 *SFR* 000000B5H   DATA     WORD      ADC0ASA
 *SFR* 000000B6H   DATA     BYTE      ADC0ASAH
 *SFR* 000000B5H   DATA     BYTE      ADC0ASAL
-LX51 LINKER/LOCATER V4.66.97.0                                                        09/08/2021  17:12:17  PAGE 6
+LX51 LINKER/LOCATER V4.66.97.0                                                        09/10/2021  08:59:36  PAGE 6
 
 
 *SFR* 000000A1H   DATA     BYTE      ADC0ASCF
@@ -389,7 +389,7 @@ PUBLIC SYMBOLS OF MODULE:  EFM8LB1_ADC_EXTERNALINPUT.OMF.CRBUILD (RETARGETIO)
 *SFR* 000000AFH   DATA     BYTE      CLU0FN
 *SFR* 00000084H   DATA     BYTE      CLU0MX
 *SFR* 000000B3H   DATA     BYTE      CLU1CF
-LX51 LINKER/LOCATER V4.66.97.0                                                        09/08/2021  17:12:17  PAGE 7
+LX51 LINKER/LOCATER V4.66.97.0                                                        09/10/2021  08:59:36  PAGE 7
 
 
 *SFR* 000000B2H   DATA     BYTE      CLU1FN
@@ -454,7 +454,7 @@ PUBLIC SYMBOLS OF MODULE:  EFM8LB1_ADC_EXTERNALINPUT.OMF.CRBUILD (RETARGETIO)
 *SFR* 00000083H   DATA     BYTE      DPH
 *SFR* 00000082H   DATA     BYTE      DPL
 *SFR* 000000A8H.7 DATA     BIT       EA
-LX51 LINKER/LOCATER V4.66.97.0                                                        09/08/2021  17:12:17  PAGE 8
+LX51 LINKER/LOCATER V4.66.97.0                                                        09/10/2021  08:59:36  PAGE 8
 
 
 *SFR* 000000E6H   DATA     BYTE      EIE1
@@ -519,7 +519,7 @@ PUBLIC SYMBOLS OF MODULE:  EFM8LB1_ADC_EXTERNALINPUT.OMF.CRBUILD (RETARGETIO)
 *SFR* 000000D0H.2 DATA     BIT       OV
 *SFR* 000000D0H.0 DATA     BIT       P
 *SFR* 00000080H   DATA     BYTE      P0
-LX51 LINKER/LOCATER V4.66.97.0                                                        09/08/2021  17:12:17  PAGE 9
+LX51 LINKER/LOCATER V4.66.97.0                                                        09/10/2021  08:59:36  PAGE 9
 
 
 *SFR* 00000080H.0 DATA     BIT       P0_B0
@@ -584,7 +584,7 @@ PUBLIC SYMBOLS OF MODULE:  EFM8LB1_ADC_EXTERNALINPUT.OMF.CRBUILD (RETARGETIO)
 *SFR* 000000D8H.5 DATA     BIT       PCA0CN0_CCF5
 *SFR* 000000D8H.7 DATA     BIT       PCA0CN0_CF
 *SFR* 000000D8H.6 DATA     BIT       PCA0CN0_CR
-LX51 LINKER/LOCATER V4.66.97.0                                                        09/08/2021  17:12:17  PAGE 10
+LX51 LINKER/LOCATER V4.66.97.0                                                        09/10/2021  08:59:36  PAGE 10
 
 
 *SFR* 000000FBH   DATA     WORD      PCA0CP0
@@ -649,7 +649,7 @@ PUBLIC SYMBOLS OF MODULE:  EFM8LB1_ADC_EXTERNALINPUT.OMF.CRBUILD (RETARGETIO)
 *SFR* 000000D1H   DATA     BYTE      REF0CN
 *SFR* 000000C9H   DATA     BYTE      REG0CN
 *SFR* 00000098H.4 DATA     BIT       REN
-LX51 LINKER/LOCATER V4.66.97.0                                                        09/08/2021  17:12:17  PAGE 11
+LX51 LINKER/LOCATER V4.66.97.0                                                        09/10/2021  08:59:36  PAGE 11
 
 
 *DEL*:00000000H   CODE     ---       RETARGET_ReadChar
@@ -714,7 +714,7 @@ PUBLIC SYMBOLS OF MODULE:  EFM8LB1_ADC_EXTERNALINPUT.OMF.CRBUILD (RETARGETIO)
 *SFR* 000000A1H   DATA     BYTE      SPI0CFG
 *SFR* 000000A2H   DATA     BYTE      SPI0CKR
 *SFR* 000000F8H   DATA     BYTE      SPI0CN0
-LX51 LINKER/LOCATER V4.66.97.0                                                        09/08/2021  17:12:17  PAGE 12
+LX51 LINKER/LOCATER V4.66.97.0                                                        09/10/2021  08:59:36  PAGE 12
 
 
 *SFR* 000000F8H.5 DATA     BIT       SPI0CN0_MODF
@@ -779,7 +779,7 @@ PUBLIC SYMBOLS OF MODULE:  EFM8LB1_ADC_EXTERNALINPUT.OMF.CRBUILD (RETARGETIO)
 *SFR* 00000092H   DATA     BYTE      TMR3RLL
 *SFR* 000000A4H   DATA     WORD      TMR4
 *SFR* 00000098H   DATA     BYTE      TMR4CN0
-LX51 LINKER/LOCATER V4.66.97.0                                                        09/08/2021  17:12:17  PAGE 13
+LX51 LINKER/LOCATER V4.66.97.0                                                        09/10/2021  08:59:36  PAGE 13
 
 
 *SFR* 00000098H.3 DATA     BIT       TMR4CN0_T4SPLIT
@@ -844,7 +844,7 @@ PUBLIC SYMBOLS OF MODULE:  EFM8LB1_ADC_EXTERNALINPUT.OMF.CRBUILD (RETARGETIO)
 
 
 
-LX51 LINKER/LOCATER V4.66.97.0                                                        09/08/2021  17:12:17  PAGE 14
+LX51 LINKER/LOCATER V4.66.97.0                                                        09/10/2021  08:59:36  PAGE 14
 
 
 SYMBOL TABLE OF MODULE:  EFM8LB1_ADC_EXTERNALINPUT.OMF.CRBUILD (RETARGETIO)
@@ -909,7 +909,7 @@ SYMBOL TABLE OF MODULE:  EFM8LB1_ADC_EXTERNALINPUT.OMF.CRBUILD (RETARGETIO)
       000000D0H.0 SFRSYM    DATA     BIT       P
       00000098H.7 SFRSYM    DATA     BIT       SM0
       0000008AH   SFRSYM    DATA     BYTE      TL0
-LX51 LINKER/LOCATER V4.66.97.0                                                        09/08/2021  17:12:17  PAGE 15
+LX51 LINKER/LOCATER V4.66.97.0                                                        09/10/2021  08:59:36  PAGE 15
 
 
       00000098H.6 SFRSYM    DATA     BIT       SM1
@@ -974,7 +974,7 @@ SYMBOL TABLE OF MODULE:  EFM8LB1_ADC_EXTERNALINPUT.OMF.CRBUILD (RETARGETIO)
       000000E8H.3 SFRSYM    DATA     BIT       CLIF0_C1RIF
       000000E8H.5 SFRSYM    DATA     BIT       CLIF0_C2RIF
       0000008FH   SFRSYM    DATA     BYTE      PSCTL
-LX51 LINKER/LOCATER V4.66.97.0                                                        09/08/2021  17:12:17  PAGE 16
+LX51 LINKER/LOCATER V4.66.97.0                                                        09/10/2021  08:59:36  PAGE 16
 
 
       000000E8H.7 SFRSYM    DATA     BIT       CLIF0_C3RIF
@@ -1039,7 +1039,7 @@ SYMBOL TABLE OF MODULE:  EFM8LB1_ADC_EXTERNALINPUT.OMF.CRBUILD (RETARGETIO)
       00000098H.5 SFRSYM    DATA     BIT       SCON0_MCE
       000000F0H.7 SFRSYM    DATA     BIT       B_B7
       000000AFH   SFRSYM    DATA     BYTE      PCA0CPM4
-LX51 LINKER/LOCATER V4.66.97.0                                                        09/08/2021  17:12:17  PAGE 17
+LX51 LINKER/LOCATER V4.66.97.0                                                        09/10/2021  08:59:36  PAGE 17
 
 
       000000DDH   SFRSYM    DATA     BYTE      PCA0CPL5
@@ -1104,7 +1104,7 @@ SYMBOL TABLE OF MODULE:  EFM8LB1_ADC_EXTERNALINPUT.OMF.CRBUILD (RETARGETIO)
       000000B2H   SFRSYM    DATA     BYTE      CLU1FN
       000000C8H.4 SFRSYM    DATA     BIT       SCON1_REN
       000000F3H   SFRSYM    DATA     BYTE      P2MDIN
-LX51 LINKER/LOCATER V4.66.97.0                                                        09/08/2021  17:12:17  PAGE 18
+LX51 LINKER/LOCATER V4.66.97.0                                                        09/10/2021  08:59:36  PAGE 18
 
 
       000000B5H   SFRSYM    DATA     BYTE      CLU2FN
@@ -1169,7 +1169,7 @@ SYMBOL TABLE OF MODULE:  EFM8LB1_ADC_EXTERNALINPUT.OMF.CRBUILD (RETARGETIO)
       000000A8H.0 SFRSYM    DATA     BIT       IE_EX0
       00000088H.4 SFRSYM    DATA     BIT       DACGCF0_D3SRC0
       00000085H   SFRSYM    DATA     BYTE      CLU1MX
-LX51 LINKER/LOCATER V4.66.97.0                                                        09/08/2021  17:12:17  PAGE 19
+LX51 LINKER/LOCATER V4.66.97.0                                                        09/10/2021  08:59:36  PAGE 19
 
 
       000000B2H   SFRSYM    DATA     BYTE      ADC0CN1
@@ -1234,7 +1234,7 @@ SYMBOL TABLE OF MODULE:  EFM8LB1_ADC_EXTERNALINPUT.OMF.CRBUILD (RETARGETIO)
       000000E8H   SFRSYM    DATA     BYTE      CLIF0
       000000C0H.2 SFRSYM    DATA     BIT       SMB0CN0_ARBLOST
       000000B8H.5 SFRSYM    DATA     BIT       IP_PT2
-LX51 LINKER/LOCATER V4.66.97.0                                                        09/08/2021  17:12:17  PAGE 20
+LX51 LINKER/LOCATER V4.66.97.0                                                        09/10/2021  08:59:36  PAGE 20
 
 
       0000008AH   SFRSYM    DATA     BYTE      TL0
@@ -1299,7 +1299,7 @@ SYMBOL TABLE OF MODULE:  EFM8LB1_ADC_EXTERNALINPUT.OMF.CRBUILD (RETARGETIO)
       000000C4H   SFRSYM    DATA     BYTE      ADC0GTH
       000000C8H.7 SFRSYM    DATA     BIT       TMR2CN0_TF2H
       000000C8H.3 SFRSYM    DATA     BIT       TMR2CN0_T2SPLIT
-LX51 LINKER/LOCATER V4.66.97.0                                                        09/08/2021  17:12:17  PAGE 21
+LX51 LINKER/LOCATER V4.66.97.0                                                        09/10/2021  08:59:36  PAGE 21
 
 
       000000D0H.6 SFRSYM    DATA     BIT       PSW_AC
@@ -1364,7 +1364,7 @@ SYMBOL TABLE OF MODULE:  EFM8LB1_ADC_EXTERNALINPUT.OMF.CRBUILD (RETARGETIO)
       000000CFH   SFRSYM    DATA     BYTE      TMR2H
       000000A1H   SFRSYM    DATA     BYTE      SPI0CFG
       00000095H   SFRSYM    DATA     BYTE      TMR3H
-LX51 LINKER/LOCATER V4.66.97.0                                                        09/08/2021  17:12:17  PAGE 22
+LX51 LINKER/LOCATER V4.66.97.0                                                        09/10/2021  08:59:36  PAGE 22
 
 
       000000EFH   SFRSYM    DATA     BYTE      HFOCN
@@ -1429,7 +1429,7 @@ SYMBOL TABLE OF MODULE:  EFM8LB1_ADC_EXTERNALINPUT.OMF.CRBUILD (RETARGETIO)
       01000EA6H   LINE      CODE     ---       #170
       01000EBBH   LINE      CODE     ---       #171
       01000EBCH   LINE      CODE     ---       #172
-LX51 LINKER/LOCATER V4.66.97.0                                                        09/08/2021  17:12:17  PAGE 23
+LX51 LINKER/LOCATER V4.66.97.0                                                        09/10/2021  08:59:36  PAGE 23
 
 
       01000EBEH   LINE      CODE     ---       #173
@@ -1494,7 +1494,7 @@ SYMBOL TABLE OF MODULE:  EFM8LB1_ADC_EXTERNALINPUT.OMF.CRBUILD (RETARGETIO)
       0100113FH   PUBLIC    CODE     ---       TIMER_SETUP_0_enter_DefaultMode_from_RESET
       01001094H   PUBLIC    CODE     ---       TIMER16_2_enter_DefaultMode_from_RESET
       010010B1H   PUBLIC    CODE     ---       TIMER01_0_enter_DefaultMode_from_RESET
-LX51 LINKER/LOCATER V4.66.97.0                                                        09/08/2021  17:12:17  PAGE 24
+LX51 LINKER/LOCATER V4.66.97.0                                                        09/10/2021  08:59:36  PAGE 24
 
 
       010010FDH   PUBLIC    CODE     ---       CLOCK_0_enter_DefaultMode_from_RESET
@@ -1559,7 +1559,7 @@ SYMBOL TABLE OF MODULE:  EFM8LB1_ADC_EXTERNALINPUT.OMF.CRBUILD (RETARGETIO)
       000000D8H.3 SFRSYM    DATA     BIT       UART1FCN1_RFRQ
       000000F0H.2 SFRSYM    DATA     BIT       B_B2
       000000BCH   SFRSYM    DATA     BYTE      SFRPGCN
-LX51 LINKER/LOCATER V4.66.97.0                                                        09/08/2021  17:12:17  PAGE 25
+LX51 LINKER/LOCATER V4.66.97.0                                                        09/10/2021  08:59:36  PAGE 25
 
 
       000000FBH   SFRSYM    DATA     BYTE      PCA0CPL0
@@ -1624,7 +1624,7 @@ SYMBOL TABLE OF MODULE:  EFM8LB1_ADC_EXTERNALINPUT.OMF.CRBUILD (RETARGETIO)
       000000D8H.0 SFRSYM    DATA     BIT       PCA0CN0_CCF0
       000000E0H.5 SFRSYM    DATA     BIT       ACC_ACC5
       00000098H.2 SFRSYM    DATA     BIT       TMR4CN0_TR4
-LX51 LINKER/LOCATER V4.66.97.0                                                        09/08/2021  17:12:17  PAGE 26
+LX51 LINKER/LOCATER V4.66.97.0                                                        09/10/2021  08:59:36  PAGE 26
 
 
       000000D8H.1 SFRSYM    DATA     BIT       PCA0CN0_CCF1
@@ -1689,7 +1689,7 @@ SYMBOL TABLE OF MODULE:  EFM8LB1_ADC_EXTERNALINPUT.OMF.CRBUILD (RETARGETIO)
       000000DFH   SFRSYM    DATA     BYTE      ADC0CF2
       0000009AH   SFRSYM    DATA     BYTE      DAC3CF0
       00000096H   SFRSYM    DATA     BYTE      DAC2CF1
-LX51 LINKER/LOCATER V4.66.97.0                                                        09/08/2021  17:12:17  PAGE 27
+LX51 LINKER/LOCATER V4.66.97.0                                                        09/10/2021  08:59:36  PAGE 27
 
 
       000000CFH   SFRSYM    DATA     BYTE      CRC0FLIP
@@ -1754,7 +1754,7 @@ SYMBOL TABLE OF MODULE:  EFM8LB1_ADC_EXTERNALINPUT.OMF.CRBUILD (RETARGETIO)
       0000008DH   SFRSYM    DATA     BYTE      DAC3L
       000000FBH   SFRSYM    DATA     WORD      PCA0CP0
       000000DAH   SFRSYM    DATA     BYTE      UART1PCF
-LX51 LINKER/LOCATER V4.66.97.0                                                        09/08/2021  17:12:17  PAGE 28
+LX51 LINKER/LOCATER V4.66.97.0                                                        09/10/2021  08:59:36  PAGE 28
 
 
       000000E9H   SFRSYM    DATA     WORD      PCA0CP1
@@ -1819,7 +1819,7 @@ SYMBOL TABLE OF MODULE:  EFM8LB1_ADC_EXTERNALINPUT.OMF.CRBUILD (RETARGETIO)
       000000A0H.3 SFRSYM    DATA     BIT       P2_B3
       00000090H.4 SFRSYM    DATA     BIT       P1_B4
       00000080H.5 SFRSYM    DATA     BIT       P0_B5
-LX51 LINKER/LOCATER V4.66.97.0                                                        09/08/2021  17:12:17  PAGE 29
+LX51 LINKER/LOCATER V4.66.97.0                                                        09/10/2021  08:59:36  PAGE 29
 
 
       00000098H.0 SFRSYM    DATA     BIT       DACGCF1_D0UDIS
@@ -1884,7 +1884,7 @@ SYMBOL TABLE OF MODULE:  EFM8LB1_ADC_EXTERNALINPUT.OMF.CRBUILD (RETARGETIO)
       000000FBH   SFRSYM    DATA     BYTE      P2MAT
       00000098H.6 SFRSYM    DATA     BIT       TMR4CN0_TF4L
       000000E8H.4 SFRSYM    DATA     BIT       ADC0CN0_ADBUSY
-LX51 LINKER/LOCATER V4.66.97.0                                                        09/08/2021  17:12:17  PAGE 30
+LX51 LINKER/LOCATER V4.66.97.0                                                        09/10/2021  08:59:36  PAGE 30
 
 
       000000D6H   SFRSYM    DATA     BYTE      SMB0ADM
@@ -1949,7 +1949,7 @@ SYMBOL TABLE OF MODULE:  EFM8LB1_ADC_EXTERNALINPUT.OMF.CRBUILD (RETARGETIO)
       000000E8H.6 SFRSYM    DATA     BIT       CLIF0_C3FIF
       000000B7H   SFRSYM    DATA     BYTE      FLKEY
 
-LX51 LINKER/LOCATER V4.66.97.0                                                        09/08/2021  17:12:17  PAGE 31
+LX51 LINKER/LOCATER V4.66.97.0                                                        09/10/2021  08:59:36  PAGE 31
 
 
       01001066H   BLOCK     CODE     ---       LVL=0
@@ -2014,7 +2014,7 @@ SYMBOL TABLE OF MODULE:  EFM8LB1_ADC_EXTERNALINPUT.OMF.CRBUILD (RETARGETIO)
       01001127H   LINE      CODE     ---       #204
       0100112AH   LINE      CODE     ---       #215
       ---         BLOCKEND  ---      ---       LVL=0
-LX51 LINKER/LOCATER V4.66.97.0                                                        09/08/2021  17:12:17  PAGE 32
+LX51 LINKER/LOCATER V4.66.97.0                                                        09/10/2021  08:59:36  PAGE 32
 
 
 
@@ -2079,7 +2079,7 @@ SYMBOL TABLE OF MODULE:  EFM8LB1_ADC_EXTERNALINPUT.OMF.CRBUILD (RETARGETIO)
       01001094H   LINE      CODE     ---       #478
       01001094H   LINE      CODE     ---       #482
       0100109AH   LINE      CODE     ---       #484
-LX51 LINKER/LOCATER V4.66.97.0                                                        09/08/2021  17:12:17  PAGE 33
+LX51 LINKER/LOCATER V4.66.97.0                                                        09/10/2021  08:59:36  PAGE 33
 
 
       0100109DH   LINE      CODE     ---       #497
@@ -2144,7 +2144,7 @@ SYMBOL TABLE OF MODULE:  EFM8LB1_ADC_EXTERNALINPUT.OMF.CRBUILD (RETARGETIO)
       000000E6H   SFRSYM    DATA     BYTE      EIE1
       000000C0H.1 SFRSYM    DATA     BIT       SMB0CN0_ACK
       000000E8H.1 SFRSYM    DATA     BIT       CLIF0_C0RIF
-LX51 LINKER/LOCATER V4.66.97.0                                                        09/08/2021  17:12:17  PAGE 34
+LX51 LINKER/LOCATER V4.66.97.0                                                        09/10/2021  08:59:36  PAGE 34
 
 
       000000F3H   SFRSYM    DATA     BYTE      EIE2
@@ -2209,7 +2209,7 @@ SYMBOL TABLE OF MODULE:  EFM8LB1_ADC_EXTERNALINPUT.OMF.CRBUILD (RETARGETIO)
       000000C5H   SFRSYM    DATA     WORD      ADC0LT
       000000AEH   SFRSYM    DATA     BYTE      PCA0CPM3
       00000084H   SFRSYM    DATA     BYTE      PCA0CPL4
-LX51 LINKER/LOCATER V4.66.97.0                                                        09/08/2021  17:12:17  PAGE 35
+LX51 LINKER/LOCATER V4.66.97.0                                                        09/10/2021  08:59:36  PAGE 35
 
 
       000000D8H.6 SFRSYM    DATA     BIT       UART1FCN1_TXNF
@@ -2274,7 +2274,7 @@ SYMBOL TABLE OF MODULE:  EFM8LB1_ADC_EXTERNALINPUT.OMF.CRBUILD (RETARGETIO)
       00000098H.4 SFRSYM    DATA     BIT       SCON0_REN
       000000ACH   SFRSYM    DATA     BYTE      SMB0TC
       000000F2H   SFRSYM    DATA     BYTE      P1MDIN
-LX51 LINKER/LOCATER V4.66.97.0                                                        09/08/2021  17:12:17  PAGE 36
+LX51 LINKER/LOCATER V4.66.97.0                                                        09/10/2021  08:59:36  PAGE 36
 
 
       000000B2H   SFRSYM    DATA     BYTE      CLU1FN
@@ -2339,7 +2339,7 @@ SYMBOL TABLE OF MODULE:  EFM8LB1_ADC_EXTERNALINPUT.OMF.CRBUILD (RETARGETIO)
       00000084H   SFRSYM    DATA     BYTE      CLU0MX
       000000E8H   SFRSYM    DATA     BYTE      ADC0CN0
       000000D8H.4 SFRSYM    DATA     BIT       UART1FCN1_TIE
-LX51 LINKER/LOCATER V4.66.97.0                                                        09/08/2021  17:12:17  PAGE 37
+LX51 LINKER/LOCATER V4.66.97.0                                                        09/10/2021  08:59:36  PAGE 37
 
 
       000000A8H.0 SFRSYM    DATA     BIT       IE_EX0
@@ -2404,7 +2404,7 @@ SYMBOL TABLE OF MODULE:  EFM8LB1_ADC_EXTERNALINPUT.OMF.CRBUILD (RETARGETIO)
       000000B8H.3 SFRSYM    DATA     BIT       IP_PT1
       00000088H.3 SFRSYM    DATA     BIT       DACGCF0_D01REFSL
       000000B5H   SFRSYM    DATA     WORD      ADC0ASA
-LX51 LINKER/LOCATER V4.66.97.0                                                        09/08/2021  17:12:17  PAGE 38
+LX51 LINKER/LOCATER V4.66.97.0                                                        09/10/2021  08:59:36  PAGE 38
 
 
       000000E8H   SFRSYM    DATA     BYTE      CLIF0
@@ -2469,7 +2469,7 @@ SYMBOL TABLE OF MODULE:  EFM8LB1_ADC_EXTERNALINPUT.OMF.CRBUILD (RETARGETIO)
       00000098H.3 SFRSYM    DATA     BIT       DACGCF1_D3UDIS
       000000B0H.7 SFRSYM    DATA     BIT       P3_B7
       00000083H   SFRSYM    DATA     BYTE      DPH
-LX51 LINKER/LOCATER V4.66.97.0                                                        09/08/2021  17:12:17  PAGE 39
+LX51 LINKER/LOCATER V4.66.97.0                                                        09/10/2021  08:59:36  PAGE 39
 
 
       000000C4H   SFRSYM    DATA     BYTE      ADC0GTH
@@ -2534,7 +2534,7 @@ SYMBOL TABLE OF MODULE:  EFM8LB1_ADC_EXTERNALINPUT.OMF.CRBUILD (RETARGETIO)
       000000C8H.4 SFRSYM    DATA     BIT       TMR2CN0_TF2CEN
       00000088H.6 SFRSYM    DATA     BIT       TCON_TR1
       000000C2H   SFRSYM    DATA     BYTE      SMB0DAT
-LX51 LINKER/LOCATER V4.66.97.0                                                        09/08/2021  17:12:17  PAGE 40
+LX51 LINKER/LOCATER V4.66.97.0                                                        09/10/2021  08:59:36  PAGE 40
 
 
       000000CFH   SFRSYM    DATA     BYTE      TMR2H
@@ -2599,7 +2599,7 @@ SYMBOL TABLE OF MODULE:  EFM8LB1_ADC_EXTERNALINPUT.OMF.CRBUILD (RETARGETIO)
       01000C2AH   LINE      CODE     ---       #62
       01000C2AH   LINE      CODE     ---       #63
       01000C2DH   LINE      CODE     ---       #64
-LX51 LINKER/LOCATER V4.66.97.0                                                        09/08/2021  17:12:17  PAGE 41
+LX51 LINKER/LOCATER V4.66.97.0                                                        09/10/2021  08:59:36  PAGE 41
 
 
       01000C2FH   LINE      CODE     ---       #65
@@ -2664,7 +2664,7 @@ SYMBOL TABLE OF MODULE:  EFM8LB1_ADC_EXTERNALINPUT.OMF.CRBUILD (RETARGETIO)
       00000100H   SYMBOL    NUMBER   ---       PBPSTACKTOP
       00000000H   SYMBOL    NUMBER   ---       PDATALEN
       00000000H   SYMBOL    NUMBER   ---       PDATASTART
-LX51 LINKER/LOCATER V4.66.97.0                                                        09/08/2021  17:12:17  PAGE 42
+LX51 LINKER/LOCATER V4.66.97.0                                                        09/10/2021  08:59:36  PAGE 42
 
 
       00000000H   SYMBOL    NUMBER   ---       PPAGE
@@ -2729,7 +2729,7 @@ SYMBOL TABLE OF MODULE:  EFM8LB1_ADC_EXTERNALINPUT.OMF.CRBUILD (RETARGETIO)
 
       ---         MODULE    ---      ---       ?C?FTNPWR
       01000515H   PUBLIC    CODE     ---       ?C?FTNPWR
-LX51 LINKER/LOCATER V4.66.97.0                                                        09/08/2021  17:12:17  PAGE 43
+LX51 LINKER/LOCATER V4.66.97.0                                                        09/10/2021  08:59:36  PAGE 43
 
 
 

@@ -1,15 +1,15 @@
-C51 COMPILER V9.60.0.0   INITDEVICE                                                        09/08/2021 17:12:15 PAGE 1   
+C51 COMPILER V9.60.0.0   INITDEVICE                                                        09/10/2021 08:59:32 PAGE 1   
 
 
 C51 COMPILER V9.60.0.0, COMPILATION OF MODULE INITDEVICE
 OBJECT MODULE PLACED IN .\src\InitDevice.OBJ
-COMPILER INVOKED BY: c:\SiliconLabs\SimplicityStudio\v5\developer\toolchains\keil_8051\9.60\BIN\C51.exe C:\Users\lilda\D
-                    -ocuments\Bens file\Silabs\EFM8LB1_ADC_ExternalInput\src\InitDevice.c OMF2 SMALL DEBUG OBJECTEXTEND ROM(LARGE) WARNINGLEV
-                    -EL(2) FLOATFUZZY(3) OPTIMIZE(0,SPEED) DEFINE(DEBUG=1) INTVECTOR(0X0000) INTPROMOTE INCDIR(C:\Users\lilda\Documents\Bens 
-                    -file\Silabs\EFM8LB1_ADC_ExternalInput\inc;C:/SiliconLabs/SimplicityStudio/v5/developer/sdks/8051/v4.2.1//kits/common/dri
-                    -vers/efm8_retargetserial;C:/SiliconLabs/SimplicityStudio/v5/developer/sdks/8051/v4.2.1//Device/shared/si8051Base;C:/Sili
-                    -conLabs/SimplicityStudio/v5/developer/sdks/8051/v4.2.1//Device/EFM8LB1/inc) PRINT(.\src\InitDevice.lst) COND PAGEWIDTH(1
-                    -20) PAGELENGTH(65) OBJECT(.\src\InitDevice.OBJ)
+COMPILER INVOKED BY: C:\SiliconLabs\SimplicityStudio\v5\developer\toolchains\keil_8051\9.60\BIN\C51.exe C:\Users\Ben\Doc
+                    -uments\Git\wireless_measurements\software\firmware\EFM8_SWM\src\InitDevice.c OMF2 SMALL DEBUG OBJECTEXTEND ROM(LARGE) WA
+                    -RNINGLEVEL(2) FLOATFUZZY(3) OPTIMIZE(0,SPEED) DEFINE(DEBUG=1) INTVECTOR(0X0000) INTPROMOTE INCDIR(C:\Users\Ben\Documents
+                    -\Git\wireless_measurements\software\firmware\EFM8_SWM\inc;C:/SiliconLabs/SimplicityStudio/v5/developer/sdks/8051/v4.2.1/
+                    -/kits/common/drivers/efm8_retargetserial;C:/SiliconLabs/SimplicityStudio/v5/developer/sdks/8051/v4.2.1//Device/shared/si
+                    -8051Base;C:/SiliconLabs/SimplicityStudio/v5/developer/sdks/8051/v4.2.1//Device/EFM8LB1/inc) PRINT(.\src\InitDevice.lst) 
+                    -COND PAGEWIDTH(120) PAGELENGTH(65) OBJECT(.\src\InitDevice.OBJ)
 
 line level    source
 
@@ -63,7 +63,7 @@ line level    source
   48          // WDT_0_enter_DefaultMode_from_RESET
   49          //================================================================================
   50          extern void
-C51 COMPILER V9.60.0.0   INITDEVICE                                                        09/08/2021 17:12:15 PAGE 2   
+C51 COMPILER V9.60.0.0   INITDEVICE                                                        09/10/2021 08:59:32 PAGE 2   
 
   51          WDT_0_enter_DefaultMode_from_RESET (void)
   52          {
@@ -128,7 +128,7 @@ line level    source
  111   1        // $[P0MDIN - Port 0 Input Mode]
  112   1        /***********************************************************************
  113   1         - P0.0 pin is configured for analog mode
-C51 COMPILER V9.60.0.0   INITDEVICE                                                        09/08/2021 17:12:15 PAGE 3   
+C51 COMPILER V9.60.0.0   INITDEVICE                                                        09/10/2021 08:59:32 PAGE 3   
 
  114   1         - P0.1 pin is configured for digital mode
  115   1         - P0.2 pin is configured for digital mode
@@ -193,7 +193,7 @@ line level    source
  174   1            | P1MDOUT_B7__OPEN_DRAIN;
  175   1        // [P1MDOUT - Port 1 Output Mode]$
  176   1      
-C51 COMPILER V9.60.0.0   INITDEVICE                                                        09/08/2021 17:12:15 PAGE 4   
+C51 COMPILER V9.60.0.0   INITDEVICE                                                        09/10/2021 08:59:32 PAGE 4   
 
  177   1        // $[P1MDIN - Port 1 Input Mode]
  178   1        /***********************************************************************
@@ -258,7 +258,7 @@ line level    source
  237   1            | P2MDOUT_B2__OPEN_DRAIN | P2MDOUT_B3__PUSH_PULL | P2MDOUT_B4__OPEN_DRAIN
  238   1            | P2MDOUT_B5__OPEN_DRAIN | P2MDOUT_B6__OPEN_DRAIN;
  239   1        // [P2MDOUT - Port 2 Output Mode]$
-C51 COMPILER V9.60.0.0   INITDEVICE                                                        09/08/2021 17:12:15 PAGE 5   
+C51 COMPILER V9.60.0.0   INITDEVICE                                                        09/10/2021 08:59:32 PAGE 5   
 
  240   1      
  241   1        // $[P2MDIN - Port 2 Input Mode]
@@ -323,7 +323,7 @@ line level    source
  300   1            | XBR0_CP1AE__DISABLED | XBR0_SYSCKE__DISABLED;
  301   1        // [XBR0 - Port I/O Crossbar 0]$
  302   1      
-C51 COMPILER V9.60.0.0   INITDEVICE                                                        09/08/2021 17:12:15 PAGE 6   
+C51 COMPILER V9.60.0.0   INITDEVICE                                                        09/10/2021 08:59:32 PAGE 6   
 
  303   1        // $[XBR1 - Port I/O Crossbar 1]
  304   1        // [XBR1 - Port I/O Crossbar 1]$
@@ -388,7 +388,7 @@ line level    source
  363   1        // [ADC0CF1 - ADC0 Configuration]$
  364   1      
  365   1        // $[ADC0ASAL - ADC0 Autoscan Start Address Low Byte]
-C51 COMPILER V9.60.0.0   INITDEVICE                                                        09/08/2021 17:12:15 PAGE 7   
+C51 COMPILER V9.60.0.0   INITDEVICE                                                        09/10/2021 08:59:32 PAGE 7   
 
  366   1        // [ADC0ASAL - ADC0 Autoscan Start Address Low Byte]$
  367   1      
@@ -453,7 +453,7 @@ line level    source
  426   1         ***********************************************************************/
  427   1        CLKSEL = CLKSEL_CLKSL__HFOSC0 | CLKSEL_CLKDIV__SYSCLK_DIV_1;
  428   1        while ((CLKSEL & CLKSEL_DIVRDY__BMASK) == CLKSEL_DIVRDY__NOT_READY)
-C51 COMPILER V9.60.0.0   INITDEVICE                                                        09/08/2021 17:12:15 PAGE 8   
+C51 COMPILER V9.60.0.0   INITDEVICE                                                        09/10/2021 08:59:32 PAGE 8   
 
  429   1          ;
  430   1        // [CLKSEL - Clock Select]$
@@ -518,7 +518,7 @@ line level    source
  489   1      
  490   1        // $[TMR2CN0 - Timer 2 Control]
  491   1        // [TMR2CN0 - Timer 2 Control]$
-C51 COMPILER V9.60.0.0   INITDEVICE                                                        09/08/2021 17:12:15 PAGE 9   
+C51 COMPILER V9.60.0.0   INITDEVICE                                                        09/10/2021 08:59:32 PAGE 9   
 
  492   1      
  493   1        // $[TMR2H - Timer 2 High Byte]
@@ -583,7 +583,7 @@ line level    source
  552   1         - Timer 0 enabled when TR0 = 1 irrespective of INT0 logic level
  553   1         - Timer Mode
  554   1         - Timer 1 enabled when TR1 = 1 irrespective of INT1 logic level
-C51 COMPILER V9.60.0.0   INITDEVICE                                                        09/08/2021 17:12:15 PAGE 10  
+C51 COMPILER V9.60.0.0   INITDEVICE                                                        09/10/2021 08:59:32 PAGE 10  
 
  555   1         ***********************************************************************/
  556   1        TMOD = TMOD_T0M__MODE0 | TMOD_T1M__MODE2 | TMOD_CT0__TIMER
@@ -648,7 +648,7 @@ line level    source
  615   1        // $[EIP2 - Extended Interrupt Priority 2]
  616   1        // [EIP2 - Extended Interrupt Priority 2]$
  617   1      
-C51 COMPILER V9.60.0.0   INITDEVICE                                                        09/08/2021 17:12:15 PAGE 11  
+C51 COMPILER V9.60.0.0   INITDEVICE                                                        09/10/2021 08:59:32 PAGE 11  
 
  618   1        // $[EIP2H - Extended Interrupt Priority 2 High]
  619   1        // [EIP2H - Extended Interrupt Priority 2 High]$

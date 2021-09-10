@@ -182,7 +182,6 @@ void init_device(void) {
   uint8_t SFRPAGE_save;
   uint32_t someval;
   uint8_t your_id;
-  unsigned char inputcharacter;
 
   LED = 1;
   PWRC = 0; // set AT mode
@@ -203,19 +202,13 @@ void init_device(void) {
       }
   }
   */
-  _delay_ms(50);
+  _delay_ms(50); // wait for JDY to respond
 
   //SFRPAGE_save = SFRPAGE;
   //SFRPAGE = LEGACY_PAGE;
+
+  // Set Id based on EFM8 id
   RETARGET_PRINTF("AT+NAMESWM-%d",(int)your_id);
-
-  //RETARGET_PRINTF("AT+NAMESWM-%u",(uint8_t)your_id);
-      //RETARGET_PRINTF("%d",(int)12);
-
-
-  //RETARGET_PRINTF("AT+NAMEHELLO");
-
-  //RETARGET_PRINTF("HELLO");
 
   //SFRPAGE = SFRPAGE_save;
   /*
@@ -229,20 +222,6 @@ void init_device(void) {
   _delay_ms(30);
   LED = 0;
   PWRC = 1; // unset AT mode
-}
-
-void set_device_AT() {
-
-  // RETARGET_PRINTF("AT+HOSTEN");
-
-  //inputcharacter = getchar();
-  PWRC = 0; // set AT mode
-
-  RETARGET_PRINTF("AT+NAMESWM-%d",500);
-
-  PWRC = 1; // unset AT mode
-
-
 }
 
 //-----------------------------------------------------------------------------
@@ -265,8 +244,6 @@ void main (void)
                                        // be set for prints to occur
 
 
-
-
    IE_EA = 1;                          // Enable global interrupts
    init_device(); // init device before we start ADC sampling
    //set_device_chars();
@@ -285,15 +262,9 @@ void main (void)
                LED_state = 0;
            }
 
-
-
-
-           //SFRPAGE_save = SFRPAGE;
-           //SFRPAGE = LEGACY_PAGE;
+           // send to JDY-08 module
            RETARGET_PRINTF ("%d,%d,%d,%d",adc1,adc2,adc3,adc4);
 
-           //printf("%d,%d,%d,%d",adc1,adc2,adc3,adc4);
-           //SFRPAGE = SFRPAGE_save;
 
        }
    }

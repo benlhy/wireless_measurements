@@ -4,6 +4,7 @@
 
 A51_UPPER_SRCS := 
 OBJ_UPPER_SRCS := 
+S79_SRCS := 
 SRC_UPPER_SRCS := 
 ASM_SRCS := 
 C_SRCS := 

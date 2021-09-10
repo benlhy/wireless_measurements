@@ -1,15 +1,15 @@
-AX51 MACRO ASSEMBLER  SILABS_STARTUP                                                        09/08/21 17:12:16 PAGE     1
+AX51 MACRO ASSEMBLER  SILABS_STARTUP                                                        09/10/21 08:59:34 PAGE     1
 
 
 MACRO ASSEMBLER AX51 V3.15.3.0
 OBJECT MODULE PLACED IN .\src\SILABS_STARTUP.OBJ
-ASSEMBLER INVOKED BY: c:\SiliconLabs\SimplicityStudio\v5\developer\toolchains\keil_8051\9.60\BIN\AX51.exe C:\Users\lilda
-                      \Documents\Bens file\Silabs\EFM8LB1_ADC_ExternalInput\src\SILABS_STARTUP.A51 ERRORPRINT SET(SMALL,
-                      SILABS_STARTUP=1) DEBUG MACRO NOMOD51 INCDIR(C:/SiliconLabs/SimplicityStudio/v5/developer/sdks/805
-                      1/v4.2.1//kits/common/drivers/efm8_retargetserial;C:/SiliconLabs/SimplicityStudio/v5/developer/sdk
-                      s/8051/v4.2.1//Device/shared/si8051Base;C:/SiliconLabs/SimplicityStudio/v5/developer/sdks/8051/v4.
-                      2.1//Device/EFM8LB1/inc) PRINT(.\src\SILABS_STARTUP.lst) COND SYMBOLS PAGEWIDTH(120) PAGELENGTH(65
-                      ) OBJECT(.\src\SILABS_STARTUP.OBJ) 
+ASSEMBLER INVOKED BY: C:\SiliconLabs\SimplicityStudio\v5\developer\toolchains\keil_8051\9.60\BIN\AX51.exe C:\Users\Ben\D
+                      ocuments\Git\wireless_measurements\software\firmware\EFM8_SWM\src\SILABS_STARTUP.A51 ERRORPRINT SE
+                      T(SMALL,SILABS_STARTUP=1) DEBUG MACRO NOMOD51 INCDIR(C:/SiliconLabs/SimplicityStudio/v5/developer/
+                      sdks/8051/v4.2.1//kits/common/drivers/efm8_retargetserial;C:/SiliconLabs/SimplicityStudio/v5/devel
+                      oper/sdks/8051/v4.2.1//Device/shared/si8051Base;C:/SiliconLabs/SimplicityStudio/v5/developer/sdks/
+                      8051/v4.2.1//Device/EFM8LB1/inc) PRINT(.\src\SILABS_STARTUP.lst) COND SYMBOLS PAGEWIDTH(120) PAGEL
+                      ENGTH(65) OBJECT(.\src\SILABS_STARTUP.OBJ) 
 
 LOC    OBJ             LINE     SOURCE
 
@@ -62,7 +62,7 @@ LOC    OBJ             LINE     SOURCE
                          47     ;
                          48     ;</h>
                          49     ;------------------------------------------------------------------------------
-AX51 MACRO ASSEMBLER  SILABS_STARTUP                                                        09/08/21 17:12:16 PAGE     2
+AX51 MACRO ASSEMBLER  SILABS_STARTUP                                                        09/10/21 08:59:34 PAGE     2
 
                          50     ;
                          51     ;<h> Reentrant Stack Initialization
@@ -127,7 +127,7 @@ LOC    OBJ             LINE     SOURCE
  0082                   110     DPL     DATA    82H
  0083                   111     DPH     DATA    83H
                         112     
-AX51 MACRO ASSEMBLER  SILABS_STARTUP                                                        09/08/21 17:12:16 PAGE     3
+AX51 MACRO ASSEMBLER  SILABS_STARTUP                                                        09/10/21 08:59:34 PAGE     3
 
                         113                     NAME    ?C_STARTUP
                         114     
@@ -192,7 +192,7 @@ LOC    OBJ             LINE     SOURCE
                                 EXTRN DATA (?C_IBP)
                                 
                                                 MOV     ?C_IBP,#LOW IBPSTACKTOP
-AX51 MACRO ASSEMBLER  SILABS_STARTUP                                                        09/08/21 17:12:16 PAGE     4
+AX51 MACRO ASSEMBLER  SILABS_STARTUP                                                        09/10/21 08:59:34 PAGE     4
 
                                 ENDIF
                         177     
@@ -223,7 +223,7 @@ LOC    OBJ             LINE     SOURCE
 00000C 020000     E     201                     LJMP    ?C_START
                         202     
                         203                     END
-AX51 MACRO ASSEMBLER  SILABS_STARTUP                                                        09/08/21 17:12:16 PAGE     5
+AX51 MACRO ASSEMBLER  SILABS_STARTUP                                                        09/10/21 08:59:34 PAGE     5
 
 SYMBOL TABLE LISTING
 ------ ----- -------
