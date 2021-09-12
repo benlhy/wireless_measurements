@@ -121,14 +121,14 @@ U 1 1 60FC6837
 P 9500 3100
 F 0 "J1" H 9580 3092 50  0000 L CNN
 F 1 "Conn_01x08" H 9580 3001 50  0000 L CNN
-F 2 "Connector_PinHeader_2.54mm:PinHeader_1x08_P2.54mm_Horizontal" H 9500 3100 50  0001 C CNN
+F 2 "Connector_PinHeader_2.54mm:PinHeader_2x04_P2.54mm_Vertical" H 9500 3100 50  0001 C CNN
 F 3 "~" H 9500 3100 50  0001 C CNN
 	1    9500 3100
 	1    0    0    -1  
 $EndComp
-Text GLabel 9300 3200 0    50   Input ~ 0
-VHIGH
 Text GLabel 9300 3100 0    50   Input ~ 0
+VHIGH
+Text GLabel 8300 2700 0    50   Input ~ 0
 A2
 $Comp
 L power:GND #PWR0106
@@ -363,30 +363,6 @@ Wire Wire Line
 Connection ~ 8700 5000
 Wire Wire Line
 	8700 5000 8850 5000
-Text GLabel 10250 2800 0    50   Input ~ 0
-BATT
-$Comp
-L Connector_Generic:Conn_01x02 Battery1
-U 1 1 60FE7457
-P 10450 2800
-F 0 "Battery1" H 10530 2792 50  0000 L CNN
-F 1 "Conn_01x02" H 10530 2701 50  0000 L CNN
-F 2 "Connector_PinSocket_2.54mm:PinSocket_1x02_P2.54mm_Vertical" H 10450 2800 50  0001 C CNN
-F 3 "~" H 10450 2800 50  0001 C CNN
-	1    10450 2800
-	1    0    0    -1  
-$EndComp
-$Comp
-L power:GND #PWR0117
-U 1 1 60FE7F19
-P 10250 2900
-F 0 "#PWR0117" H 10250 2650 50  0001 C CNN
-F 1 "GND" H 10255 2727 50  0000 C CNN
-F 2 "" H 10250 2900 50  0001 C CNN
-F 3 "" H 10250 2900 50  0001 C CNN
-	1    10250 2900
-	1    0    0    -1  
-$EndComp
 Wire Wire Line
 	8550 1750 8550 1850
 $Comp
@@ -445,21 +421,6 @@ Wire Wire Line
 Text GLabel 3850 1300 2    50   Input ~ 0
 STATUS
 Connection ~ 4850 4650
-$Comp
-L power:GND #PWR0121
-U 1 1 610243BD
-P 3400 3900
-F 0 "#PWR0121" H 3400 3650 50  0001 C CNN
-F 1 "GND" H 3405 3727 50  0000 C CNN
-F 2 "" H 3400 3900 50  0001 C CNN
-F 3 "" H 3400 3900 50  0001 C CNN
-	1    3400 3900
-	1    0    0    -1  
-$EndComp
-Text GLabel 2900 3900 0    50   Input ~ 0
-C2D
-Text GLabel 2900 3800 0    50   Input ~ 0
-C2CK
 Wire Wire Line
 	8550 4450 8950 4450
 $Comp
@@ -545,7 +506,7 @@ U 1 1 6101884F
 P 6300 4800
 F 0 "R3" V 6400 4750 50  0000 L CNN
 F 1 "1k" V 6200 4750 50  0000 L CNN
-F 2 "Resistor_SMD:R_0603_1608Metric_Pad1.05x0.95mm_HandSolder" V 6230 4800 50  0001 C CNN
+F 2 "Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder" V 6230 4800 50  0001 C CNN
 F 3 "~" H 6300 4800 50  0001 C CNN
 	1    6300 4800
 	0    -1   -1   0   
@@ -567,17 +528,6 @@ Text GLabel 6450 1950 2    50   Input ~ 0
 LED
 Text GLabel 6450 2650 2    50   Input ~ 0
 A0
-$Comp
-L Connector_Generic:Conn_02x03_Odd_Even J2
-U 1 1 6127F01E
-P 3100 3800
-F 0 "J2" H 3150 4117 50  0000 C CNN
-F 1 "Tag-Connect" H 3150 4026 50  0000 C CNN
-F 2 "Connector:Tag-Connect_TC2030-IDC-NL_2x03_P1.27mm_Vertical" H 3100 3800 50  0001 C CNN
-F 3 "~" H 3100 3800 50  0001 C CNN
-	1    3100 3800
-	1    0    0    -1  
-$EndComp
 $Comp
 L Device:R R6
 U 1 1 6128E69D
@@ -606,21 +556,6 @@ Wire Wire Line
 Wire Wire Line
 	5250 1550 4900 1550
 Connection ~ 4900 1550
-Text GLabel 2900 3700 0    50   Input ~ 0
-BATT
-$Comp
-L power:+3.3V #PWR0105
-U 1 1 612F90A4
-P 9100 3400
-F 0 "#PWR0105" H 9100 3250 50  0001 C CNN
-F 1 "+3.3V" V 9150 3600 50  0000 C CNN
-F 2 "" H 9100 3400 50  0001 C CNN
-F 3 "" H 9100 3400 50  0001 C CNN
-	1    9100 3400
-	0    -1   -1   0   
-$EndComp
-Wire Wire Line
-	9100 3400 9300 3400
 Wire Wire Line
 	9100 3500 9300 3500
 $Comp
@@ -698,6 +633,32 @@ $EndComp
 Connection ~ 8400 1550
 Text GLabel 6450 1850 2    50   Input ~ 0
 A4
+Text GLabel 9300 3400 0    50   Input ~ 0
+BATT
+Text GLabel 9300 3200 0    50   Input ~ 0
+C2CK
 Text GLabel 9300 3300 0    50   Input ~ 0
-A4
+C2D
+$Comp
+L Device:C C7
+U 1 1 613D1737
+P 5250 1100
+F 0 "C7" H 5000 1150 50  0000 L CNN
+F 1 "4.7uF" H 4950 1050 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0603_1608Metric_Pad1.08x0.95mm_HandSolder" H 5288 950 50  0001 C CNN
+F 3 "~" H 5250 1100 50  0001 C CNN
+	1    5250 1100
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR0102
+U 1 1 613D2357
+P 5250 950
+F 0 "#PWR0102" H 5250 700 50  0001 C CNN
+F 1 "GND" H 5255 777 50  0000 C CNN
+F 2 "" H 5250 950 50  0001 C CNN
+F 3 "" H 5250 950 50  0001 C CNN
+	1    5250 950 
+	0    -1   -1   0   
+$EndComp
 $EndSCHEMATC
