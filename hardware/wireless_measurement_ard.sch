@@ -128,8 +128,6 @@ F 3 "~" H 9500 3100 50  0001 C CNN
 $EndComp
 Text GLabel 9300 3100 0    50   Input ~ 0
 VHIGH
-Text GLabel 8300 2700 0    50   Input ~ 0
-A2
 $Comp
 L power:GND #PWR0106
 U 1 1 60F9306D
@@ -439,7 +437,7 @@ BATT
 Text GLabel 10300 3450 0    50   Input ~ 0
 VIN
 $Comp
-L wireless_measurement_ard-rescue:EFM8LB1-MCU_SiliconLabs U1
+L wireless_measurement_ard-rescue:EFM8LB1-MCU_SiliconLabs-wireless_measurement_ard-rescue U1
 U 1 1 611E9E7B
 P 5850 2000
 F 0 "U1" H 5850 3015 50  0000 C CNN
@@ -661,4 +659,87 @@ F 3 "" H 5250 950 50  0001 C CNN
 	1    5250 950 
 	0    -1   -1   0   
 $EndComp
+Text GLabel 6450 1450 2    50   Input ~ 0
+HALL_PIN
+$Comp
+L ben_common:DRV5021 U5
+U 1 1 6148F942
+P 7400 1750
+F 0 "U5" H 7400 2025 50  0000 C CNN
+F 1 "DRV5021" H 7400 1950 50  0000 C CNN
+F 2 "Package_TO_SOT_SMD:SOT-23" H 7100 1950 50  0001 C CNN
+F 3 "" H 7100 1950 50  0001 C CNN
+	1    7400 1750
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR0105
+U 1 1 6149026D
+P 7700 2100
+F 0 "#PWR0105" H 7700 1850 50  0001 C CNN
+F 1 "GND" H 7705 1927 50  0000 C CNN
+F 2 "" H 7700 2100 50  0001 C CNN
+F 3 "" H 7700 2100 50  0001 C CNN
+	1    7700 2100
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:+3.3V #PWR0117
+U 1 1 61490741
+P 7100 1750
+F 0 "#PWR0117" H 7100 1600 50  0001 C CNN
+F 1 "+3.3V" H 7115 1923 50  0000 C CNN
+F 2 "" H 7100 1750 50  0001 C CNN
+F 3 "" H 7100 1750 50  0001 C CNN
+	1    7100 1750
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:+3.3V #PWR0120
+U 1 1 61490CF5
+P 7800 1400
+F 0 "#PWR0120" H 7800 1250 50  0001 C CNN
+F 1 "+3.3V" H 7815 1573 50  0000 C CNN
+F 2 "" H 7800 1400 50  0001 C CNN
+F 3 "" H 7800 1400 50  0001 C CNN
+	1    7800 1400
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R R2
+U 1 1 614912CF
+P 7800 1550
+F 0 "R2" H 7870 1596 50  0000 L CNN
+F 1 "10k" H 7870 1505 50  0000 L CNN
+F 2 "Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder" V 7730 1550 50  0001 C CNN
+F 3 "~" H 7800 1550 50  0001 C CNN
+	1    7800 1550
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	7700 1700 7800 1700
+Text GLabel 8000 1700 2    50   Input ~ 0
+HALL_PIN
+Wire Wire Line
+	7800 1700 8000 1700
+Connection ~ 7800 1700
+$Comp
+L Device:C C8
+U 1 1 6149AFDF
+P 7100 1900
+F 0 "C8" H 6850 1950 50  0000 L CNN
+F 1 "0.1uF" H 6800 1850 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0603_1608Metric_Pad1.08x0.95mm_HandSolder" H 7138 1750 50  0001 C CNN
+F 3 "~" H 7100 1900 50  0001 C CNN
+	1    7100 1900
+	1    0    0    -1  
+$EndComp
+Connection ~ 7100 1750
+Wire Wire Line
+	7100 2050 7700 2050
+Wire Wire Line
+	7700 2050 7700 2100
+Wire Wire Line
+	7700 1850 7700 2050
+Connection ~ 7700 2050
 $EndSCHEMATC
