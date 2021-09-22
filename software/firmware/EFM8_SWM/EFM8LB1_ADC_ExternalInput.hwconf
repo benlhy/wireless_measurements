@@ -18,13 +18,11 @@
     <property object="CLOCK_0" propertyId="clock.clockselect.clocksourcedivider" value="SYSCLK / 1"/>
     <property object="CROSSBAR0" propertyId="xbar0.uart0.data" value="Enabled"/>
     <property object="DefaultMode" propertyId="mode.diagramLocation" value="181, 81"/>
-    <property object="EXTINT_0" propertyId="ABPeripheral.included" value="true"/>
     <property object="EXTINT_0" propertyId="extint.int0int1configuration.int1portpinselection" value="P0.2"/>
     <property object="INTERRUPT_0" propertyId="ABPeripheral.included" value="true"/>
     <property object="INTERRUPT_0" propertyId="interrupt.extendedinterruptenable1.enableadc0conversioncompleteinterrupt" value="Enabled"/>
     <property object="INTERRUPT_0" propertyId="interrupt.extendedinterruptenable1.enableportmatchinterrupts" value="Enabled"/>
     <property object="INTERRUPT_0" propertyId="interrupt.interruptenable.enableallinterrupts" value="Enabled"/>
-    <property object="INTERRUPT_0" propertyId="interrupt.interruptenable.enableexternal0interrupt" value="Enabled"/>
     <property object="P0.0" propertyId="ports.settings.inputmode" value="Analog"/>
     <property object="P0.0" propertyId="ports.settings.iomode" value="Analog I/O"/>
     <property object="P0.0" propertyId="ports.settings.skip" value="Skipped"/>
@@ -33,7 +31,6 @@
     <property object="P0.4" propertyId="ports.settings.iomode" value="Digital Push-Pull Output"/>
     <property object="P0.4" propertyId="ports.settings.outputmode" value="Push-pull"/>
     <property object="P0.6" propertyId="ports.settings.maskvalue" value="Compared"/>
-    <property object="P0.6" propertyId="ports.settings.matchvalue" value="Low"/>
     <property object="P0.6" propertyId="ports.settings.skip" value="Skipped"/>
     <property object="P1.0" propertyId="ports.settings.iomode" value="Digital Push-Pull Output"/>
     <property object="P1.0" propertyId="ports.settings.label" value="LED"/>

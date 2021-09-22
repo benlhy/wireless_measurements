@@ -659,7 +659,7 @@ F 3 "" H 5250 950 50  0001 C CNN
 	1    5250 950 
 	0    -1   -1   0   
 $EndComp
-Text GLabel 6450 1450 2    50   Input ~ 0
+Text GLabel 6450 1750 2    50   Input ~ 0
 HALL_PIN
 $Comp
 L ben_common:DRV5021 U5

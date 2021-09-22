@@ -3,7 +3,7 @@ from bleak import BleakScanner,BleakClient
 from bleak.exc import BleakError
 
 CHARACTERISTIC_UUID = "0000ffe1-0000-1000-8000-00805f9b34fb"
-DEVICE_MAC = "A8:A9:8B:B2:B0:78"
+DEVICE_MAC = "D8:A9:8B:B4:8E:EC"
 
 
 async def run():
@@ -18,6 +18,7 @@ async def run():
             for task in asyncio.all_tasks():
                 task.cancel()
     
+    print("Scanning and looking for device")
     device = await BleakScanner.find_device_by_address(DEVICE_MAC,timeout=10)
     if not device:
         raise BleakError("Device not found!")
@@ -28,6 +29,7 @@ async def run():
         while 1:
             await asyncio.sleep(1) # never exit
 
+print("Starting script..")
 loop = asyncio.get_event_loop()
 loop.create_task(run())
 try:

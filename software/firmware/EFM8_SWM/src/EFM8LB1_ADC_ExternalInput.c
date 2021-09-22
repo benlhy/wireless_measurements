@@ -110,7 +110,6 @@
 #include "InitDevice.h"
 #include "retargetserial.h"
 #include "vars.h"
-#include "uart_0.h"
 
 //-----------------------------------------------------------------------------
 // Pin Definitions
@@ -128,12 +127,12 @@ SI_SBIT (BC_EN, SFR_P2, 2);            // Board Controller Enable
 
 SI_SBIT(PWRC, SFR_P1, 2);                  // P1.2 PWRC
 SI_SBIT(LED, SFR_P1, 0);                  // P1.0 LED
+SI_SBIT(HALL, SFR_P0,6);
 
 
-
-float R1;
-float R2;
+//SI_SEGMENT_VARIABLE(scale, float, SI_SEG_XDATA);
 float scale;
+
 const uint32_t xdata UUID _at_ 0xFFC3;
 uint32_t id;
 
@@ -150,8 +149,6 @@ void _delay_ms(uint32_t ms);
 void SiLabs_Startup (void)
 {
   // Disable the watchdog here
-  R1 = 5.6;
-  R2 = 5.6;
   id = UUID;
   id = id & 0xFF;
 
@@ -181,10 +178,10 @@ void _delay_ms(uint32_t ms){
  */
 
 void init_device(void) {
-  uint8_t SFRPAGE_save;
+
   uint32_t someval;
   uint8_t your_id;
-  unsigned char inputcharacter;
+
 
   LED = 1;
   PWRC = 0; // set AT mode
@@ -233,14 +230,24 @@ void set_device_AT() {
 
 }
 
+
+void sleep_device() {
+  PWRC = 0; // set AT mode
+  RETARGET_PRINTF("AT+SLEEP2"); // send the BLE module into deep sleep
+  _delay_ms(30); // wait for command to be received and for the device to respond
+  PWRC = 1; // unset AT mode
+  PCON1 |= 0x80; // set to SNOOZE
+
+}
+
 //-----------------------------------------------------------------------------
 // Main Routine
 //-----------------------------------------------------------------------------
 void main (void)
 {
-  uint8_t SFRPAGE_save;
+
   uint8_t LED_state;
-  unsigned char input_char;
+
   LED_state = 0;
 
    enter_DefaultMode_from_RESET();
@@ -253,15 +260,18 @@ void main (void)
    SCON0_TI = 1;                       // This STDIO library requires TI to
                                        // be set for prints to occur
 
-
-
-
    IE_EA = 1;                          // Enable global interrupts
    init_device(); // init device before we start ADC sampling
    //set_device_chars();
 
    while (1) {
-       input_char = getchar();
+       //if (HALL==1) {
+       //    EIE1 |= 0x02; // Enable Portmatch interrupt if HALL is high (released)
+                         // And do a bitwise OR operation to set a bit
+       //}
+       //_delay_ms(2000);
+       //PCON0 |= 0x01; // set to IDLE
+       //PCON1 |= 0x80; // set to SNOOZE
 
 
        if (send_msg==4) {
@@ -274,9 +284,6 @@ void main (void)
                LED = 0;
                LED_state = 0;
            }
-
-
-
 
            //SFRPAGE_save = SFRPAGE;
            //SFRPAGE = LEGACY_PAGE;

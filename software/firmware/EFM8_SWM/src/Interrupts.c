@@ -21,28 +21,12 @@ volatile int multiplier;
 SI_SBIT(PWRC, SFR_P1, 2);                  // P1.2 PWRC
 SI_SBIT(LED, SFR_P1, 0);// P1.0 LED
 
-SI_SBIT(IDLE,PCON0,0);// set IDLE mode
-SI_SBIT(SNOOZE,PCON1,7);// set SNOOZE mode
+//SI_SBIT(IDLE,PCON0,0);// set IDLE mode
+//SI_SBIT(SNOOZE,PCON1,7);// set SNOOZE mode
 
 SI_SBIT (HALL, SFR_P0, 6); // port match pin
 
-SI_INTERRUPT(INT0_ISR,INT0_IRQn)
-  {
 
-    // This will trigger on falling.
-    RETARGET_PRINTF ("\nINT0 is active low now");
-    //IDLE = 1;// set idle mode - will be woken up by any interrupt
-
-    // no clear needed as it will clear when it is no longer triggering
-
-  }
-
-// Port Match ISR
-
-SI_INTERRUPT(PMATCH_ISR,PMATCH_IRQn){
-  RETARGET_PRINTF ("\nPort Match Interrupt fired");
-
-}
 
 //-----------------------------------------------------------------------------
 // ADC0EOC_ISR
@@ -62,7 +46,9 @@ SI_INTERRUPT(ADC0EOC_ISR, ADC0EOC_IRQn)
     uint32_t result = 0;
     uint32_t mV;// Measured voltage in mV
     uint32_t uA;
-    uint8_t SFRPAGE_save;
+    int R1;
+    int R2;
+    //uint8_t SFRPAGE_save;
 
     //LED=1; // turn on the LED
 
@@ -103,11 +89,11 @@ SI_INTERRUPT(ADC0EOC_ISR, ADC0EOC_IRQn)
         //                       (2^14)-1 (bits)
 
         mV = (result * 3300) / 16383;
-        R1 = 3.0;
-        R2 = 5.6;
+        R1 = 30;
+        R2 = 56;
         // U4 is
 #ifdef MINI
-	  R1 = 1.0;
+	  R1 = 10;
 #endif
 
 #ifdef W_VER
@@ -121,11 +107,11 @@ SI_INTERRUPT(ADC0EOC_ISR, ADC0EOC_IRQn)
         switch(send_msg)
           {
             case 0:
-            uA = (uint32_t)((result * 2400) / (16383*scale) * 1000 / (multiplier*R1));
+            uA = (uint32_t)((result * 2400) / (16383*scale) * 1000 / (multiplier*R1/10));
             adc1 = uA;
             break;
             case 1:
-            uA = (result * 3277) / 16383 * 1000 / (200*R1);
+            uA = (result * 3277) / 16383 * 1000 / (200*R1/10);
             adc2 = uA;
 #ifdef MINI
 	         adc2= mV;
@@ -147,10 +133,10 @@ SI_INTERRUPT(ADC0EOC_ISR, ADC0EOC_IRQn)
           }
         send_msg++; // increment count
 
-        SFRPAGE_save = SFRPAGE;
-        SFRPAGE = LEGACY_PAGE;
+        //SFRPAGE_save = SFRPAGE;
+        //SFRPAGE = LEGACY_PAGE;
         //RETARGET_PRINTF ("\nP1.7 voltage: %ld mV\n", mV);
-        SFRPAGE = SFRPAGE_save;
+        //SFRPAGE = SFRPAGE_save;
         //LED = 0; // turn off the LED
       }
 
@@ -167,6 +153,9 @@ SI_INTERRUPT(ADC0EOC_ISR, ADC0EOC_IRQn)
 //-----------------------------------------------------------------------------
 SI_INTERRUPT (PMATCH_ISR, PMATCH_IRQn)
   {
-
+  RETARGET_PRINTF ("\nPort Match Interrupt fired");
+  PWRC = 0; // wake BLE module
+  SFRPAGE = LEGACY_PAGE;
+  EIE1 &= ~0x02; // disable Interrupt
   }
 

@@ -22,8 +22,7 @@ extern volatile int adc2;
 extern volatile int adc3;
 extern volatile int adc4;
 extern volatile int multiplier;
-extern float R1;
-extern float R2;
+
 extern float scale;
 
 #endif /* INC_VARS_H_ */
