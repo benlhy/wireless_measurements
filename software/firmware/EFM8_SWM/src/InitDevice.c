@@ -128,15 +128,15 @@ PORTS_0_enter_DefaultMode_from_RESET (void)
   // $[P0SKIP - Port 0 Skip]
   /***********************************************************************
    - P0.0 pin is skipped by the crossbar
-   - P0.1 pin is skipped by the crossbar
-   - P0.2 pin is skipped by the crossbar
+   - P0.1 pin is not skipped by the crossbar
+   - P0.2 pin is not skipped by the crossbar
    - P0.3 pin is not skipped by the crossbar
    - P0.4 pin is not skipped by the crossbar
    - P0.5 pin is not skipped by the crossbar
    - P0.6 pin is skipped by the crossbar
    - P0.7 pin is not skipped by the crossbar
    ***********************************************************************/
-  P0SKIP = P0SKIP_B0__SKIPPED | P0SKIP_B1__SKIPPED | P0SKIP_B2__SKIPPED
+  P0SKIP = P0SKIP_B0__SKIPPED | P0SKIP_B1__NOT_SKIPPED | P0SKIP_B2__NOT_SKIPPED
       | P0SKIP_B3__NOT_SKIPPED | P0SKIP_B4__NOT_SKIPPED | P0SKIP_B5__NOT_SKIPPED
       | P0SKIP_B6__SKIPPED | P0SKIP_B7__NOT_SKIPPED;
   // [P0SKIP - Port 0 Skip]$

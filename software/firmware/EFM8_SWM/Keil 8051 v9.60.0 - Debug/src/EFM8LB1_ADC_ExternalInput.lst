@@ -1,10 +1,10 @@
-C51 COMPILER V9.60.0.0   EFM8LB1_ADC_EXTERNALINPUT                                         09/22/2021 15:50:13 PAGE 1   
+C51 COMPILER V9.60.0.0   EFM8LB1_ADC_EXTERNALINPUT                                         09/23/2021 14:55:53 PAGE 1   
 
 
 C51 COMPILER V9.60.0.0, COMPILATION OF MODULE EFM8LB1_ADC_EXTERNALINPUT
 OBJECT MODULE PLACED IN .\src\EFM8LB1_ADC_ExternalInput.OBJ
 COMPILER INVOKED BY: C:\SiliconLabs\SimplicityStudio\v5\developer\toolchains\keil_8051\9.60\BIN\C51.exe C:\Users\Ben\Doc
-                    -uments\Git\wireless_measurements\software\firmware\EFM8_SWM\src\EFM8LB1_ADC_ExternalInput.c OMF2 LARGE DEBUG OBJECTEXTEN
+                    -uments\Git\wireless_measurements\software\firmware\EFM8_SWM\src\EFM8LB1_ADC_ExternalInput.c OMF2 SMALL DEBUG OBJECTEXTEN
                     -D ROM(LARGE) WARNINGLEVEL(2) FLOATFUZZY(3) OPTIMIZE(0,SPEED) DEFINE(DEBUG=1) INTVECTOR(0X0000) INTPROMOTE INCDIR(C:\User
                     -s\Ben\Documents\Git\wireless_measurements\software\firmware\EFM8_SWM\inc;C:/SiliconLabs/SimplicityStudio/v5/developer/sd
                     -ks/8051/v4.2.1//kits/common/drivers/efm8_retargetserial;C:/SiliconLabs/SimplicityStudio/v5/developer/sdks/8051/v4.2.1//D
@@ -63,7 +63,7 @@ line level    source
   48          //                   | SA  |
   49          //
   50          // For example, assume Rtotal = 100 kohm. The expression evaluates to:
-C51 COMPILER V9.60.0.0   EFM8LB1_ADC_EXTERNALINPUT                                         09/22/2021 15:50:13 PAGE 2   
+C51 COMPILER V9.60.0.0   EFM8LB1_ADC_EXTERNALINPUT                                         09/23/2021 14:55:53 PAGE 2   
 
   51          //
   52          //                   | 2^14 |
@@ -128,7 +128,7 @@ line level    source
  111          #include "retargetserial.h"
  112          #include "vars.h"
  113          
-C51 COMPILER V9.60.0.0   EFM8LB1_ADC_EXTERNALINPUT                                         09/22/2021 15:50:13 PAGE 3   
+C51 COMPILER V9.60.0.0   EFM8LB1_ADC_EXTERNALINPUT                                         09/23/2021 14:55:53 PAGE 3   
 
  114          //-----------------------------------------------------------------------------
  115          // Pin Definitions
@@ -150,10 +150,10 @@ line level    source
  131          
  132          
  133          //SI_SEGMENT_VARIABLE(scale, float, SI_SEG_XDATA);
- 134          float scale;
+ 134          uint8_t scale;
  135          
  136          const uint32_t xdata UUID _at_ 0xFFC3;
- 137          uint32_t id;
+ 137          //uint8_t id;
  138          
  139          void _delay_ms(uint32_t ms);
  140          
@@ -168,166 +168,184 @@ line level    source
  149          void SiLabs_Startup (void)
  150          {
  151   1        // Disable the watchdog here
- 152   1        id = UUID;
- 153   1        id = id & 0xFF;
- 154   1      
- 155   1      }
- 156          #define F_CPU 24500000
- 157          #define CPU_DIV 1
- 158          #define SYSCLK_MS  ((F_CPU / CPU_DIV) / 1000.0) / 60.0 // Convert to oscillations per ms
- 159          #define SYSCLK_US  ((F_CPU / CPU_DIV) / 1000000.0) // Convert to oscillations per us
- 160          #define SUBTRACT_MS 7500.0 / 60.0 / CPU_DIV
- 161          
- 162          void _delay_ms(uint32_t ms){
- 163   1       // Subtract n clock cycles for every ms to account for the time that the loop takes
- 164   1       uint32_t clockCycles = SYSCLK_MS * ms;
- 165   1       uint32_t substract = (SUBTRACT_MS * ms) + 34;
- 166   1      
- 167   1       if(clockCycles > substract) clockCycles -= substract;
+ 152   1        //id = UUID;
+ 153   1        //id=id&0xFF;
+ 154   1        //id = UUID & 0xFF;
+ 155   1      
+ 156   1      
+ 157   1      }
+ 158          #define F_CPU 24500000
+ 159          #define CPU_DIV 1
+ 160          #define SYSCLK_MS  ((F_CPU / CPU_DIV) / 1000.0) / 60.0 // Convert to oscillations per ms
+ 161          #define SYSCLK_US  ((F_CPU / CPU_DIV) / 1000000.0) // Convert to oscillations per us
+ 162          #define SUBTRACT_MS 7500.0 / 60.0 / CPU_DIV
+ 163          
+ 164          void _delay_ms(uint32_t ms){
+ 165   1       // Subtract n clock cycles for every ms to account for the time that the loop takes
+ 166   1       uint32_t clockCycles = SYSCLK_MS * ms;
+ 167   1       uint32_t substract = (SUBTRACT_MS * ms) + 34;
  168   1      
- 169   1       while(clockCycles-- > 0){
- 170   2        _nop_();
- 171   2       }
- 172   1      }
- 173          
- 174          
- 175          /*
- 176           * This function sets up the Bluetooth module
-C51 COMPILER V9.60.0.0   EFM8LB1_ADC_EXTERNALINPUT                                         09/22/2021 15:50:13 PAGE 4   
+ 169   1       if(clockCycles > substract) clockCycles -= substract;
+ 170   1      
+ 171   1       while(clockCycles-- > 0){
+ 172   2        _nop_();
+ 173   2       }
+ 174   1      }
+ 175          
+ 176          
+C51 COMPILER V9.60.0.0   EFM8LB1_ADC_EXTERNALINPUT                                         09/23/2021 14:55:53 PAGE 4   
 
- 177           * App Mode
- 178           */
- 179          
- 180          void init_device(void) {
- 181   1      
- 182   1        uint32_t someval;
- 183   1        uint8_t your_id;
- 184   1      
- 185   1      
- 186   1        LED = 1;
- 187   1        PWRC = 0; // set AT mode
- 188   1        someval = UUID; // get th UUID
- 189   1      
- 190   1        your_id = (uint8_t)(someval & 0xFF); // take only 128 bits of the ID
- 191   1      
- 192   1        _delay_ms(50); // wait for module to respond
- 193   1      
- 194   1        RETARGET_PRINTF("AT+NAMESWM-%d",(int)your_id); // set the name of the device
- 195   1      
- 196   1        _delay_ms(30); // wait for module to respond
- 197   1        LED = 0; // ok
- 198   1        PWRC = 1; // unset AT mode
- 199   1      
- 200   1        // determine the scale and set accordingly
- 201   1      
- 202   1        switch(ADC0CN0 & ADC0CN0_ADGN__FMASK) {
- 203   2          case ADC0CN0_ADGN__GAIN_0P75:
- 204   2            scale = 0.75;
- 205   2            break;
- 206   2          case ADC0CN0_ADGN__GAIN_0P5:
- 207   2            scale = 0.5;
- 208   2            break;
- 209   2          case ADC0CN0_ADGN__GAIN_0P25:
- 210   2            scale = 0.25;
- 211   2            break;
- 212   2          default:
- 213   2            scale = 1;
- 214   2      
+ 177          /*
+ 178           * This function sets up the Bluetooth module
+ 179           * App Mode
+ 180           */
+ 181          
+ 182          void init_device(void) {
+ 183   1      
+ 184   1        uint32_t someval;
+ 185   1        uint8_t your_id;
+ 186   1      
+ 187   1        LED = 1;
+ 188   1        PWRC = 0; // set AT mode
+ 189   1        someval = UUID; // get th UUID
+ 190   1      
+ 191   1        your_id = (uint8_t)(someval & 0xFF); // take only 128 bits of the ID
+ 192   1      
+ 193   1        _delay_ms(50); // wait for module to respond
+ 194   1      
+ 195   1        RETARGET_PRINTF("AT+NAMESWM-%d",(int)your_id); // set the name of the device
+ 196   1      
+ 197   1        _delay_ms(30); // wait for module to respond
+ 198   1        LED = 0; // ok
+ 199   1        PWRC = 1; // unset AT mode
+ 200   1      
+ 201   1        // determine the scale and set accordingly
+ 202   1      
+ 203   1        switch(ADC0CN0 & ADC0CN0_ADGN__FMASK) {
+ 204   2          case ADC0CN0_ADGN__GAIN_0P75:
+ 205   2            scale = 75;
+ 206   2            break;
+ 207   2          case ADC0CN0_ADGN__GAIN_0P5:
+ 208   2            scale = 50;
+ 209   2            break;
+ 210   2          case ADC0CN0_ADGN__GAIN_0P25:
+ 211   2            scale = 25;
+ 212   2            break;
+ 213   2          default:
+ 214   2            scale = 100;
  215   2      
- 216   2        }
- 217   1      }
- 218          
- 219          void set_device_AT() {
- 220   1      
- 221   1        // RETARGET_PRINTF("AT+HOSTEN");
- 222   1      
- 223   1        //inputcharacter = getchar();
- 224   1        PWRC = 0; // set AT mode
- 225   1      
- 226   1        RETARGET_PRINTF("AT+NAMESWM-%d",500);
- 227   1      
- 228   1        PWRC = 1; // unset AT mode
- 229   1      
- 230   1      
- 231   1      }
- 232          
- 233          
- 234          void sleep_device() {
- 235   1        PWRC = 0; // set AT mode
- 236   1        RETARGET_PRINTF("AT+SLEEP2"); // send the BLE module into deep sleep
- 237   1        _delay_ms(30); // wait for command to be received and for the device to respond
- 238   1        PWRC = 1; // unset AT mode
- 239   1        PCON1 |= 0x80; // set to SNOOZE
-C51 COMPILER V9.60.0.0   EFM8LB1_ADC_EXTERNALINPUT                                         09/22/2021 15:50:13 PAGE 5   
+ 216   2      
+ 217   2        }
+ 218   1      }
+ 219          /*
+ 220          void set_device_AT() {
+ 221          
+ 222            // RETARGET_PRINTF("AT+HOSTEN");
+ 223          
+ 224            //inputcharacter = getchar();
+ 225            PWRC = 0; // set AT mode
+ 226          
+ 227            RETARGET_PRINTF("AT+NAMESWM-%d",500);
+ 228          
+ 229            PWRC = 1; // unset AT mode
+ 230          
+ 231          
+ 232          }
+ 233          */
+ 234          /*
+ 235          
+ 236          void sleep_device() {
+ 237            LED = 1;
+ 238            PWRC = 0; // set AT mode
+ 239            RETARGET_PRINTF("AT+SLEEP2"); // send the BLE module into deep sleep
+C51 COMPILER V9.60.0.0   EFM8LB1_ADC_EXTERNALINPUT                                         09/23/2021 14:55:53 PAGE 5   
 
- 240   1      
- 241   1      }
- 242          
- 243          //-----------------------------------------------------------------------------
- 244          // Main Routine
- 245          //-----------------------------------------------------------------------------
- 246          void main (void)
- 247          {
- 248   1      
- 249   1        uint8_t LED_state;
- 250   1      
- 251   1        LED_state = 0;
- 252   1      
- 253   1         enter_DefaultMode_from_RESET();
- 254   1      
- 255   1         DISP_EN = DISP_BC_DRIVEN;           // Display not driven by EFM8
- 256   1      
- 257   1         BC_EN = BC_CONNECTED;               // Board controller connected to EFM8
- 258   1                                             // UART pins
+ 240            _delay_ms(30); // wait for command to be received and for the device to respond
+ 241            PWRC = 1; // unset AT mode
+ 242            LED = 0;
+ 243            PCON1 |= 0x80; // set to SNOOZE
+ 244          
+ 245          }
+ 246          */
+ 247          
+ 248          //-----------------------------------------------------------------------------
+ 249          // Main Routine
+ 250          //-----------------------------------------------------------------------------
+ 251          void main (void)
+ 252          {
+ 253   1      
+ 254   1        uint8_t LED_state;
+ 255   1      
+ 256   1        LED_state = 0;
+ 257   1      
+ 258   1         enter_DefaultMode_from_RESET();
  259   1      
- 260   1         SCON0_TI = 1;                       // This STDIO library requires TI to
- 261   1                                             // be set for prints to occur
- 262   1      
- 263   1         IE_EA = 1;                          // Enable global interrupts
- 264   1         init_device(); // init device before we start ADC sampling
- 265   1         //set_device_chars();
- 266   1      
- 267   1         while (1) {
- 268   2             //if (HALL==1) {
- 269   2             //    EIE1 |= 0x02; // Enable Portmatch interrupt if HALL is high (released)
- 270   2                               // And do a bitwise OR operation to set a bit
- 271   2             //}
- 272   2             //_delay_ms(2000);
- 273   2             //PCON0 |= 0x01; // set to IDLE
- 274   2             //PCON1 |= 0x80; // set to SNOOZE
- 275   2      
- 276   2      
- 277   2             if (send_msg==4) {
- 278   3      
- 279   3                 send_msg = 0;
- 280   3                 if (LED_state==0){
- 281   4                     LED = 1;
- 282   4                     LED_state = 1;
- 283   4                 } else {
- 284   4                     LED = 0;
- 285   4                     LED_state = 0;
- 286   4                 }
- 287   3      
- 288   3                 //SFRPAGE_save = SFRPAGE;
- 289   3                 //SFRPAGE = LEGACY_PAGE;
- 290   3                 RETARGET_PRINTF ("%d,%d,%d,%d",adc1,adc2,adc3,adc4);
- 291   3      
- 292   3                 //printf("%d,%d,%d,%d",adc1,adc2,adc3,adc4);
- 293   3                 //SFRPAGE = SFRPAGE_save;
- 294   3      
- 295   3             }
- 296   2         }
- 297   1      }
+ 260   1         DISP_EN = DISP_BC_DRIVEN;           // Display not driven by EFM8
+ 261   1      
+ 262   1         BC_EN = BC_CONNECTED;               // Board controller connected to EFM8
+ 263   1                                             // UART pins
+ 264   1      
+ 265   1         SCON0_TI = 1;                       // This STDIO library requires TI to
+ 266   1                                             // be set for prints to occur
+ 267   1      
+ 268   1         IE_EA = 1;                          // Enable global interrupts
+ 269   1         init_device(); // init device before we start ADC sampling
+ 270   1         //set_device_chars();
+ 271   1      
+ 272   1         while (1) {
+ 273   2             //if (HALL==1) {
+ 274   2             //    EIE1 |= 0x02; // Enable Portmatch interrupt if HALL is high (released)
+ 275   2                               // And do a bitwise OR operation to set a bit
+ 276   2             //}
+ 277   2             //_delay_ms(2000);
+ 278   2             //PCON0 |= 0x01; // set to IDLE
+ 279   2             //PCON1 |= 0x80; // set to SNOOZE
+ 280   2      
+ 281   2             /*
+ 282   2             if (LED_state==0){
+ 283   2                            LED = 1;
+ 284   2                            LED_state = 1;
+ 285   2                        } else {
+ 286   2                            LED = 0;
+ 287   2                            LED_state = 0;
+ 288   2                        }
+ 289   2             _delay_ms(500);
+ 290   2      */
+ 291   2      
+ 292   2             if (send_msg==4) {
+ 293   3                 LED = ~LED; // flip the bit
+ 294   3                 /*
+ 295   3                 if (LED==0){
+ 296   3                     LED = 1;
+ 297   3                     //LED_state = 1;
+ 298   3                 } else {
+ 299   3                     LED = 0;
+ 300   3                     //LED_state = 0;
+ 301   3                 }*/
+ 302   3      
+C51 COMPILER V9.60.0.0   EFM8LB1_ADC_EXTERNALINPUT                                         09/23/2021 14:55:53 PAGE 6   
+
+ 303   3                 send_msg = 0;
+ 304   3      
+ 305   3                 //SFRPAGE_save = SFRPAGE;
+ 306   3                 //SFRPAGE = LEGACY_PAGE;
+ 307   3                 RETARGET_PRINTF ("%d,%d,%d,%d",adc1,adc2,adc3,adc4);
+ 308   3      
+ 309   3                 //printf("%d,%d,%d,%d",adc1,adc2,adc3,adc4);
+ 310   3                 //SFRPAGE = SFRPAGE_save;
+ 311   3      
+ 312   3             }
+ 313   2      
+ 314   2         }
+ 315   1      }
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =    629    ----
-   CONSTANT SIZE    =     36    ----
-C51 COMPILER V9.60.0.0   EFM8LB1_ADC_EXTERNALINPUT                                         09/22/2021 15:50:13 PAGE 6   
-
-   XDATA SIZE       =     26    ----
+   CODE SIZE        =    358    ----
+   CONSTANT SIZE    =     26    ----
+   XDATA SIZE       =   ----    ----
    PDATA SIZE       =   ----    ----
-   DATA SIZE        =   ----    ----
+   DATA SIZE        =     19    ----
    IDATA SIZE       =   ----    ----
    BIT SIZE         =   ----    ----
    EDATA SIZE       =   ----    ----

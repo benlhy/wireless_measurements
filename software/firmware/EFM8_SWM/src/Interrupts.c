@@ -16,7 +16,7 @@ volatile int adc1;
 volatile int adc2;
 volatile int adc3;
 volatile int adc4;
-volatile int multiplier;
+int multiplier;
 
 SI_SBIT(PWRC, SFR_P1, 2);                  // P1.2 PWRC
 SI_SBIT(LED, SFR_P1, 0);// P1.0 LED
@@ -24,9 +24,7 @@ SI_SBIT(LED, SFR_P1, 0);// P1.0 LED
 //SI_SBIT(IDLE,PCON0,0);// set IDLE mode
 //SI_SBIT(SNOOZE,PCON1,7);// set SNOOZE mode
 
-SI_SBIT (HALL, SFR_P0, 6); // port match pin
-
-
+SI_SBIT (HALL, SFR_P0, 6);// port match pin
 
 //-----------------------------------------------------------------------------
 // ADC0EOC_ISR
@@ -60,13 +58,13 @@ SI_INTERRUPT(ADC0EOC_ISR, ADC0EOC_IRQn)
         ADC0MX = ADC0MX_ADC0MX__ADC0P13; // select ADC13- P1.7
         break;
         case 1:
-        ADC0MX = ADC0MX_ADC0MX__ADC0P12;
+        ADC0MX = ADC0MX_ADC0MX__ADC0P12; // select ADC12- P1.6
         break;
         case 2:
-        ADC0MX = ADC0MX_ADC0MX__ADC0P11;
+        ADC0MX = ADC0MX_ADC0MX__ADC0P11; // select ADC11- P1.5
         break;
         case 3:
-        ADC0MX = ADC0MX_ADC0MX__ADC0P10;
+        ADC0MX = ADC0MX_ADC0MX__ADC0P10; // select ADC10- P1.4
         break;
         default:
         break;
@@ -107,7 +105,7 @@ SI_INTERRUPT(ADC0EOC_ISR, ADC0EOC_IRQn)
         switch(send_msg)
           {
             case 0:
-            uA = (uint32_t)((result * 2400) / (16383*scale) * 1000 / (multiplier*R1/10));
+            uA = (uint32_t)((result * 2400) / (16383*scale/100) * 1000 / (multiplier*R1/10));
             adc1 = uA;
             break;
             case 1:
@@ -151,11 +149,16 @@ SI_INTERRUPT(ADC0EOC_ISR, ADC0EOC_IRQn)
 
 //
 //-----------------------------------------------------------------------------
-SI_INTERRUPT (PMATCH_ISR, PMATCH_IRQn)
-  {
-  RETARGET_PRINTF ("\nPort Match Interrupt fired");
-  PWRC = 0; // wake BLE module
-  SFRPAGE = LEGACY_PAGE;
-  EIE1 &= ~0x02; // disable Interrupt
-  }
+
+ SI_INTERRUPT (PMATCH_ISR, PMATCH_IRQn)
+ {
+ //RETARGET_PRINTF ("\nPort Match Interrupt fired");
+ // TODO: check if it is the pin we care about
+   if (false){
+   PWRC = 0; // wake BLE module
+   SFRPAGE = LEGACY_PAGE;
+   //EIE1 &= ~0x02; // disable Port Match interrupt
+   }
+ EIE1 &= ~0x02; // disable Port Match interrupt
+ }
 

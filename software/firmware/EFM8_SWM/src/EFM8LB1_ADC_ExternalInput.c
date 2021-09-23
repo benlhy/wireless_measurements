@@ -131,10 +131,10 @@ SI_SBIT(HALL, SFR_P0,6);
 
 
 //SI_SEGMENT_VARIABLE(scale, float, SI_SEG_XDATA);
-float scale;
+uint8_t scale;
 
 const uint32_t xdata UUID _at_ 0xFFC3;
-uint32_t id;
+//uint8_t id;
 
 void _delay_ms(uint32_t ms);
 
@@ -149,8 +149,10 @@ void _delay_ms(uint32_t ms);
 void SiLabs_Startup (void)
 {
   // Disable the watchdog here
-  id = UUID;
-  id = id & 0xFF;
+  //id = UUID;
+  //id=id&0xFF;
+  //id = UUID & 0xFF;
+
 
 }
 #define F_CPU 24500000
@@ -182,7 +184,6 @@ void init_device(void) {
   uint32_t someval;
   uint8_t your_id;
 
-
   LED = 1;
   PWRC = 0; // set AT mode
   someval = UUID; // get th UUID
@@ -201,21 +202,21 @@ void init_device(void) {
 
   switch(ADC0CN0 & ADC0CN0_ADGN__FMASK) {
     case ADC0CN0_ADGN__GAIN_0P75:
-      scale = 0.75;
+      scale = 75;
       break;
     case ADC0CN0_ADGN__GAIN_0P5:
-      scale = 0.5;
+      scale = 50;
       break;
     case ADC0CN0_ADGN__GAIN_0P25:
-      scale = 0.25;
+      scale = 25;
       break;
     default:
-      scale = 1;
+      scale = 100;
 
 
   }
 }
-
+/*
 void set_device_AT() {
 
   // RETARGET_PRINTF("AT+HOSTEN");
@@ -229,16 +230,20 @@ void set_device_AT() {
 
 
 }
-
+*/
+/*
 
 void sleep_device() {
+  LED = 1;
   PWRC = 0; // set AT mode
   RETARGET_PRINTF("AT+SLEEP2"); // send the BLE module into deep sleep
   _delay_ms(30); // wait for command to be received and for the device to respond
   PWRC = 1; // unset AT mode
+  LED = 0;
   PCON1 |= 0x80; // set to SNOOZE
 
 }
+*/
 
 //-----------------------------------------------------------------------------
 // Main Routine
@@ -273,17 +278,29 @@ void main (void)
        //PCON0 |= 0x01; // set to IDLE
        //PCON1 |= 0x80; // set to SNOOZE
 
+       /*
+       if (LED_state==0){
+                      LED = 1;
+                      LED_state = 1;
+                  } else {
+                      LED = 0;
+                      LED_state = 0;
+                  }
+       _delay_ms(500);
+*/
 
        if (send_msg==4) {
-
-           send_msg = 0;
-           if (LED_state==0){
+           LED = ~LED; // flip the bit
+           /*
+           if (LED==0){
                LED = 1;
-               LED_state = 1;
+               //LED_state = 1;
            } else {
                LED = 0;
-               LED_state = 0;
-           }
+               //LED_state = 0;
+           }*/
+
+           send_msg = 0;
 
            //SFRPAGE_save = SFRPAGE;
            //SFRPAGE = LEGACY_PAGE;
@@ -293,5 +310,6 @@ void main (void)
            //SFRPAGE = SFRPAGE_save;
 
        }
+
    }
 }

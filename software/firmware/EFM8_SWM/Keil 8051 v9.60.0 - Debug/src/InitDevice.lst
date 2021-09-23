@@ -1,10 +1,10 @@
-C51 COMPILER V9.60.0.0   INITDEVICE                                                        09/22/2021 15:50:13 PAGE 1   
+C51 COMPILER V9.60.0.0   INITDEVICE                                                        09/23/2021 14:28:22 PAGE 1   
 
 
 C51 COMPILER V9.60.0.0, COMPILATION OF MODULE INITDEVICE
 OBJECT MODULE PLACED IN .\src\InitDevice.OBJ
 COMPILER INVOKED BY: C:\SiliconLabs\SimplicityStudio\v5\developer\toolchains\keil_8051\9.60\BIN\C51.exe C:\Users\Ben\Doc
-                    -uments\Git\wireless_measurements\software\firmware\EFM8_SWM\src\InitDevice.c OMF2 LARGE DEBUG OBJECTEXTEND ROM(LARGE) WA
+                    -uments\Git\wireless_measurements\software\firmware\EFM8_SWM\src\InitDevice.c OMF2 SMALL DEBUG OBJECTEXTEND ROM(LARGE) WA
                     -RNINGLEVEL(2) FLOATFUZZY(3) OPTIMIZE(0,SPEED) DEFINE(DEBUG=1) INTVECTOR(0X0000) INTPROMOTE INCDIR(C:\Users\Ben\Documents
                     -\Git\wireless_measurements\software\firmware\EFM8_SWM\inc;C:/SiliconLabs/SimplicityStudio/v5/developer/sdks/8051/v4.2.1/
                     -/kits/common/drivers/efm8_retargetserial;C:/SiliconLabs/SimplicityStudio/v5/developer/sdks/8051/v4.2.1//Device/shared/si
@@ -63,7 +63,7 @@ line level    source
   48          //================================================================================
   49          // WDT_0_enter_DefaultMode_from_RESET
   50          //================================================================================
-C51 COMPILER V9.60.0.0   INITDEVICE                                                        09/22/2021 15:50:13 PAGE 2   
+C51 COMPILER V9.60.0.0   INITDEVICE                                                        09/23/2021 14:28:22 PAGE 2   
 
   51          extern void
   52          WDT_0_enter_DefaultMode_from_RESET (void)
@@ -128,7 +128,7 @@ line level    source
  111   1      
  112   1        // $[P0MDIN - Port 0 Input Mode]
  113   1        /***********************************************************************
-C51 COMPILER V9.60.0.0   INITDEVICE                                                        09/22/2021 15:50:13 PAGE 3   
+C51 COMPILER V9.60.0.0   INITDEVICE                                                        09/23/2021 14:28:22 PAGE 3   
 
  114   1         - P0.0 pin is configured for analog mode
  115   1         - P0.1 pin is configured for digital mode
@@ -147,15 +147,15 @@ line level    source
  128   1        // $[P0SKIP - Port 0 Skip]
  129   1        /***********************************************************************
  130   1         - P0.0 pin is skipped by the crossbar
- 131   1         - P0.1 pin is skipped by the crossbar
- 132   1         - P0.2 pin is skipped by the crossbar
+ 131   1         - P0.1 pin is not skipped by the crossbar
+ 132   1         - P0.2 pin is not skipped by the crossbar
  133   1         - P0.3 pin is not skipped by the crossbar
  134   1         - P0.4 pin is not skipped by the crossbar
  135   1         - P0.5 pin is not skipped by the crossbar
  136   1         - P0.6 pin is skipped by the crossbar
  137   1         - P0.7 pin is not skipped by the crossbar
  138   1         ***********************************************************************/
- 139   1        P0SKIP = P0SKIP_B0__SKIPPED | P0SKIP_B1__SKIPPED | P0SKIP_B2__SKIPPED
+ 139   1        P0SKIP = P0SKIP_B0__SKIPPED | P0SKIP_B1__NOT_SKIPPED | P0SKIP_B2__NOT_SKIPPED
  140   1            | P0SKIP_B3__NOT_SKIPPED | P0SKIP_B4__NOT_SKIPPED | P0SKIP_B5__NOT_SKIPPED
  141   1            | P0SKIP_B6__SKIPPED | P0SKIP_B7__NOT_SKIPPED;
  142   1        // [P0SKIP - Port 0 Skip]$
@@ -193,7 +193,7 @@ line level    source
  174          //================================================================================
  175          extern void
  176          PORTS_1_enter_DefaultMode_from_RESET (void)
-C51 COMPILER V9.60.0.0   INITDEVICE                                                        09/22/2021 15:50:13 PAGE 4   
+C51 COMPILER V9.60.0.0   INITDEVICE                                                        09/23/2021 14:28:22 PAGE 4   
 
  177          {
  178   1        // $[P1 - Port 1 Pin Latch]
@@ -258,7 +258,7 @@ line level    source
  237          
  238          //================================================================================
  239          // PORTS_2_enter_DefaultMode_from_RESET
-C51 COMPILER V9.60.0.0   INITDEVICE                                                        09/22/2021 15:50:13 PAGE 5   
+C51 COMPILER V9.60.0.0   INITDEVICE                                                        09/23/2021 14:28:22 PAGE 5   
 
  240          //================================================================================
  241          extern void
@@ -323,7 +323,7 @@ line level    source
  300   1        XBR2 = XBR2_WEAKPUD__PULL_UPS_ENABLED | XBR2_XBARE__ENABLED
  301   1            | XBR2_URT1E__DISABLED | XBR2_URT1RTSE__DISABLED
  302   1            | XBR2_URT1CTSE__DISABLED;
-C51 COMPILER V9.60.0.0   INITDEVICE                                                        09/22/2021 15:50:13 PAGE 6   
+C51 COMPILER V9.60.0.0   INITDEVICE                                                        09/23/2021 14:28:22 PAGE 6   
 
  303   1        // [XBR2 - Port I/O Crossbar 2]$
  304   1      
@@ -388,7 +388,7 @@ line level    source
  363   1         - The ADC0 voltage reference is the VREF pin 
  364   1         - Power Up Delay Time = 0x06
  365   1         ***********************************************************************/
-C51 COMPILER V9.60.0.0   INITDEVICE                                                        09/22/2021 15:50:13 PAGE 7   
+C51 COMPILER V9.60.0.0   INITDEVICE                                                        09/23/2021 14:28:22 PAGE 7   
 
  366   1        ADC0CF2 = ADC0CF2_GNDSL__GND_PIN | ADC0CF2_REFSL__VREF_PIN
  367   1            | (0x06 << ADC0CF2_ADPWR__SHIFT);
@@ -453,7 +453,7 @@ line level    source
  426          extern void
  427          CIP51_0_enter_DefaultMode_from_RESET (void)
  428          {
-C51 COMPILER V9.60.0.0   INITDEVICE                                                        09/22/2021 15:50:13 PAGE 8   
+C51 COMPILER V9.60.0.0   INITDEVICE                                                        09/23/2021 14:28:22 PAGE 8   
 
  429   1        // $[PFE0CN - Prefetch Engine Control]
  430   1        // [PFE0CN - Prefetch Engine Control]$
@@ -518,7 +518,7 @@ line level    source
  489   1      
  490   1        // [Timer Restoration]$
  491   1      
-C51 COMPILER V9.60.0.0   INITDEVICE                                                        09/22/2021 15:50:13 PAGE 9   
+C51 COMPILER V9.60.0.0   INITDEVICE                                                        09/23/2021 14:28:22 PAGE 9   
 
  492   1      }
  493          
@@ -583,7 +583,7 @@ line level    source
  552   1        // [Timer Restoration]$
  553   1      
  554   1      }
-C51 COMPILER V9.60.0.0   INITDEVICE                                                        09/22/2021 15:50:13 PAGE 10  
+C51 COMPILER V9.60.0.0   INITDEVICE                                                        09/23/2021 14:28:22 PAGE 10  
 
  555          
  556          //================================================================================
@@ -648,7 +648,7 @@ line level    source
  615   1         - Disable CP0 interrupts
  616   1         - Disable CP1 interrupts
  617   1         - Enable interrupt requests generated by a Port Match
-C51 COMPILER V9.60.0.0   INITDEVICE                                                        09/22/2021 15:50:13 PAGE 11  
+C51 COMPILER V9.60.0.0   INITDEVICE                                                        09/23/2021 14:28:22 PAGE 11  
 
  618   1         - Disable all PCA0 interrupts
  619   1         - Disable all SMB0 interrupts
@@ -713,7 +713,7 @@ line level    source
  678   1         ***********************************************************************/
  679   1        REF0CN = REF0CN_VREFSL__VREF_2P4;
  680   1        // [REF0CN - Voltage Reference Control]$
-C51 COMPILER V9.60.0.0   INITDEVICE                                                        09/22/2021 15:50:13 PAGE 12  
+C51 COMPILER V9.60.0.0   INITDEVICE                                                        09/23/2021 14:28:22 PAGE 12  
 
  681   1      
  682   1      }
@@ -762,11 +762,11 @@ line level    source
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =    349    ----
+   CODE SIZE        =    311    ----
    CONSTANT SIZE    =   ----    ----
-   XDATA SIZE       =      7    ----
+   XDATA SIZE       =   ----    ----
    PDATA SIZE       =   ----    ----
-   DATA SIZE        =   ----    ----
+   DATA SIZE        =      7    ----
    IDATA SIZE       =   ----    ----
    BIT SIZE         =      1    ----
    EDATA SIZE       =   ----    ----
