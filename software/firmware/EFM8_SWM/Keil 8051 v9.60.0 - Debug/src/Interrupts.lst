@@ -1,4 +1,4 @@
-C51 COMPILER V9.60.0.0   INTERRUPTS                                                        09/24/2021 23:38:00 PAGE 1   
+C51 COMPILER V9.60.0.0   INTERRUPTS                                                        09/25/2021 01:05:09 PAGE 1   
 
 
 C51 COMPILER V9.60.0.0, COMPILATION OF MODULE INTERRUPTS
@@ -26,10 +26,10 @@ line level    source
   11          #include "vars.h"
   12          
   13          volatile int send_msg;
-  14          volatile uint32_t adc1;
-  15          volatile uint32_t adc2;
-  16          volatile uint32_t adc3;
-  17          volatile uint32_t adc4;
+  14          volatile int adc1;
+  15          volatile int adc2;
+  16          volatile int adc3;
+  17          volatile int adc4;
   18          
   19          
   20          SI_SBIT(PWRC, SFR_P1, 2);                  // P1.2 PWRC
@@ -63,7 +63,7 @@ line level    source
   48   1      
   49   1          //LED=1; // turn on the LED
   50   1      
-C51 COMPILER V9.60.0.0   INTERRUPTS                                                        09/24/2021 23:38:00 PAGE 2   
+C51 COMPILER V9.60.0.0   INTERRUPTS                                                        09/25/2021 01:05:09 PAGE 2   
 
   51   1          // Select a pin
   52   1      
@@ -107,7 +107,7 @@ line level    source
   90   2              switch(send_msg)
   91   2                {
   92   3                  case 0:
-  93   3                    uA = (uint32_t)((result * 2400) / (16383*scale/100) * 1000 / (MULTIPLIER*RESISTOR1/10));
+  93   3                    uA = (uint32_t)((result * 2400) / (16383*SCALE) * 1000/ (MULTIPLIER*RESISTOR1/10));
   94   3                    adc1 = uA;
   95   3                    break;
   96   3                  case 1:
@@ -116,89 +116,92 @@ line level    source
                             adc2 = uA;
               #endif
  101   3      #ifdef MINI
- 102   3                    adc2= (uint32_t)((result * 2400) / (16383*scale/100));// convert to mV so no decimals
+ 102   3                    adc2= (uint32_t)((result * 2400 * 100) / (16383*SCALE));// convert to mV so no decimals
  103   3      #endif
  104   3                    break;
  105   3                  case 2:
- 106   3                    adc3 = mV;
- 107   3      #ifdef MINI
- 108   3                    adc3= (uint32_t)((result * 2400) / (16383*scale/100)); // convert to mV so no decimals
- 109   3      #endif
- 110   3                  break;
- 111   3                  case 3:
- 112   3                  adc4 = mV;
- 113   3      #ifdef MINI
-C51 COMPILER V9.60.0.0   INTERRUPTS                                                        09/24/2021 23:38:00 PAGE 3   
+ 106   3      #ifdef GUM
+                            adc3 = mV;
+              #endif
+ 109   3      #ifdef MINI
+ 110   3                    //adc3= (result * 2400 *100) / (16383*scale); // convert to mV so no decimals
+ 111   3                    adc3 = (result * 2400 ) / (16383*SCALE);
+ 112   3      #endif
+ 113   3                  break;
+C51 COMPILER V9.60.0.0   INTERRUPTS                                                        09/25/2021 01:05:09 PAGE 3   
 
- 114   3                       // high voltage element 110k/10k
- 115   3                 // V_high * 10 / (110 + 10 ) = V_measured
- 116   3                  adc4 = (uint32_t)(result*2400/(16383*scale/100) * 120/10 )*1000; // measured in mV
- 117   3      #endif
- 118   3      
- 119   3                  break;
- 120   3                  default:
- 121   3                  break;
- 122   3                }
- 123   2              send_msg++; // increment count
- 124   2      
- 125   2              //SFRPAGE_save = SFRPAGE;
- 126   2              //SFRPAGE = LEGACY_PAGE;
- 127   2              //RETARGET_PRINTF ("\nP1.7 voltage: %ld mV\n", mV);
- 128   2              //SFRPAGE = SFRPAGE_save;
- 129   2              //LED = 0; // turn off the LED
- 130   2            }
- 131   1      
- 132   1          ADC0CN0_ADINT = 0;              // Clear ADC0 conv. complete flag
- 133   1        }
- 134          
- 135          //-----------------------------------------------------------------------------
- 136          // PMATCH_ISR
- 137          //-----------------------------------------------------------------------------
- 138          //
- 139          // PMATCH ISR Content goes here. Remember to clear flag bits:
- 140          
+ 114   3                  case 3:
+ 115   3                  adc4 = mV;
+ 116   3      #ifdef MINI
+ 117   3                       // high voltage element 110k/10k
+ 118   3                 // V_high * 10 / (110 + 10 ) = V_measured
+ 119   3                  adc4 = (uint32_t)((result*2400*100)/(16383*SCALE) * 120/10 ); // measured in mV
+ 120   3      #endif
+ 121   3      
+ 122   3                  break;
+ 123   3                  default:
+ 124   3                  break;
+ 125   3                }
+ 126   2              send_msg++; // increment count
+ 127   2      
+ 128   2              //SFRPAGE_save = SFRPAGE;
+ 129   2              //SFRPAGE = LEGACY_PAGE;
+ 130   2              //RETARGET_PRINTF ("\nP1.7 voltage: %ld mV\n", mV);
+ 131   2              //SFRPAGE = SFRPAGE_save;
+ 132   2              //LED = 0; // turn off the LED
+ 133   2            }
+ 134   1      
+ 135   1          ADC0CN0_ADINT = 0;              // Clear ADC0 conv. complete flag
+ 136   1        }
+ 137          
+ 138          //-----------------------------------------------------------------------------
+ 139          // PMATCH_ISR
+ 140          //-----------------------------------------------------------------------------
  141          //
- 142          //-----------------------------------------------------------------------------
+ 142          // PMATCH ISR Content goes here. Remember to clear flag bits:
  143          
- 144          SI_INTERRUPT (PMATCH_ISR, PMATCH_IRQn)
- 145            {
- 146   1          //RETARGET_PRINTF ("\nPort Match Interrupt fired");
- 147   1          // TODO: check if it is the pin we care about
- 148   1          if (false)
- 149   1            {
- 150   2              PWRC = 0; // wake BLE module
- 151   2              SFRPAGE = LEGACY_PAGE;
- 152   2              //EIE1 &= ~0x02; // disable Port Match interrupt
- 153   2            }
- 154   1          EIE1 &= ~0x02; // disable Port Match interrupt
- 155   1        }
- 156          
- 157          //-----------------------------------------------------------------------------
- 158          // TIMER4_ISR
- 159          //-----------------------------------------------------------------------------
- 160          //
- 161          // TIMER4 ISR Content goes here. Remember to clear flag bits:
- 162          // TMR4CN0::TF4H (Timer # High Byte Overflow Flag)
- 163          // TMR4CN0::TF4L (Timer # Low Byte Overflow Flag)
- 164          //
- 165          //-----------------------------------------------------------------------------
- 166          SI_INTERRUPT (TIMER4_ISR, TIMER4_IRQn)
- 167            {
- 168   1      
- 169   1        }
- 170          
-*** WARNING C294 IN LINE 150 OF C:\Users\Ben\Documents\Git\wireless_measurements\software\firmware\EFM8_SWM\src\Interrup
+ 144          //
+ 145          //-----------------------------------------------------------------------------
+ 146          
+ 147          SI_INTERRUPT (PMATCH_ISR, PMATCH_IRQn)
+ 148            {
+ 149   1          //RETARGET_PRINTF ("\nPort Match Interrupt fired");
+ 150   1          // TODO: check if it is the pin we care about
+ 151   1          if (false)
+ 152   1            {
+ 153   2              PWRC = 0; // wake BLE module
+ 154   2              SFRPAGE = LEGACY_PAGE;
+ 155   2              //EIE1 &= ~0x02; // disable Port Match interrupt
+ 156   2            }
+ 157   1          EIE1 &= ~0x02; // disable Port Match interrupt
+ 158   1        }
+ 159          
+ 160          //-----------------------------------------------------------------------------
+ 161          // TIMER4_ISR
+ 162          //-----------------------------------------------------------------------------
+ 163          //
+ 164          // TIMER4 ISR Content goes here. Remember to clear flag bits:
+ 165          // TMR4CN0::TF4H (Timer # High Byte Overflow Flag)
+ 166          // TMR4CN0::TF4L (Timer # Low Byte Overflow Flag)
+ 167          //
+ 168          //-----------------------------------------------------------------------------
+ 169          SI_INTERRUPT (TIMER4_ISR, TIMER4_IRQn)
+ 170            {
+ 171   1      
+ 172   1        }
+ 173          
+*** WARNING C294 IN LINE 153 OF C:\Users\Ben\Documents\Git\wireless_measurements\software\firmware\EFM8_SWM\src\Interrup
              -ts.c: unreachable code
+
+C51 COMPILER V9.60.0.0   INTERRUPTS                                                        09/25/2021 01:05:09 PAGE 4   
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =    679    ----
-C51 COMPILER V9.60.0.0   INTERRUPTS                                                        09/24/2021 23:38:00 PAGE 4   
-
+   CODE SIZE        =    535    ----
    CONSTANT SIZE    =   ----    ----
    XDATA SIZE       =   ----    ----
    PDATA SIZE       =   ----    ----
-   DATA SIZE        =     36    ----
+   DATA SIZE        =     28    ----
    IDATA SIZE       =   ----    ----
    BIT SIZE         =   ----    ----
    EDATA SIZE       =   ----    ----

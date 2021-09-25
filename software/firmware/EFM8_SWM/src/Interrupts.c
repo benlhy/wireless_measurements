@@ -11,10 +11,10 @@
 #include "vars.h"
 
 volatile int send_msg;
-volatile uint32_t adc1;
-volatile uint32_t adc2;
-volatile uint32_t adc3;
-volatile uint32_t adc4;
+volatile int adc1;
+volatile int adc2;
+volatile int adc3;
+volatile int adc4;
 
 
 SI_SBIT(PWRC, SFR_P1, 2);                  // P1.2 PWRC
@@ -90,7 +90,7 @@ SI_INTERRUPT(ADC0EOC_ISR, ADC0EOC_IRQn)
         switch(send_msg)
           {
             case 0:
-              uA = (uint32_t)((result * 2400) / (16383*scale/100) * 1000 / (MULTIPLIER*RESISTOR1/10));
+              uA = (uint32_t)((result * 2400) / (16383*SCALE) * 1000/ (MULTIPLIER*RESISTOR1/10));
               adc1 = uA;
               break;
             case 1:
@@ -99,13 +99,16 @@ SI_INTERRUPT(ADC0EOC_ISR, ADC0EOC_IRQn)
               adc2 = uA;
 #endif
 #ifdef MINI
-              adc2= (uint32_t)((result * 2400) / (16383*scale/100));// convert to mV so no decimals
+              adc2= (uint32_t)((result * 2400 * 100) / (16383*SCALE));// convert to mV so no decimals
 #endif
               break;
             case 2:
+#ifdef GUM
               adc3 = mV;
+#endif
 #ifdef MINI
-              adc3= (uint32_t)((result * 2400) / (16383*scale/100)); // convert to mV so no decimals
+              //adc3= (result * 2400 *100) / (16383*scale); // convert to mV so no decimals
+              adc3 = (result * 2400 ) / (16383*SCALE);
 #endif
             break;
             case 3:
@@ -113,7 +116,7 @@ SI_INTERRUPT(ADC0EOC_ISR, ADC0EOC_IRQn)
 #ifdef MINI
 	         // high voltage element 110k/10k
            // V_high * 10 / (110 + 10 ) = V_measured
-            adc4 = (uint32_t)(result*2400/(16383*scale/100) * 120/10 ); // measured in mV
+            adc4 = (uint32_t)((result*2400*100)/(16383*SCALE) * 120/10 ); // measured in mV
 #endif
 
             break;

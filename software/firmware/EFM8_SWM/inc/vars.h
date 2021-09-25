@@ -13,9 +13,12 @@
 //#define GUM // Board version 1
 //#define NANO
 
+#define JDY08
+//#define JDY23
+
 #define W_VER // MAX44834 version
 #define V_REF 2400 // reference voltage
-//#define SCALE 0.75 // scale that we will use for input voltages
+#define SCALE 0.75 // scale that we will use for input voltages
 #define LED_DELAY 100
 
 // ============= Current sense multipliers =======//
@@ -43,14 +46,36 @@
 #define RESISTOR2 56
 #endif
 
+// =========== Scaling values ============== //
+
+// when are the values set, before or after init?
+
+/*
+#if (ADC0CN0 & ADC0CN0_ADGN__FMASK) == ADC0CN0_ADGN__GAIN_0P75
+#define SCALE 75
+#endif
+
+#if (ADC0CN0 & ADC0CN0_ADGN__FMASK) == ADC0CN0_ADGN__GAIN_0P5
+#define SCALE 50
+#endif
+
+#if (ADC0CN0 & ADC0CN0_ADGN__FMASK) == ADC0CN0_ADGN__GAIN_0P25
+#define SCALE 25
+#endif
+
+#if (ADC0CN0 & ADC0CN0_ADGN__FMASK) == ADC0CN0_ADGN__GAIN_1
+#define SCALE 100
+#endif
+*/
+
 // ========== Extern vars -------------------//
 
 extern volatile int send_msg;
-extern volatile uint32_t adc1;
-extern volatile uint32_t adc2;
-extern volatile uint32_t adc3;
-extern volatile uint32_t adc4;
+extern volatile int adc1;
+extern volatile int adc2;
+extern volatile int adc3;
+extern volatile int adc4;
 
-extern uint8_t scale;
+//extern float scale;
 
 #endif /* INC_VARS_H_ */

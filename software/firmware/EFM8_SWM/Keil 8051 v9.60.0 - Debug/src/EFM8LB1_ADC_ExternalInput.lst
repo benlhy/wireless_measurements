@@ -1,4 +1,4 @@
-C51 COMPILER V9.60.0.0   EFM8LB1_ADC_EXTERNALINPUT                                         09/24/2021 23:37:42 PAGE 1   
+C51 COMPILER V9.60.0.0   EFM8LB1_ADC_EXTERNALINPUT                                         09/25/2021 01:04:51 PAGE 1   
 
 
 C51 COMPILER V9.60.0.0, COMPILATION OF MODULE EFM8LB1_ADC_EXTERNALINPUT
@@ -63,7 +63,7 @@ line level    source
   48          //                   | SA  |
   49          //
   50          // For example, assume Rtotal = 100 kohm. The expression evaluates to:
-C51 COMPILER V9.60.0.0   EFM8LB1_ADC_EXTERNALINPUT                                         09/24/2021 23:37:42 PAGE 2   
+C51 COMPILER V9.60.0.0   EFM8LB1_ADC_EXTERNALINPUT                                         09/25/2021 01:04:51 PAGE 2   
 
   51          //
   52          //                   | 2^14 |
@@ -128,7 +128,7 @@ line level    source
  111          #include "InitDevice.h"
  112          //#include "retargetserial.h"
  113          #include "vars.h"
-C51 COMPILER V9.60.0.0   EFM8LB1_ADC_EXTERNALINPUT                                         09/24/2021 23:37:42 PAGE 3   
+C51 COMPILER V9.60.0.0   EFM8LB1_ADC_EXTERNALINPUT                                         09/25/2021 01:04:51 PAGE 3   
 
  114          #include "uart_0.h"
  115          
@@ -152,7 +152,7 @@ line level    source
  133          
  134          
  135          //SI_SEGMENT_VARIABLE(scale, float, SI_SEG_XDATA);
- 136          uint8_t scale;
+ 136          //float scale;
  137          
  138          const uint32_t xdata UUID _at_ 0xFFC3;
  139          //uint8_t id;
@@ -193,7 +193,7 @@ line level    source
  174   2        _nop_();
  175   2       }
  176   1      }
-C51 COMPILER V9.60.0.0   EFM8LB1_ADC_EXTERNALINPUT                                         09/24/2021 23:37:42 PAGE 4   
+C51 COMPILER V9.60.0.0   EFM8LB1_ADC_EXTERNALINPUT                                         09/25/2021 01:04:51 PAGE 4   
 
  177          
  178          
@@ -208,7 +208,7 @@ line level    source
  187   1        //uint8_t your_id;
  188   1        LED = 1;
  189   1        PWRC = 0; // set AT mode
- 190   1        //someval = UUID; // get th UUID
+ 190   1        //someval = UUID; // get the UUID
  191   1      
  192   1        //your_id = (uint8_t)(UUID & 0xFF); // take only 128 bits of the ID
  193   1      
@@ -219,183 +219,156 @@ line level    source
  198   1        printf("AT+NAMESWM-%d",(int)(uint8_t)(UUID & 0xFF));
  199   1      
  200   1        _delay_ms(30); // wait for module to respond
- 201   1        LED = 0; // ok
+ 201   1        LED = 0;
  202   1        PWRC = 1; // unset AT mode
  203   1      
  204   1        // determine the scale and set accordingly
- 205   1      
+ 205   1      /*
  206   1        switch(ADC0CN0 & ADC0CN0_ADGN__FMASK) {
- 207   2          case ADC0CN0_ADGN__GAIN_0P75:
- 208   2            scale = 75;
- 209   2            break;
- 210   2          case ADC0CN0_ADGN__GAIN_0P5:
- 211   2            scale = 50;
- 212   2            break;
- 213   2          case ADC0CN0_ADGN__GAIN_0P25:
- 214   2            scale = 25;
- 215   2            break;
- 216   2          default:
- 217   2            scale = 100;
- 218   2      
- 219   2        }
- 220   1      }
- 221          /*
- 222          void set_device_AT() {
- 223          
- 224            // RETARGET_PRINTF("AT+HOSTEN");
- 225          
- 226            //inputcharacter = getchar();
- 227            PWRC = 0; // set AT mode
- 228          
- 229            RETARGET_PRINTF("AT+NAMESWM-%d",500);
- 230          
- 231            PWRC = 1; // unset AT mode
- 232          
- 233          
- 234          }
- 235          */
- 236          
- 237          
- 238          void sleep_device() {
- 239   1        LED = 1;
-C51 COMPILER V9.60.0.0   EFM8LB1_ADC_EXTERNALINPUT                                         09/24/2021 23:37:42 PAGE 5   
+ 207   1          case ADC0CN0_ADGN__GAIN_0P75:
+ 208   1            scale = 75;
+ 209   1            break;
+ 210   1          case ADC0CN0_ADGN__GAIN_0P5:
+ 211   1            scale = 50;
+ 212   1            break;
+ 213   1          case ADC0CN0_ADGN__GAIN_0P25:
+ 214   1            scale = 25;
+ 215   1            break;
+ 216   1          default:
+ 217   1            scale = 100;
+ 218   1      
+ 219   1        }
+ 220   1        */
+ 221   1      }
+ 222          
+ 223          void sleep_device(bool BLE_sleep) {
+ 224   1        LED = 1;
+ 225   1        if (BLE_sleep) {
+ 226   2            PWRC = 0; // set AT mode
+ 227   2            //RETARGET_PRINTF("AT+SLEEP2"); // send the BLE module into deep sleep
+ 228   2            printf("AT+SLEEP2");
+ 229   2            _delay_ms(30); // wait for command to be received and for the device to respond
+ 230   2            PWRC = 1; // unset AT mode
+ 231   2        }
+ 232   1        LED = 0;
+ 233   1        PCON1 |= 0x80; // set to SNOOZE - will only be woke by Timer 4
+ 234   1      }
+ 235          
+ 236          void _flash_LED(){
+ 237   1        LED=1;
+ 238   1        _delay_ms(LED_DELAY);
+ 239   1        LED=0;
+C51 COMPILER V9.60.0.0   EFM8LB1_ADC_EXTERNALINPUT                                         09/25/2021 01:04:51 PAGE 5   
 
- 240   1        PWRC = 0; // set AT mode
- 241   1        //RETARGET_PRINTF("AT+SLEEP2"); // send the BLE module into deep sleep
- 242   1        printf("AT+SLEEP2");
- 243   1        _delay_ms(30); // wait for command to be received and for the device to respond
- 244   1        PWRC = 1; // unset AT mode
- 245   1        LED = 0;
- 246   1        PCON1 |= 0x80; // set to SNOOZE - will only be woke by Timer 4
- 247   1      
- 248   1      }
- 249          
- 250          void _flash_LED(){
- 251   1        LED=1;
- 252   1        _delay_ms(LED_DELAY);
- 253   1        LED=0;
- 254   1        _delay_ms(LED_DELAY);
- 255   1        LED=1;
- 256   1        _delay_ms(LED_DELAY);
- 257   1        LED=0;
- 258   1        _delay_ms(LED_DELAY);
- 259   1          LED=1;
- 260   1          _delay_ms(LED_DELAY);
- 261   1          LED=0;
- 262   1      
- 263   1      }
- 264          
- 265          
- 266          //-----------------------------------------------------------------------------
- 267          // Main Routine
- 268          //-----------------------------------------------------------------------------
- 269          void main (void)
- 270          {
+ 240   1        _delay_ms(LED_DELAY);
+ 241   1        LED=1;
+ 242   1        _delay_ms(LED_DELAY);
+ 243   1        LED=0;
+ 244   1        _delay_ms(LED_DELAY);
+ 245   1        LED=1;
+ 246   1        _delay_ms(LED_DELAY);
+ 247   1        LED=0;
+ 248   1      
+ 249   1      }
+ 250          
+ 251          
+ 252          //-----------------------------------------------------------------------------
+ 253          // Main Routine
+ 254          //-----------------------------------------------------------------------------
+ 255          void main (void)
+ 256          {
+ 257   1      
+ 258   1        uint8_t read_msg;
+ 259   1        bool sleep_flag = false;
+ 260   1      
+ 261   1         enter_DefaultMode_from_RESET();
+ 262   1         UART0_initStdio();
+ 263   1      
+ 264   1         DISP_EN = DISP_BC_DRIVEN;           // Display not driven by EFM8
+ 265   1      
+ 266   1         BC_EN = BC_CONNECTED;               // Board controller connected to EFM8
+ 267   1                                             // UART pins
+ 268   1      
+ 269   1         SCON0_TI = 1;                       // This STDIO library requires TI to
+ 270   1                                             // be set for prints to occur
  271   1      
- 272   1        uint8_t read_msg;
- 273   1        bool sleep_flag = false;
- 274   1      
- 275   1         enter_DefaultMode_from_RESET();
- 276   1         UART0_initStdio();
- 277   1      
- 278   1         DISP_EN = DISP_BC_DRIVEN;           // Display not driven by EFM8
- 279   1      
- 280   1         BC_EN = BC_CONNECTED;               // Board controller connected to EFM8
- 281   1                                             // UART pins
- 282   1      
- 283   1         SCON0_TI = 1;                       // This STDIO library requires TI to
- 284   1                                             // be set for prints to occur
- 285   1      
- 286   1         IE_EA = 1;                          // Enable global interrupts
- 287   1         init_device(); // init device before we start ADC sampling
- 288   1         //set_device_chars();
- 289   1      
- 290   1         while (1) {
- 291   2             //if (HALL==1) {
- 292   2             //    EIE1 |= 0x02; // Enable Portmatch interrupt if HALL is high (released)
- 293   2                               // And do a bitwise OR operation to set a bit
- 294   2             //}
- 295   2             //_delay_ms(2000);
- 296   2             //PCON0 |= 0x01; // set to IDLE
- 297   2             //PCON1 |= 0x80; // set to SNOOZE
- 298   2      
- 299   2             /*
- 300   2             if (LED_state==0){
- 301   2                            LED = 1;
- 302   2                            LED_state = 1;
-C51 COMPILER V9.60.0.0   EFM8LB1_ADC_EXTERNALINPUT                                         09/24/2021 23:37:42 PAGE 6   
+ 272   1         IE_EA = 1;                          // Enable global interrupts
+ 273   1         init_device(); // init device before we start ADC sampling
+ 274   1         //set_device_chars();
+ 275   1      
+ 276   1         while (1) {
+ 277   2             //if (HALL==1) {
+ 278   2             //    EIE1 |= 0x02; // Enable Portmatch interrupt if HALL is high (released)
+ 279   2                               // And do a bitwise OR operation to set a bit
+ 280   2             //}
+ 281   2             //_delay_ms(2000);
+ 282   2             //PCON0 |= 0x01; // set to IDLE
+ 283   2             //PCON1 |= 0x80; // set to SNOOZE
+ 284   2      
+ 285   2             read_msg = UART0_read_if_available(); // read UART0 message, non blocking
+ 286   2             if (read_msg != 0) {
+ 287   3                 // process it
+ 288   3                 printf(&read_msg); // okay
+ 289   3                 switch (read_msg) {
+ 290   4      
+ 291   4                   case '1':
+ 292   4                     //printf("1 rx");
+ 293   4                     // set the high byte and low byte 66534
+ 294   4                     //
+ 295   4                     _flash_LED(); //indicate message received
+ 296   4                     // set to 2 sec wake
+ 297   4                     TMR4RLH = (0xFF << TMR4RLH_TMR4RLH__SHIFT);
+ 298   4                     TMR4RLL = (0xFE << TMR4RLL_TMR4RLL__SHIFT);
+ 299   4                     sleep_flag = true;
+ 300   4      
+ 301   4                     break;
+ 302   4                   case '2':
+C51 COMPILER V9.60.0.0   EFM8LB1_ADC_EXTERNALINPUT                                         09/25/2021 01:04:51 PAGE 6   
 
- 303   2                        } else {
- 304   2                            LED = 0;
- 305   2                            LED_state = 0;
- 306   2                        }
- 307   2             _delay_ms(500);
- 308   2      */
- 309   2             read_msg = UART0_read_if_available(); // read UART0 message
- 310   2             if (read_msg != 0) {
- 311   3                 // process it
- 312   3                 printf(&read_msg); // okay
- 313   3                 switch (read_msg) {
- 314   4      
- 315   4                   case '1':
- 316   4                     //printf("1 rx");
- 317   4                     // set the high byte and low byte 66534
- 318   4                     //
- 319   4                     _flash_LED(); //indicate message received
- 320   4                     // set to 2 sec wake
- 321   4                     TMR4RLH = (0xFF << TMR4RLH_TMR4RLH__SHIFT);
- 322   4                     TMR4RLL = (0xFE << TMR4RLL_TMR4RLL__SHIFT);
- 323   4                     sleep_flag = true;
- 324   4      
- 325   4                     break;
- 326   4                   case '2':
- 327   4                     //printf("2 rx");
- 328   4                     break;
- 329   4                   default:
- 330   4                     //printf("other rx");
- 331   4                     sleep_flag = false;
- 332   4                     break;
- 333   4                 }
- 334   3             } else {
- 335   3                 // do whatever we have been doing
- 336   3                 if (sleep_flag) {
- 337   4      
- 338   4                     sleep_device();
- 339   4                     PWRC = 0; // turn on the BLE module
- 340   4                     _delay_ms(50); // wait for power on
- 341   4                 }
- 342   3             }
- 343   2             while(send_msg!=4); // blocking
- 344   2      
- 345   2             if (send_msg==4) {
- 346   3                 LED = ~LED; // flip the bit
- 347   3      
- 348   3                 send_msg = 0;
- 349   3      
- 350   3                 //SFRPAGE_save = SFRPAGE;
- 351   3                 //SFRPAGE = LEGACY_PAGE;
- 352   3                 //RETARGET_PRINTF ("%d,%d,%d,%d",adc1,adc2,adc3,adc4);
- 353   3      
- 354   3                 printf("%u,%u,%u,%u",(uint32_t)adc1,(uint32_t)adc2,(uint32_t)adc3,(uint32_t)adc4);
- 355   3      
- 356   3                 //SFRPAGE = SFRPAGE_save;
- 357   3      
- 358   3             }
- 359   2      
- 360   2         }
- 361   1      }
+ 303   4                     //printf("2 rx");
+ 304   4                     sleep_flag = false;
+ 305   4                     break;
+ 306   4                   default:
+ 307   4                     //printf("other rx");
+ 308   4                     //sleep_flag = false;
+ 309   4                     break;
+ 310   4                 }
+ 311   3             } else {
+ 312   3                 // do whatever we have been doing
+ 313   3                 if (sleep_flag) {
+ 314   4                     _delay_ms(500);
+ 315   4      
+ 316   4                     sleep_device(false);
+ 317   4                     PWRC = 0; // turn on the BLE module
+ 318   4                     _delay_ms(50); // wait for power on
+ 319   4                 }
+ 320   3             }
+ 321   2             while(send_msg!=4); // blocking
+ 322   2      
+ 323   2             if (send_msg==4) {
+ 324   3                 LED = ~LED; // flip the bit
+ 325   3      
+ 326   3                 send_msg = 0;
+ 327   3      
+ 328   3                 // need to typecast:https://www.keil.com/support/man/docs/c51/c51_xf_usingprintf.htm
+ 329   3      
+ 330   3                 printf("%u,%u,%u,%u",(int)adc1,(int)adc2,(int)adc3,(int)adc4);
+ 331   3      
+ 332   3      
+ 333   3             }
+ 334   2      
+ 335   2         }
+ 336   1      }
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =    570    ----
-C51 COMPILER V9.60.0.0   EFM8LB1_ADC_EXTERNALINPUT                                         09/24/2021 23:37:42 PAGE 7   
-
+   CODE SIZE        =    509    ----
    CONSTANT SIZE    =     36    ----
    XDATA SIZE       =   ----    ----
    PDATA SIZE       =   ----    ----
-   DATA SIZE        =     14    ----
+   DATA SIZE        =     13    ----
    IDATA SIZE       =   ----    ----
-   BIT SIZE         =      1    ----
+   BIT SIZE         =      2    ----
    EDATA SIZE       =   ----    ----
    HDATA SIZE       =   ----    ----
    XDATA CONST SIZE =   ----    ----
