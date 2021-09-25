@@ -33,9 +33,12 @@ enter_DefaultMode_from_RESET (void)
   PBCFG_0_enter_DefaultMode_from_RESET ();
   ADC_0_enter_DefaultMode_from_RESET ();
   VREF_0_enter_DefaultMode_from_RESET ();
+  LFOSC_0_enter_DefaultMode_from_RESET ();
   CLOCK_0_enter_DefaultMode_from_RESET ();
   TIMER01_0_enter_DefaultMode_from_RESET ();
   TIMER16_2_enter_DefaultMode_from_RESET ();
+  TIMER16_3_enter_DefaultMode_from_RESET ();
+  TIMER16_4_enter_DefaultMode_from_RESET ();
   TIMER_SETUP_0_enter_DefaultMode_from_RESET ();
   UART_0_enter_DefaultMode_from_RESET ();
   INTERRUPT_0_enter_DefaultMode_from_RESET ();
@@ -574,6 +577,7 @@ TIMER_SETUP_0_enter_DefaultMode_from_RESET (void)
    - Timer Mode
    - Timer 1 enabled when TR1 = 1 irrespective of INT1 logic level
    ***********************************************************************/
+  SFRPAGE = 0x00;
   TMOD = TMOD_T0M__MODE0 | TMOD_T1M__MODE2 | TMOD_CT0__TIMER
       | TMOD_GATE0__DISABLED | TMOD_CT1__TIMER | TMOD_GATE1__DISABLED;
   // [TMOD - Timer 0/1 Mode]$
@@ -719,6 +723,167 @@ PORTS_3_enter_DefaultMode_from_RESET (void)
 
   // $[P3MDIN - Port 3 Input Mode]
   // [P3MDIN - Port 3 Input Mode]$
+
+}
+
+extern void
+LFOSC_0_enter_DefaultMode_from_RESET (void)
+{
+  // $[LFO0CN - Low Frequency Oscillator Control]
+  /***********************************************************************
+   - Internal L-F Oscillator Enabled
+   ***********************************************************************/
+  LFO0CN |= LFO0CN_OSCLEN__ENABLED;
+  // [LFO0CN - Low Frequency Oscillator Control]$
+
+  // $[Wait for LFOSC Ready]
+  while ((LFO0CN & LFO0CN_OSCLRDY__BMASK) != LFO0CN_OSCLRDY__SET)
+    ;
+  // [Wait for LFOSC Ready]$
+
+}
+
+extern void
+TIMER16_3_enter_DefaultMode_from_RESET (void)
+{
+  // $[Timer Initialization]
+  // Save Timer Configuration
+  uint8_t TMR3CN0_TR3_save;
+  TMR3CN0_TR3_save = TMR3CN0 & TMR3CN0_TR3__BMASK;
+  // Stop Timer
+  TMR3CN0 &= ~(TMR3CN0_TR3__BMASK);
+  // [Timer Initialization]$
+
+  // $[TMR3CN1 - Timer 3 Control 1]
+  /***********************************************************************
+   - Capture high-to-low transitions on the T2 input pin
+   - Timer will only reload on overflow events
+   - Suspend Timer Synchronization Status = 0x00
+   ***********************************************************************/
+  SFRPAGE = 0x10;
+  TMR3CN1 = TMR3CN1_T3CSEL__PIN | TMR3CN1_RLFSEL__NONE
+      | (0x00 << TMR3CN1_STSYNC__SHIFT);
+  // [TMR3CN1 - Timer 3 Control 1]$
+
+  // $[TMR3CN0 - Timer 3 Control]
+  /***********************************************************************
+   - Timer 3 clock is the low-frequency oscillator divided by 8 
+   ***********************************************************************/
+  SFRPAGE = 0x00;
+  TMR3CN0 |= TMR3CN0_T3XCLK__LFOSC_DIV_8;
+  // [TMR3CN0 - Timer 3 Control]$
+
+  // $[TMR3H - Timer 3 High Byte]
+  /***********************************************************************
+   - Timer 3 High Byte = 0xD8
+   ***********************************************************************/
+  TMR3H = (0xD8 << TMR3H_TMR3H__SHIFT);
+  // [TMR3H - Timer 3 High Byte]$
+
+  // $[TMR3L - Timer 3 Low Byte]
+  /***********************************************************************
+   - Timer 3 Low Byte = 0xF0
+   ***********************************************************************/
+  TMR3L = (0xF0 << TMR3L_TMR3L__SHIFT);
+  // [TMR3L - Timer 3 Low Byte]$
+
+  // $[TMR3RLH - Timer 3 Reload High Byte]
+  /***********************************************************************
+   - Timer 3 Reload High Byte = 0xD8
+   ***********************************************************************/
+  TMR3RLH = (0xD8 << TMR3RLH_TMR3RLH__SHIFT);
+  // [TMR3RLH - Timer 3 Reload High Byte]$
+
+  // $[TMR3RLL - Timer 3 Reload Low Byte]
+  /***********************************************************************
+   - Timer 3 Reload Low Byte = 0xF0
+   ***********************************************************************/
+  TMR3RLL = (0xF0 << TMR3RLL_TMR3RLL__SHIFT);
+  // [TMR3RLL - Timer 3 Reload Low Byte]$
+
+  // $[TMR3CN0]
+  /***********************************************************************
+   - Start Timer 3 running
+   ***********************************************************************/
+  TMR3CN0 |= TMR3CN0_TR3__RUN;
+  // [TMR3CN0]$
+
+  // $[Timer Restoration]
+  // Restore Timer Configuration
+  TMR3CN0 |= TMR3CN0_TR3_save;
+  // [Timer Restoration]$
+
+}
+
+extern void
+TIMER16_4_enter_DefaultMode_from_RESET (void)
+{
+  // $[Timer Initialization]
+  // Save Timer Configuration
+  uint8_t TMR4CN0_TR4_save;
+  SFRPAGE = 0x10;
+  TMR4CN0_TR4_save = TMR4CN0 & TMR4CN0_TR4__BMASK;
+  // Stop Timer
+  TMR4CN0 &= ~(TMR4CN0_TR4__BMASK);
+  // [Timer Initialization]$
+
+  // $[TMR4CN1 - Timer 4 Control 1]
+  /***********************************************************************
+   - Capture high-to-low transitions on the T2 input pin
+   - Timer will only reload on overflow events
+   - Suspend Timer Synchronization Status = 0x00
+   ***********************************************************************/
+  TMR4CN1 = TMR4CN1_T4CSEL__PIN | TMR4CN1_RLFSEL__NONE
+      | (0x00 << TMR4CN1_STSYNC__SHIFT);
+  // [TMR4CN1 - Timer 4 Control 1]$
+
+  // $[TMR4CN0 - Timer 4 Control]
+  /***********************************************************************
+   - Timer 4 is clocked by Timer 3 overflows
+   ***********************************************************************/
+  TMR4CN0 &= ~TMR4CN0_T4XCLK__FMASK;
+  TMR4CN0 |= TMR4CN0_T4XCLK__TIMER3;
+  // [TMR4CN0 - Timer 4 Control]$
+
+  // $[TMR4H - Timer 4 High Byte]
+  /***********************************************************************
+   - Timer 4 High Byte = 0xFF
+   ***********************************************************************/
+  TMR4H = (0xFF << TMR4H_TMR4H__SHIFT);
+  // [TMR4H - Timer 4 High Byte]$
+
+  // $[TMR4L - Timer 4 Low Byte]
+  /***********************************************************************
+   - Timer 4 Low Byte = 0xFE
+   ***********************************************************************/
+  TMR4L = (0xFE << TMR4L_TMR4L__SHIFT);
+  // [TMR4L - Timer 4 Low Byte]$
+
+  // $[TMR4RLH - Timer 4 Reload High Byte]
+  /***********************************************************************
+   - Timer 4 Reload High Byte = 0xFF
+   ***********************************************************************/
+  TMR4RLH = (0xFF << TMR4RLH_TMR4RLH__SHIFT);
+  // [TMR4RLH - Timer 4 Reload High Byte]$
+
+  // $[TMR4RLL - Timer 4 Reload Low Byte]
+  /***********************************************************************
+   - Timer 4 Reload Low Byte = 0xFE
+   ***********************************************************************/
+  TMR4RLL = (0xFE << TMR4RLL_TMR4RLL__SHIFT);
+  // [TMR4RLL - Timer 4 Reload Low Byte]$
+
+  // $[TMR4CN0]
+  /***********************************************************************
+   - Start Timer 4 running
+   ***********************************************************************/
+  TMR4CN0 |= TMR4CN0_TR4__RUN;
+  // [TMR4CN0]$
+
+  // $[Timer Restoration]
+  // Restore Timer Configuration
+  TMR4CN0 |= TMR4CN0_TR4_save;
+  // [Timer Restoration]$
 
 }
 

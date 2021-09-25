@@ -106,10 +106,12 @@
 // Includes
 //-----------------------------------------------------------------------------
 #include <SI_EFM8LB1_Register_Enums.h>
-#include <stdint.h>
+//#include <stdint.h>
+#include <stdio.h>
 #include "InitDevice.h"
-#include "retargetserial.h"
+//#include "retargetserial.h"
 #include "vars.h"
+#include "uart_0.h"
 
 //-----------------------------------------------------------------------------
 // Pin Definitions
@@ -137,7 +139,7 @@ const uint32_t xdata UUID _at_ 0xFFC3;
 //uint8_t id;
 
 void _delay_ms(uint32_t ms);
-
+void _flash_LED();
 //-----------------------------------------------------------------------------
 // SiLabs_Startup() Routine
 // ----------------------------------------------------------------------------
@@ -181,18 +183,19 @@ void _delay_ms(uint32_t ms){
 
 void init_device(void) {
 
-  uint32_t someval;
-  uint8_t your_id;
-
+  //uint32_t someval;
+  //uint8_t your_id;
   LED = 1;
   PWRC = 0; // set AT mode
-  someval = UUID; // get th UUID
+  //someval = UUID; // get th UUID
 
-  your_id = (uint8_t)(someval & 0xFF); // take only 128 bits of the ID
+  //your_id = (uint8_t)(UUID & 0xFF); // take only 128 bits of the ID
 
   _delay_ms(50); // wait for module to respond
 
-  RETARGET_PRINTF("AT+NAMESWM-%d",(int)your_id); // set the name of the device
+  //RETARGET_PRINTF("AT+NAMESWM-%d",(int)your_id); // set the name of the device
+
+  printf("AT+NAMESWM-%d",(int)(uint8_t)(UUID & 0xFF));
 
   _delay_ms(30); // wait for module to respond
   LED = 0; // ok
@@ -213,7 +216,6 @@ void init_device(void) {
     default:
       scale = 100;
 
-
   }
 }
 /*
@@ -231,19 +233,35 @@ void set_device_AT() {
 
 }
 */
-/*
+
 
 void sleep_device() {
   LED = 1;
   PWRC = 0; // set AT mode
-  RETARGET_PRINTF("AT+SLEEP2"); // send the BLE module into deep sleep
+  //RETARGET_PRINTF("AT+SLEEP2"); // send the BLE module into deep sleep
+  printf("AT+SLEEP2");
   _delay_ms(30); // wait for command to be received and for the device to respond
   PWRC = 1; // unset AT mode
   LED = 0;
-  PCON1 |= 0x80; // set to SNOOZE
+  PCON1 |= 0x80; // set to SNOOZE - will only be woke by Timer 4
 
 }
-*/
+
+void _flash_LED(){
+  LED=1;
+  _delay_ms(LED_DELAY);
+  LED=0;
+  _delay_ms(LED_DELAY);
+  LED=1;
+  _delay_ms(LED_DELAY);
+  LED=0;
+  _delay_ms(LED_DELAY);
+    LED=1;
+    _delay_ms(LED_DELAY);
+    LED=0;
+
+}
+
 
 //-----------------------------------------------------------------------------
 // Main Routine
@@ -251,11 +269,11 @@ void sleep_device() {
 void main (void)
 {
 
-  uint8_t LED_state;
-
-  LED_state = 0;
+  uint8_t read_msg;
+  bool sleep_flag = false;
 
    enter_DefaultMode_from_RESET();
+   UART0_initStdio();
 
    DISP_EN = DISP_BC_DRIVEN;           // Display not driven by EFM8
 
@@ -288,25 +306,55 @@ void main (void)
                   }
        _delay_ms(500);
 */
+       read_msg = UART0_read_if_available(); // read UART0 message
+       if (read_msg != 0) {
+           // process it
+           printf(&read_msg); // okay
+           switch (read_msg) {
+
+             case '1':
+               //printf("1 rx");
+               // set the high byte and low byte 66534
+               //
+               _flash_LED(); //indicate message received
+               // set to 2 sec wake
+               TMR4RLH = (0xFF << TMR4RLH_TMR4RLH__SHIFT);
+               TMR4RLL = (0xFE << TMR4RLL_TMR4RLL__SHIFT);
+               sleep_flag = true;
+
+               break;
+             case '2':
+               //printf("2 rx");
+               break;
+             default:
+               //printf("other rx");
+               sleep_flag = false;
+               break;
+           }
+       } else {
+           // do whatever we have been doing
+           if (sleep_flag) {
+
+               sleep_device();
+               PWRC = 0; // turn on the BLE module
+               _delay_ms(50); // wait for power on
+           }
+       }
+       while(send_msg!=4); // blocking
 
        if (send_msg==4) {
            LED = ~LED; // flip the bit
-           /*
-           if (LED==0){
-               LED = 1;
-               //LED_state = 1;
-           } else {
-               LED = 0;
-               //LED_state = 0;
-           }*/
 
            send_msg = 0;
 
            //SFRPAGE_save = SFRPAGE;
            //SFRPAGE = LEGACY_PAGE;
-           RETARGET_PRINTF ("%d,%d,%d,%d",adc1,adc2,adc3,adc4);
+           //RETARGET_PRINTF ("%d,%d,%d,%d",adc1,adc2,adc3,adc4);
 
-           //printf("%d,%d,%d,%d",adc1,adc2,adc3,adc4);
+           // need to typecast:https://www.keil.com/support/man/docs/c51/c51_xf_usingprintf.htm
+
+           printf("%u,%u,%u,%u",(uint32_t)adc1,(uint32_t)adc2,(uint32_t)adc3,(uint32_t)adc4);
+
            //SFRPAGE = SFRPAGE_save;
 
        }

@@ -9,13 +9,15 @@ A51_UPPER_SRCS += \
 C_SRCS += \
 ../src/EFM8LB1_ADC_ExternalInput.c \
 ../src/InitDevice.c \
-../src/Interrupts.c 
+../src/Interrupts.c \
+../src/uart_0.c 
 
 OBJS += \
 ./src/EFM8LB1_ADC_ExternalInput.OBJ \
 ./src/InitDevice.OBJ \
 ./src/Interrupts.OBJ \
-./src/SILABS_STARTUP.OBJ 
+./src/SILABS_STARTUP.OBJ \
+./src/uart_0.OBJ 
 
 
 # Each subdirectory must supply rules for building sources it contributes
@@ -26,11 +28,11 @@ src/%.OBJ: ../src/%.c
 	@echo 'Finished building: $<'
 	@echo ' '
 
-src/EFM8LB1_ADC_ExternalInput.OBJ: C:/SiliconLabs/SimplicityStudio/v5/developer/sdks/8051/v4.2.1/Device/EFM8LB1/inc/SI_EFM8LB1_Register_Enums.h C:/SiliconLabs/SimplicityStudio/v5/developer/sdks/8051/v4.2.1/Device/shared/si8051Base/stdint.h C:/Users/Ben/Documents/Git/wireless_measurements/software/firmware/EFM8_SWM/inc/InitDevice.h C:/SiliconLabs/SimplicityStudio/v5/developer/sdks/8051/v4.2.1/kits/common/drivers/efm8_retargetserial/retargetserial.h C:/Users/Ben/Documents/Git/wireless_measurements/software/firmware/EFM8_SWM/inc/vars.h C:/SiliconLabs/SimplicityStudio/v5/developer/sdks/8051/v4.2.1/Device/EFM8LB1/inc/SI_EFM8LB1_Defs.h C:/SiliconLabs/SimplicityStudio/v5/developer/toolchains/keil_8051/9.60/INC/STDIO.H C:/SiliconLabs/SimplicityStudio/v5/developer/sdks/8051/v4.2.1/Device/shared/si8051Base/si_toolchain.h C:/SiliconLabs/SimplicityStudio/v5/developer/sdks/8051/v4.2.1/Device/shared/si8051Base/stdbool.h
+src/EFM8LB1_ADC_ExternalInput.OBJ: C:/SiliconLabs/SimplicityStudio/v5/developer/sdks/8051/v4.2.1/Device/EFM8LB1/inc/SI_EFM8LB1_Register_Enums.h C:/SiliconLabs/SimplicityStudio/v5/developer/toolchains/keil_8051/9.60/INC/STDIO.H C:/Users/Ben/Documents/Git/wireless_measurements/software/firmware/EFM8_SWM/inc/InitDevice.h C:/Users/Ben/Documents/Git/wireless_measurements/software/firmware/EFM8_SWM/inc/vars.h C:/Users/Ben/Documents/Git/wireless_measurements/software/firmware/EFM8_SWM/inc/uart_0.h C:/SiliconLabs/SimplicityStudio/v5/developer/sdks/8051/v4.2.1/Device/EFM8LB1/inc/SI_EFM8LB1_Defs.h C:/Users/Ben/Documents/Git/wireless_measurements/software/firmware/EFM8_SWM/inc/efm8_config.h C:/SiliconLabs/SimplicityStudio/v5/developer/sdks/8051/v4.2.1/Device/shared/si8051Base/si_toolchain.h C:/SiliconLabs/SimplicityStudio/v5/developer/sdks/8051/v4.2.1/Device/shared/si8051Base/stdint.h C:/SiliconLabs/SimplicityStudio/v5/developer/sdks/8051/v4.2.1/Device/shared/si8051Base/stdbool.h
 
 src/InitDevice.OBJ: C:/SiliconLabs/SimplicityStudio/v5/developer/sdks/8051/v4.2.1/Device/EFM8LB1/inc/SI_EFM8LB1_Register_Enums.h C:/Users/Ben/Documents/Git/wireless_measurements/software/firmware/EFM8_SWM/inc/InitDevice.h C:/SiliconLabs/SimplicityStudio/v5/developer/sdks/8051/v4.2.1/Device/EFM8LB1/inc/SI_EFM8LB1_Defs.h C:/SiliconLabs/SimplicityStudio/v5/developer/sdks/8051/v4.2.1/Device/shared/si8051Base/si_toolchain.h C:/SiliconLabs/SimplicityStudio/v5/developer/sdks/8051/v4.2.1/Device/shared/si8051Base/stdint.h C:/SiliconLabs/SimplicityStudio/v5/developer/sdks/8051/v4.2.1/Device/shared/si8051Base/stdbool.h
 
-src/Interrupts.OBJ: C:/SiliconLabs/SimplicityStudio/v5/developer/sdks/8051/v4.2.1/Device/EFM8LB1/inc/SI_EFM8LB1_Register_Enums.h C:/SiliconLabs/SimplicityStudio/v5/developer/sdks/8051/v4.2.1/kits/common/drivers/efm8_retargetserial/retargetserial.h C:/Users/Ben/Documents/Git/wireless_measurements/software/firmware/EFM8_SWM/inc/vars.h C:/SiliconLabs/SimplicityStudio/v5/developer/sdks/8051/v4.2.1/Device/EFM8LB1/inc/SI_EFM8LB1_Defs.h C:/SiliconLabs/SimplicityStudio/v5/developer/toolchains/keil_8051/9.60/INC/STDIO.H C:/SiliconLabs/SimplicityStudio/v5/developer/sdks/8051/v4.2.1/Device/shared/si8051Base/si_toolchain.h C:/SiliconLabs/SimplicityStudio/v5/developer/sdks/8051/v4.2.1/Device/shared/si8051Base/stdint.h C:/SiliconLabs/SimplicityStudio/v5/developer/sdks/8051/v4.2.1/Device/shared/si8051Base/stdbool.h
+src/Interrupts.OBJ: C:/SiliconLabs/SimplicityStudio/v5/developer/sdks/8051/v4.2.1/Device/EFM8LB1/inc/SI_EFM8LB1_Register_Enums.h C:/Users/Ben/Documents/Git/wireless_measurements/software/firmware/EFM8_SWM/inc/vars.h C:/SiliconLabs/SimplicityStudio/v5/developer/sdks/8051/v4.2.1/Device/EFM8LB1/inc/SI_EFM8LB1_Defs.h C:/SiliconLabs/SimplicityStudio/v5/developer/sdks/8051/v4.2.1/Device/shared/si8051Base/si_toolchain.h C:/SiliconLabs/SimplicityStudio/v5/developer/sdks/8051/v4.2.1/Device/shared/si8051Base/stdint.h C:/SiliconLabs/SimplicityStudio/v5/developer/sdks/8051/v4.2.1/Device/shared/si8051Base/stdbool.h
 
 src/%.OBJ: ../src/%.A51
 	@echo 'Building file: $<'
@@ -38,5 +40,7 @@ src/%.OBJ: ../src/%.A51
 	AX51 "@$(patsubst %.OBJ,%.__ia,$@)" || $(RC)
 	@echo 'Finished building: $<'
 	@echo ' '
+
+src/uart_0.OBJ: C:/Users/Ben/Documents/Git/wireless_measurements/software/firmware/EFM8_SWM/inc/uart_0.h C:/Users/Ben/Documents/Git/wireless_measurements/software/firmware/EFM8_SWM/inc/efm8_config.h C:/SiliconLabs/SimplicityStudio/v5/developer/sdks/8051/v4.2.1/Device/EFM8LB1/inc/SI_EFM8LB1_Register_Enums.h C:/SiliconLabs/SimplicityStudio/v5/developer/sdks/8051/v4.2.1/Device/EFM8LB1/inc/SI_EFM8LB1_Defs.h C:/SiliconLabs/SimplicityStudio/v5/developer/sdks/8051/v4.2.1/Device/shared/si8051Base/si_toolchain.h C:/SiliconLabs/SimplicityStudio/v5/developer/sdks/8051/v4.2.1/Device/shared/si8051Base/stdint.h C:/SiliconLabs/SimplicityStudio/v5/developer/sdks/8051/v4.2.1/Device/shared/si8051Base/stdbool.h
 
 

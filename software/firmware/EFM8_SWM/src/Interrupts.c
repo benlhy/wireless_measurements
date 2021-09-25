@@ -8,15 +8,14 @@
 
 // USER INCLUDES			
 #include <SI_EFM8LB1_Register_Enums.h>
-#include "retargetserial.h"
 #include "vars.h"
 
 volatile int send_msg;
-volatile int adc1;
-volatile int adc2;
-volatile int adc3;
-volatile int adc4;
-int multiplier;
+volatile uint32_t adc1;
+volatile uint32_t adc2;
+volatile uint32_t adc3;
+volatile uint32_t adc4;
+
 
 SI_SBIT(PWRC, SFR_P1, 2);                  // P1.2 PWRC
 SI_SBIT(LED, SFR_P1, 0);// P1.0 LED
@@ -44,8 +43,7 @@ SI_INTERRUPT(ADC0EOC_ISR, ADC0EOC_IRQn)
     uint32_t result = 0;
     uint32_t mV;// Measured voltage in mV
     uint32_t uA;
-    int R1;
-    int R2;
+
     //uint8_t SFRPAGE_save;
 
     //LED=1; // turn on the LED
@@ -58,13 +56,13 @@ SI_INTERRUPT(ADC0EOC_ISR, ADC0EOC_IRQn)
         ADC0MX = ADC0MX_ADC0MX__ADC0P13; // select ADC13- P1.7
         break;
         case 1:
-        ADC0MX = ADC0MX_ADC0MX__ADC0P12; // select ADC12- P1.6
+        ADC0MX = ADC0MX_ADC0MX__ADC0P12;// select ADC12- P1.6
         break;
         case 2:
-        ADC0MX = ADC0MX_ADC0MX__ADC0P11; // select ADC11- P1.5
+        ADC0MX = ADC0MX_ADC0MX__ADC0P11;// select ADC11- P1.5
         break;
         case 3:
-        ADC0MX = ADC0MX_ADC0MX__ADC0P10; // select ADC10- P1.4
+        ADC0MX = ADC0MX_ADC0MX__ADC0P10;// select ADC10- P1.4
         break;
         default:
         break;
@@ -87,42 +85,35 @@ SI_INTERRUPT(ADC0EOC_ISR, ADC0EOC_IRQn)
         //                       (2^14)-1 (bits)
 
         mV = (result * 3300) / 16383;
-        R1 = 30;
-        R2 = 56;
-        // U4 is
-#ifdef MINI
-	  R1 = 10;
-#endif
 
-#ifdef W_VER
-	  multiplier = 200;
-#elif H_VER
-	  multiplier = 100;
-#elif F_VER
-	  multiplier = 50;
-#endif
 
         switch(send_msg)
           {
             case 0:
-            uA = (uint32_t)((result * 2400) / (16383*scale/100) * 1000 / (multiplier*R1/10));
-            adc1 = uA;
-            break;
+              uA = (uint32_t)((result * 2400) / (16383*scale/100) * 1000 / (MULTIPLIER*RESISTOR1/10));
+              adc1 = uA;
+              break;
             case 1:
-            uA = (result * 3277) / 16383 * 1000 / (200*R1/10);
-            adc2 = uA;
-#ifdef MINI
-	         adc2= mV;
+#ifdef GUM
+              uA = (result * 3277) / 16383 * 1000 / (200*RESISTOR1/10);
+              adc2 = uA;
 #endif
-            break;
+#ifdef MINI
+              adc2= (uint32_t)((result * 2400) / (16383*scale/100));// convert to mV so no decimals
+#endif
+              break;
             case 2:
-            adc3 = mV;
+              adc3 = mV;
+#ifdef MINI
+              adc3= (uint32_t)((result * 2400) / (16383*scale/100)); // convert to mV so no decimals
+#endif
             break;
             case 3:
             adc4 = mV;
 #ifdef MINI
 	         // high voltage element 110k/10k
-
+           // V_high * 10 / (110 + 10 ) = V_measured
+            adc4 = (uint32_t)(result*2400/(16383*scale/100) * 120/10 ); // measured in mV
 #endif
 
             break;
@@ -150,15 +141,30 @@ SI_INTERRUPT(ADC0EOC_ISR, ADC0EOC_IRQn)
 //
 //-----------------------------------------------------------------------------
 
- SI_INTERRUPT (PMATCH_ISR, PMATCH_IRQn)
- {
- //RETARGET_PRINTF ("\nPort Match Interrupt fired");
- // TODO: check if it is the pin we care about
-   if (false){
-   PWRC = 0; // wake BLE module
-   SFRPAGE = LEGACY_PAGE;
-   //EIE1 &= ~0x02; // disable Port Match interrupt
-   }
- EIE1 &= ~0x02; // disable Port Match interrupt
- }
+SI_INTERRUPT (PMATCH_ISR, PMATCH_IRQn)
+  {
+    //RETARGET_PRINTF ("\nPort Match Interrupt fired");
+    // TODO: check if it is the pin we care about
+    if (false)
+      {
+        PWRC = 0; // wake BLE module
+        SFRPAGE = LEGACY_PAGE;
+        //EIE1 &= ~0x02; // disable Port Match interrupt
+      }
+    EIE1 &= ~0x02; // disable Port Match interrupt
+  }
+
+//-----------------------------------------------------------------------------
+// TIMER4_ISR
+//-----------------------------------------------------------------------------
+//
+// TIMER4 ISR Content goes here. Remember to clear flag bits:
+// TMR4CN0::TF4H (Timer # High Byte Overflow Flag)
+// TMR4CN0::TF4L (Timer # Low Byte Overflow Flag)
+//
+//-----------------------------------------------------------------------------
+SI_INTERRUPT (TIMER4_ISR, TIMER4_IRQn)
+  {
+
+  }
 

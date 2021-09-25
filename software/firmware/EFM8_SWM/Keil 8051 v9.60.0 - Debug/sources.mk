@@ -14,6 +14,5 @@ OBJS :=
 
 # Every subdirectory with source files must be described here
 SUBDIRS := \
-lib/bsp/efm8_retargetserial \
 src \
 

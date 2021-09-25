@@ -1,4 +1,4 @@
-C51 COMPILER V9.60.0.0   INTERRUPTS                                                        09/23/2021 14:52:06 PAGE 1   
+C51 COMPILER V9.60.0.0   INTERRUPTS                                                        09/24/2021 23:38:00 PAGE 1   
 
 
 C51 COMPILER V9.60.0.0, COMPILATION OF MODULE INTERRUPTS
@@ -23,178 +23,184 @@ line level    source
    8          
    9          // USER INCLUDES                        
   10          #include <SI_EFM8LB1_Register_Enums.h>
-  11          #include "retargetserial.h"
-  12          #include "vars.h"
-  13          
-  14          volatile int send_msg;
-  15          volatile int adc1;
-  16          volatile int adc2;
-  17          volatile int adc3;
-  18          volatile int adc4;
-  19          int multiplier;
-  20          
-  21          SI_SBIT(PWRC, SFR_P1, 2);                  // P1.2 PWRC
-  22          SI_SBIT(LED, SFR_P1, 0);// P1.0 LED
-  23          
-  24          //SI_SBIT(IDLE,PCON0,0);// set IDLE mode
-  25          //SI_SBIT(SNOOZE,PCON1,7);// set SNOOZE mode
-  26          
-  27          SI_SBIT (HALL, SFR_P0, 6);// port match pin
-  28          
-  29          //-----------------------------------------------------------------------------
-  30          // ADC0EOC_ISR
-  31          //-----------------------------------------------------------------------------
-  32          //
-  33          // ADC0EOC ISR Content goes here. Remember to clear flag bits:
-  34          // ADC0CN0::ADINT (Conversion Complete Interrupt Flag)
-  35          //
-  36          // This ISR averages 2048 samples then prints the result to the terminal.  The
-  37          // ISR is called after each ADC conversion which is triggered by Timer2.
-  38          //
-  39          //-----------------------------------------------------------------------------
-  40          SI_INTERRUPT(ADC0EOC_ISR, ADC0EOC_IRQn)
-  41            {
-  42   1          static uint32_t accumulator = 0;     // Accumulator for averaging
-  43   1          static uint16_t measurements = 2048;// Measurement counter
-  44   1          uint32_t result = 0;
-  45   1          uint32_t mV;// Measured voltage in mV
-  46   1          uint32_t uA;
-  47   1          int R1;
-  48   1          int R2;
-  49   1          //uint8_t SFRPAGE_save;
+  11          #include "vars.h"
+  12          
+  13          volatile int send_msg;
+  14          volatile uint32_t adc1;
+  15          volatile uint32_t adc2;
+  16          volatile uint32_t adc3;
+  17          volatile uint32_t adc4;
+  18          
+  19          
+  20          SI_SBIT(PWRC, SFR_P1, 2);                  // P1.2 PWRC
+  21          SI_SBIT(LED, SFR_P1, 0);// P1.0 LED
+  22          
+  23          //SI_SBIT(IDLE,PCON0,0);// set IDLE mode
+  24          //SI_SBIT(SNOOZE,PCON1,7);// set SNOOZE mode
+  25          
+  26          SI_SBIT (HALL, SFR_P0, 6);// port match pin
+  27          
+  28          //-----------------------------------------------------------------------------
+  29          // ADC0EOC_ISR
+  30          //-----------------------------------------------------------------------------
+  31          //
+  32          // ADC0EOC ISR Content goes here. Remember to clear flag bits:
+  33          // ADC0CN0::ADINT (Conversion Complete Interrupt Flag)
+  34          //
+  35          // This ISR averages 2048 samples then prints the result to the terminal.  The
+  36          // ISR is called after each ADC conversion which is triggered by Timer2.
+  37          //
+  38          //-----------------------------------------------------------------------------
+  39          SI_INTERRUPT(ADC0EOC_ISR, ADC0EOC_IRQn)
+  40            {
+  41   1          static uint32_t accumulator = 0;     // Accumulator for averaging
+  42   1          static uint16_t measurements = 2048;// Measurement counter
+  43   1          uint32_t result = 0;
+  44   1          uint32_t mV;// Measured voltage in mV
+  45   1          uint32_t uA;
+  46   1      
+  47   1          //uint8_t SFRPAGE_save;
+  48   1      
+  49   1          //LED=1; // turn on the LED
   50   1      
-C51 COMPILER V9.60.0.0   INTERRUPTS                                                        09/23/2021 14:52:06 PAGE 2   
+C51 COMPILER V9.60.0.0   INTERRUPTS                                                        09/24/2021 23:38:00 PAGE 2   
 
-  51   1          //LED=1; // turn on the LED
+  51   1          // Select a pin
   52   1      
-  53   1          // Select a pin
-  54   1      
-  55   1          switch(send_msg)
-  56   1            {
-  57   2              case 0:
-  58   2              ADC0MX = ADC0MX_ADC0MX__ADC0P13; // select ADC13- P1.7
-  59   2              break;
-  60   2              case 1:
-  61   2              ADC0MX = ADC0MX_ADC0MX__ADC0P12;
-  62   2              break;
-  63   2              case 2:
-  64   2              ADC0MX = ADC0MX_ADC0MX__ADC0P11;
-  65   2              break;
-  66   2              case 3:
-  67   2              ADC0MX = ADC0MX_ADC0MX__ADC0P10;
+  53   1          switch(send_msg)
+  54   1            {
+  55   2              case 0:
+  56   2              ADC0MX = ADC0MX_ADC0MX__ADC0P13; // select ADC13- P1.7
+  57   2              break;
+  58   2              case 1:
+  59   2              ADC0MX = ADC0MX_ADC0MX__ADC0P12;// select ADC12- P1.6
+  60   2              break;
+  61   2              case 2:
+  62   2              ADC0MX = ADC0MX_ADC0MX__ADC0P11;// select ADC11- P1.5
+  63   2              break;
+  64   2              case 3:
+  65   2              ADC0MX = ADC0MX_ADC0MX__ADC0P10;// select ADC10- P1.4
+  66   2              break;
+  67   2              default:
   68   2              break;
-  69   2              default:
-  70   2              break;
-  71   2            }
-  72   1      
-  73   1          accumulator += ADC0;
-  74   1          measurements--;
-  75   1      
-  76   1          if(measurements == 0)
-  77   1            {
-  78   2              measurements = 2048;
-  79   2              result = accumulator / 2048;
-  80   2              accumulator = 0;
-  81   2      
-  82   2              // The 14-bit ADC value is averaged across 2048 measurements.
-  83   2              // The measured voltage applied to P1.7 is then:
-  84   2              //
-  85   2              //                           Vref (mV)
-  86   2              //   measurement (mV) =   --------------- * result (bits)
-  87   2              //                       (2^14)-1 (bits)
+  69   2            }
+  70   1      
+  71   1          accumulator += ADC0;
+  72   1          measurements--;
+  73   1      
+  74   1          if(measurements == 0)
+  75   1            {
+  76   2              measurements = 2048;
+  77   2              result = accumulator / 2048;
+  78   2              accumulator = 0;
+  79   2      
+  80   2              // The 14-bit ADC value is averaged across 2048 measurements.
+  81   2              // The measured voltage applied to P1.7 is then:
+  82   2              //
+  83   2              //                           Vref (mV)
+  84   2              //   measurement (mV) =   --------------- * result (bits)
+  85   2              //                       (2^14)-1 (bits)
+  86   2      
+  87   2              mV = (result * 3300) / 16383;
   88   2      
-  89   2              mV = (result * 3300) / 16383;
-  90   2              R1 = 30;
-  91   2              R2 = 56;
-  92   2              // U4 is
-  93   2      #ifdef MINI
-  94   2                R1 = 10;
-  95   2      #endif
-  96   2      
-  97   2      #ifdef W_VER
-  98   2                multiplier = 200;
-  99   2      #elif H_VER
-                        multiplier = 100;
-              #elif F_VER
-                        multiplier = 50;
+  89   2      
+  90   2              switch(send_msg)
+  91   2                {
+  92   3                  case 0:
+  93   3                    uA = (uint32_t)((result * 2400) / (16383*scale/100) * 1000 / (MULTIPLIER*RESISTOR1/10));
+  94   3                    adc1 = uA;
+  95   3                    break;
+  96   3                  case 1:
+  97   3      #ifdef GUM
+                            uA = (result * 3277) / 16383 * 1000 / (200*RESISTOR1/10);
+                            adc2 = uA;
               #endif
- 104   2      
- 105   2              switch(send_msg)
- 106   2                {
- 107   3                  case 0:
- 108   3                  uA = (uint32_t)((result * 2400) / (16383*scale/100) * 1000 / (multiplier*R1/10));
- 109   3                  adc1 = uA;
+ 101   3      #ifdef MINI
+ 102   3                    adc2= (uint32_t)((result * 2400) / (16383*scale/100));// convert to mV so no decimals
+ 103   3      #endif
+ 104   3                    break;
+ 105   3                  case 2:
+ 106   3                    adc3 = mV;
+ 107   3      #ifdef MINI
+ 108   3                    adc3= (uint32_t)((result * 2400) / (16383*scale/100)); // convert to mV so no decimals
+ 109   3      #endif
  110   3                  break;
- 111   3                  case 1:
- 112   3                  uA = (result * 3277) / 16383 * 1000 / (200*R1/10);
- 113   3                  adc2 = uA;
-C51 COMPILER V9.60.0.0   INTERRUPTS                                                        09/23/2021 14:52:06 PAGE 3   
+ 111   3                  case 3:
+ 112   3                  adc4 = mV;
+ 113   3      #ifdef MINI
+C51 COMPILER V9.60.0.0   INTERRUPTS                                                        09/24/2021 23:38:00 PAGE 3   
 
- 114   3      #ifdef MINI
- 115   3                       adc2= mV;
- 116   3      #endif
- 117   3                  break;
- 118   3                  case 2:
- 119   3                  adc3 = mV;
- 120   3                  break;
- 121   3                  case 3:
- 122   3                  adc4 = mV;
- 123   3      #ifdef MINI
- 124   3                       // high voltage element 110k/10k
- 125   3      
- 126   3      #endif
- 127   3      
- 128   3                  break;
- 129   3                  default:
- 130   3                  break;
- 131   3                }
- 132   2              send_msg++; // increment count
- 133   2      
- 134   2              //SFRPAGE_save = SFRPAGE;
- 135   2              //SFRPAGE = LEGACY_PAGE;
- 136   2              //RETARGET_PRINTF ("\nP1.7 voltage: %ld mV\n", mV);
- 137   2              //SFRPAGE = SFRPAGE_save;
- 138   2              //LED = 0; // turn off the LED
- 139   2            }
- 140   1      
- 141   1          ADC0CN0_ADINT = 0;              // Clear ADC0 conv. complete flag
- 142   1        }
+ 114   3                       // high voltage element 110k/10k
+ 115   3                 // V_high * 10 / (110 + 10 ) = V_measured
+ 116   3                  adc4 = (uint32_t)(result*2400/(16383*scale/100) * 120/10 )*1000; // measured in mV
+ 117   3      #endif
+ 118   3      
+ 119   3                  break;
+ 120   3                  default:
+ 121   3                  break;
+ 122   3                }
+ 123   2              send_msg++; // increment count
+ 124   2      
+ 125   2              //SFRPAGE_save = SFRPAGE;
+ 126   2              //SFRPAGE = LEGACY_PAGE;
+ 127   2              //RETARGET_PRINTF ("\nP1.7 voltage: %ld mV\n", mV);
+ 128   2              //SFRPAGE = SFRPAGE_save;
+ 129   2              //LED = 0; // turn off the LED
+ 130   2            }
+ 131   1      
+ 132   1          ADC0CN0_ADINT = 0;              // Clear ADC0 conv. complete flag
+ 133   1        }
+ 134          
+ 135          //-----------------------------------------------------------------------------
+ 136          // PMATCH_ISR
+ 137          //-----------------------------------------------------------------------------
+ 138          //
+ 139          // PMATCH ISR Content goes here. Remember to clear flag bits:
+ 140          
+ 141          //
+ 142          //-----------------------------------------------------------------------------
  143          
- 144          //-----------------------------------------------------------------------------
- 145          // PMATCH_ISR
- 146          //-----------------------------------------------------------------------------
- 147          //
- 148          // PMATCH ISR Content goes here. Remember to clear flag bits:
- 149          
- 150          //
- 151          //-----------------------------------------------------------------------------
- 152          
- 153           SI_INTERRUPT (PMATCH_ISR, PMATCH_IRQn)
- 154           {
- 155   1       //RETARGET_PRINTF ("\nPort Match Interrupt fired");
- 156   1       // TODO: check if it is the pin we care about
- 157   1         if (false){
- 158   2         PWRC = 0; // wake BLE module
- 159   2         SFRPAGE = LEGACY_PAGE;
- 160   2         //EIE1 &= ~0x02; // disable Port Match interrupt
- 161   2         }
- 162   1       EIE1 &= ~0x02; // disable Port Match interrupt
- 163   1       }
- 164          
-*** WARNING C294 IN LINE 158 OF C:\Users\Ben\Documents\Git\wireless_measurements\software\firmware\EFM8_SWM\src\Interrup
+ 144          SI_INTERRUPT (PMATCH_ISR, PMATCH_IRQn)
+ 145            {
+ 146   1          //RETARGET_PRINTF ("\nPort Match Interrupt fired");
+ 147   1          // TODO: check if it is the pin we care about
+ 148   1          if (false)
+ 149   1            {
+ 150   2              PWRC = 0; // wake BLE module
+ 151   2              SFRPAGE = LEGACY_PAGE;
+ 152   2              //EIE1 &= ~0x02; // disable Port Match interrupt
+ 153   2            }
+ 154   1          EIE1 &= ~0x02; // disable Port Match interrupt
+ 155   1        }
+ 156          
+ 157          //-----------------------------------------------------------------------------
+ 158          // TIMER4_ISR
+ 159          //-----------------------------------------------------------------------------
+ 160          //
+ 161          // TIMER4 ISR Content goes here. Remember to clear flag bits:
+ 162          // TMR4CN0::TF4H (Timer # High Byte Overflow Flag)
+ 163          // TMR4CN0::TF4L (Timer # Low Byte Overflow Flag)
+ 164          //
+ 165          //-----------------------------------------------------------------------------
+ 166          SI_INTERRUPT (TIMER4_ISR, TIMER4_IRQn)
+ 167            {
+ 168   1      
+ 169   1        }
+ 170          
+*** WARNING C294 IN LINE 150 OF C:\Users\Ben\Documents\Git\wireless_measurements\software\firmware\EFM8_SWM\src\Interrup
              -ts.c: unreachable code
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =    588    ----
+   CODE SIZE        =    679    ----
+C51 COMPILER V9.60.0.0   INTERRUPTS                                                        09/24/2021 23:38:00 PAGE 4   
+
    CONSTANT SIZE    =   ----    ----
    XDATA SIZE       =   ----    ----
    PDATA SIZE       =   ----    ----
-   DATA SIZE        =     34    ----
+   DATA SIZE        =     36    ----
    IDATA SIZE       =   ----    ----
    BIT SIZE         =   ----    ----
-C51 COMPILER V9.60.0.0   INTERRUPTS                                                        09/23/2021 14:52:06 PAGE 4   
-
    EDATA SIZE       =   ----    ----
    HDATA SIZE       =   ----    ----
    XDATA CONST SIZE =   ----    ----

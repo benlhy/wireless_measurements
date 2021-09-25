@@ -23,6 +23,8 @@
     <property object="INTERRUPT_0" propertyId="interrupt.extendedinterruptenable1.enableadc0conversioncompleteinterrupt" value="Enabled"/>
     <property object="INTERRUPT_0" propertyId="interrupt.extendedinterruptenable1.enableportmatchinterrupts" value="Enabled"/>
     <property object="INTERRUPT_0" propertyId="interrupt.interruptenable.enableallinterrupts" value="Enabled"/>
+    <property object="LFOSC_0" propertyId="ABPeripheral.included" value="true"/>
+    <property object="LFOSC_0" propertyId="lfosc.lowfrequencyoscillatorcontrol.enableinternallfoscillator" value="Enabled"/>
     <property object="P0.0" propertyId="ports.settings.inputmode" value="Analog"/>
     <property object="P0.0" propertyId="ports.settings.iomode" value="Analog I/O"/>
     <property object="P0.0" propertyId="ports.settings.skip" value="Skipped"/>
@@ -79,7 +81,31 @@
     <property object="TIMER16_2" propertyId="timer16.reloadhighbyte.reloadhighbyte" value="255"/>
     <property object="TIMER16_2" propertyId="timer16.reloadlowbyte.reloadlowbyte" value="52"/>
     <property object="TIMER16_3" propertyId="ABPeripheral.included" value="true"/>
+    <property object="TIMER16_3" propertyId="timer16.control.clocksource" value="LFOSC/8"/>
+    <property object="TIMER16_3" propertyId="timer16.control.runcontrol" value="Start"/>
+    <property object="TIMER16_3" propertyId="timer16.control.selectexternalclock" value="LFOSC / 8"/>
+    <property object="TIMER16_3" propertyId="timer16.control.timerrunningstate" value="Timer is Running"/>
+    <property object="TIMER16_3" propertyId="timer16.highbyte.highbyte" value="216"/>
+    <property object="TIMER16_3" propertyId="timer16.initandreloadvalue.targetoverflowfrequency" value="1"/>
+    <property object="TIMER16_3" propertyId="timer16.initandreloadvalue.timerinitvalue" value="55536"/>
+    <property object="TIMER16_3" propertyId="timer16.initandreloadvalue.timerreloadvalue" value="55536"/>
+    <property object="TIMER16_3" propertyId="timer16.lowbyte.lowbyte" value="240"/>
+    <property object="TIMER16_3" propertyId="timer16.reloadhighbyte.reloadhighbyte" value="216"/>
+    <property object="TIMER16_3" propertyId="timer16.reloadlowbyte.reloadlowbyte" value="240"/>
+    <property object="TIMER16_3" propertyId="timer16.timer3control1.selectforcereload" value="None"/>
     <property object="TIMER16_4" propertyId="ABPeripheral.included" value="true"/>
+    <property object="TIMER16_4" propertyId="timer16.control.clocksource" value="Timer 3 Overflows"/>
+    <property object="TIMER16_4" propertyId="timer16.control.runcontrol" value="Start"/>
+    <property object="TIMER16_4" propertyId="timer16.control.selectexternalclock" value="Timer 3 Overflows"/>
+    <property object="TIMER16_4" propertyId="timer16.control.timerrunningstate" value="Timer is Running"/>
+    <property object="TIMER16_4" propertyId="timer16.highbyte.highbyte" value="255"/>
+    <property object="TIMER16_4" propertyId="timer16.initandreloadvalue.targetoverflowfrequency" value="0.5"/>
+    <property object="TIMER16_4" propertyId="timer16.initandreloadvalue.timerinitvalue" value="65534"/>
+    <property object="TIMER16_4" propertyId="timer16.initandreloadvalue.timerreloadvalue" value="65534"/>
+    <property object="TIMER16_4" propertyId="timer16.lowbyte.lowbyte" value="254"/>
+    <property object="TIMER16_4" propertyId="timer16.reloadhighbyte.reloadhighbyte" value="255"/>
+    <property object="TIMER16_4" propertyId="timer16.reloadlowbyte.reloadlowbyte" value="254"/>
+    <property object="TIMER16_4" propertyId="timer16.timer4control1.selectforcereload" value="None"/>
     <property object="TIMER16_5" propertyId="ABPeripheral.included" value="true"/>
     <property object="TIMER_SETUP_0" propertyId="ABPeripheral.included" value="true"/>
     <property object="TIMER_SETUP_0" propertyId="timer_setup.timer01control.timer1runcontrol" value="Start"/>
