@@ -14,7 +14,7 @@ Comment3 ""
 Comment4 ""
 $EndDescr
 $Comp
-L wireless_measurement_ard-rescue:JDY-08-jdy-08 U2
+L wireless_measurement_ard-rescue:JDY-08-jdy-08-wireless_measurement_ard-rescue U2
 U 1 1 60F6CD69
 P 3150 2100
 F 0 "U2" H 3150 3187 60  0000 C CNN
@@ -25,7 +25,7 @@ F 3 "https://github.com/kichMan/JDY-08" H 5000 2000 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L wireless_measurement_ard-rescue:MCP16415-gen_lib U3
+L wireless_measurement_ard-rescue:MCP16415-gen_lib-wireless_measurement_ard-rescue U3
 U 1 1 60F711CF
 P 9350 4500
 F 0 "U3" H 9350 5015 50  0000 C CNN
@@ -36,18 +36,7 @@ F 3 "https://ww1.microchip.com/downloads/en/DeviceDoc/MCP1641X-Family-Data-Sheet
 	1    0    0    -1  
 $EndComp
 $Comp
-L wireless_measurement_ard-rescue:MAX9938-gen_lib U4
-U 1 1 60F745CE
-P 8900 1750
-F 0 "U4" H 8900 2065 50  0000 C CNN
-F 1 "MAX9938" H 8900 1974 50  0000 C CNN
-F 2 "Package_TO_SOT_SMD:SOT-23-5_HandSoldering" H 8900 1450 50  0001 C CNN
-F 3 "http://www.farnell.com/datasheets/2345095.pdf" H 8900 1750 50  0001 C CNN
-	1    8900 1750
-	1    0    0    -1  
-$EndComp
-$Comp
-L wireless_measurement_ard-rescue:MAX9938-gen_lib U5
+L wireless_measurement_ard-rescue:MAX9938-gen_lib-wireless_measurement_ard-rescue U5
 U 1 1 60F75707
 P 8900 2300
 F 0 "U5" H 8900 2615 50  0000 C CNN
@@ -55,17 +44,6 @@ F 1 "MAX9938" H 8900 2524 50  0000 C CNN
 F 2 "Package_TO_SOT_SMD:SOT-23-5_HandSoldering" H 8900 2000 50  0001 C CNN
 F 3 "http://www.farnell.com/datasheets/2345095.pdf" H 8900 2300 50  0001 C CNN
 	1    8900 2300
-	1    0    0    -1  
-$EndComp
-$Comp
-L power:GND #PWR0101
-U 1 1 60F7603A
-P 8550 1850
-F 0 "#PWR0101" H 8550 1600 50  0001 C CNN
-F 1 "GND" H 8555 1677 50  0000 C CNN
-F 2 "" H 8550 1850 50  0001 C CNN
-F 3 "" H 8550 1850 50  0001 C CNN
-	1    8550 1850
 	1    0    0    -1  
 $EndComp
 $Comp
@@ -81,20 +59,8 @@ F 3 "" H 8550 2400 50  0001 C CNN
 $EndComp
 Wire Wire Line
 	8550 2200 8400 2200
-Wire Wire Line
-	8550 1650 8400 1650
-Text GLabel 8400 1650 0    50   Input ~ 0
-A0
 Text GLabel 8400 2200 0    50   Input ~ 0
 A1
-Wire Wire Line
-	9250 1650 9350 1650
-Wire Wire Line
-	9350 1650 9350 1550
-Wire Wire Line
-	9250 1750 9350 1750
-Wire Wire Line
-	9350 1750 9350 1850
 Wire Wire Line
 	9250 2200 9250 2100
 Wire Wire Line
@@ -120,35 +86,10 @@ F 3 "~" H 9450 2250 50  0001 C CNN
 	1    9450 2250
 	1    0    0    -1  
 $EndComp
-Connection ~ 9450 1550
-Connection ~ 9450 1850
-Wire Wire Line
-	9450 1850 9650 1850
-Wire Wire Line
-	9350 1850 9450 1850
-Wire Wire Line
-	9450 1550 9650 1550
-Wire Wire Line
-	9350 1550 9450 1550
-$Comp
-L Device:R R2
-U 1 1 60F77736
-P 9450 1700
-F 0 "R2" H 9520 1746 50  0000 L CNN
-F 1 "5R3" H 9520 1655 50  0000 L CNN
-F 2 "Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder" V 9380 1700 50  0001 C CNN
-F 3 "~" H 9450 1700 50  0001 C CNN
-	1    9450 1700
-	1    0    0    -1  
-$EndComp
 Wire Wire Line
 	9650 2100 9650 2200
 Wire Wire Line
 	9650 2300 9650 2400
-Wire Wire Line
-	9650 1850 9650 1750
-Wire Wire Line
-	9650 1650 9650 1550
 Text Notes 8950 1150 0    50   ~ 0
 uA current sensing
 $Comp
@@ -220,8 +161,6 @@ Wire Wire Line
 	9150 3300 9300 3300
 Wire Wire Line
 	9150 3500 9300 3500
-Text GLabel 9800 1650 2    50   Input ~ 0
-C1_IN
 Text GLabel 9800 2300 2    50   Input ~ 0
 C2_OUT
 Text GLabel 9800 2200 2    50   Input ~ 0
@@ -230,15 +169,9 @@ Wire Wire Line
 	9650 2200 9800 2200
 Wire Wire Line
 	9650 2300 9800 2300
-Wire Wire Line
-	9650 1750 9800 1750
-Wire Wire Line
-	9650 1650 9800 1650
-Text GLabel 9300 2800 0    50   Input ~ 0
-C1_IN
-Text GLabel 9800 1750 2    50   Input ~ 0
-C1_OUT
 Text GLabel 9300 2900 0    50   Input ~ 0
+C1_IN
+Text GLabel 9300 2800 0    50   Input ~ 0
 C1_OUT
 Text GLabel 9300 3000 0    50   Input ~ 0
 C2_IN
@@ -479,9 +412,6 @@ F 3 "" H 7450 4400 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	8550 1750 8550 1850
-Connection ~ 8550 1850
-Wire Wire Line
 	8550 2300 8550 2400
 Connection ~ 8550 2400
 Text GLabel 3650 5500 2    50   Input ~ 0
@@ -504,7 +434,7 @@ F 3 "" H 1950 4300 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L wireless_measurement_ard-rescue:EFM8LB1x-QFP32-gen_lib U6
+L wireless_measurement_ard-rescue:EFM8LB1x-QFP32-gen_lib-wireless_measurement_ard-rescue U6
 U 1 1 6100BE6A
 P 3150 4900
 F 0 "U6" H 3150 5965 50  0000 C CNN
@@ -572,12 +502,12 @@ ARD_TX
 $Comp
 L power:GND #PWR0120
 U 1 1 61018C99
-P 2650 4200
-F 0 "#PWR0120" H 2650 3950 50  0001 C CNN
-F 1 "GND" H 2655 4027 50  0000 C CNN
-F 2 "" H 2650 4200 50  0001 C CNN
-F 3 "" H 2650 4200 50  0001 C CNN
-	1    2650 4200
+P 2300 4200
+F 0 "#PWR0120" H 2300 3950 50  0001 C CNN
+F 1 "GND" H 2305 4027 50  0000 C CNN
+F 2 "" H 2300 4200 50  0001 C CNN
+F 3 "" H 2300 4200 50  0001 C CNN
+	1    2300 4200
 	0    1    1    0   
 $EndComp
 Text GLabel 3850 1300 2    50   Input ~ 0
@@ -610,7 +540,7 @@ F 3 "" H 7450 3500 50  0001 C CNN
 $EndComp
 Text GLabel 7450 3400 0    50   Input ~ 0
 C2D
-Text GLabel 7450 3300 0    50   Input ~ 0
+Text GLabel 7150 3300 0    50   Input ~ 0
 C2CK
 Wire Wire Line
 	8550 4450 8950 4450
@@ -654,7 +584,7 @@ F 3 "~" H 5900 2350 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L MCU_SiliconLabs:EFM8LB1 U1
+L wireless_measurement_ard-rescue:EFM8LB1-MCU_SiliconLabs U1
 U 1 1 611E9E7B
 P 5100 5900
 F 0 "U1" H 5100 6915 50  0000 C CNN
@@ -756,4 +686,210 @@ Text GLabel 5700 5850 2    50   Input ~ 0
 LED
 Text GLabel 5700 6550 2    50   Input ~ 0
 A0
+$Comp
+L Device:C C7
+U 1 1 614EE1A5
+P 2350 3950
+F 0 "C7" H 2100 4000 50  0000 L CNN
+F 1 "4.7uF" H 2050 3900 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0603_1608Metric_Pad1.08x0.95mm_HandSolder" H 2388 3800 50  0001 C CNN
+F 3 "~" H 2350 3950 50  0001 C CNN
+	1    2350 3950
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	2350 4100 2350 4200
+Wire Wire Line
+	2350 4200 2300 4200
+Wire Wire Line
+	2650 4200 2350 4200
+Connection ~ 2350 4200
+$Comp
+L Device:R R6
+U 1 1 614F21C7
+P 7300 3150
+F 0 "R6" V 7400 3100 50  0000 L CNN
+F 1 "1k" V 7200 3100 50  0000 L CNN
+F 2 "Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder" V 7230 3150 50  0001 C CNN
+F 3 "~" H 7300 3150 50  0001 C CNN
+	1    7300 3150
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:+3.3V #PWR0111
+U 1 1 614F2925
+P 7300 3000
+F 0 "#PWR0111" H 7300 2850 50  0001 C CNN
+F 1 "+3.3V" H 7315 3173 50  0000 C CNN
+F 2 "" H 7300 3000 50  0001 C CNN
+F 3 "" H 7300 3000 50  0001 C CNN
+	1    7300 3000
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	7150 3300 7300 3300
+Connection ~ 7300 3300
+Wire Wire Line
+	7300 3300 7450 3300
+Text GLabel 3650 4900 2    50   Input ~ 0
+P1.1
+Text GLabel 3650 4700 2    50   Input ~ 0
+P0.7
+Text GLabel 3650 4600 2    50   Input ~ 0
+P0.6
+Text GLabel 3650 4300 2    50   Input ~ 0
+P0.3
+Text GLabel 3650 4100 2    50   Input ~ 0
+P0.1
+Text GLabel 3650 4200 2    50   Input ~ 0
+P0.2
+Text GLabel 3650 5600 2    50   Input ~ 0
+P2.0
+Text GLabel 2650 5600 0    50   Input ~ 0
+P2.1
+Text GLabel 2650 5500 0    50   Input ~ 0
+P2.2
+Text GLabel 2650 5400 0    50   Input ~ 0
+P2.3
+Text GLabel 2650 5300 0    50   Input ~ 0
+P2.4
+Text GLabel 2650 5200 0    50   Input ~ 0
+P2.5
+Text GLabel 2650 5100 0    50   Input ~ 0
+P2.6
+Text GLabel 2650 5000 0    50   Input ~ 0
+P3.0
+Text GLabel 2650 4900 0    50   Input ~ 0
+P3.1
+Text GLabel 2650 4800 0    50   Input ~ 0
+P3.2
+Text GLabel 2650 4700 0    50   Input ~ 0
+P3.3
+Text GLabel 2650 4100 0    50   Input ~ 0
+P0.0
+Text GLabel 2350 3800 0    50   Input ~ 0
+P0.0
+Text GLabel 4500 6650 0    50   Input ~ 0
+P2.1
+Text GLabel 4500 6550 0    50   Input ~ 0
+P2.2
+Text GLabel 4500 6450 0    50   Input ~ 0
+P2.3
+Text GLabel 4500 6350 0    50   Input ~ 0
+P2.4
+Text GLabel 4500 6250 0    50   Input ~ 0
+P2.5
+Text GLabel 4500 6150 0    50   Input ~ 0
+P2.6
+Text GLabel 4500 6050 0    50   Input ~ 0
+P3.0
+Text GLabel 4500 5950 0    50   Input ~ 0
+P3.1
+Text GLabel 4500 5850 0    50   Input ~ 0
+P3.2
+Text GLabel 4500 5750 0    50   Input ~ 0
+P3.3
+Text GLabel 5700 5650 2    50   Input ~ 0
+P0.6
+Text GLabel 5700 5750 2    50   Input ~ 0
+P0.7
+Text GLabel 5700 5950 2    50   Input ~ 0
+P1.1
+Text GLabel 5700 6650 2    50   Input ~ 0
+P2.0
+Text GLabel 5700 5350 2    50   Input ~ 0
+P0.3
+Text GLabel 5700 5150 2    50   Input ~ 0
+P0.1
+Text GLabel 5700 5250 2    50   Input ~ 0
+P0.2
+Text GLabel 4500 5150 0    50   Input ~ 0
+P0.0
+$Comp
+L ben_common:MAX44284 U4
+U 1 1 61508E2E
+P 8800 1650
+F 0 "U4" H 8800 1975 50  0000 C CNN
+F 1 "MAX44284" H 8800 1884 50  0000 C CNN
+F 2 "Package_TO_SOT_SMD:SOT-23-6_Handsoldering" H 8800 1450 50  0001 C CNN
+F 3 "https://datasheets.maximintegrated.com/en/ds/MAX44284.pdf" H 8800 1450 50  0001 C CNN
+	1    8800 1650
+	1    0    0    -1  
+$EndComp
+Text GLabel 9150 1550 2    50   Input ~ 0
+A0
+$Comp
+L power:GND #PWR0101
+U 1 1 61509478
+P 8300 1750
+F 0 "#PWR0101" H 8300 1500 50  0001 C CNN
+F 1 "GND" H 8305 1577 50  0000 C CNN
+F 2 "" H 8300 1750 50  0001 C CNN
+F 3 "" H 8300 1750 50  0001 C CNN
+	1    8300 1750
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	8450 1750 8300 1750
+$Comp
+L power:+3.3V #PWR0122
+U 1 1 6150FCA8
+P 8200 1650
+F 0 "#PWR0122" H 8200 1500 50  0001 C CNN
+F 1 "+3.3V" H 8215 1823 50  0000 C CNN
+F 2 "" H 8200 1650 50  0001 C CNN
+F 3 "" H 8200 1650 50  0001 C CNN
+	1    8200 1650
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	8200 1650 8400 1650
+$Comp
+L Device:R R2
+U 1 1 615123F2
+P 9450 1700
+F 0 "R2" H 9520 1746 50  0000 L CNN
+F 1 "1R" H 9520 1655 50  0000 L CNN
+F 2 "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder" V 9380 1700 50  0001 C CNN
+F 3 "~" H 9450 1700 50  0001 C CNN
+	1    9450 1700
+	1    0    0    -1  
+$EndComp
+Text GLabel 9800 1650 2    50   Input ~ 0
+C1_OUT
+Wire Wire Line
+	9650 1650 9800 1650
+Wire Wire Line
+	9650 1750 9800 1750
+Text GLabel 9800 1750 2    50   Input ~ 0
+C1_IN
+Wire Wire Line
+	9650 1650 9650 1550
+Wire Wire Line
+	9650 1850 9650 1750
+Wire Wire Line
+	9650 1550 9450 1550
+Wire Wire Line
+	9450 1550 9350 1550
+Wire Wire Line
+	9350 1550 9350 1650
+Wire Wire Line
+	9350 1650 9150 1650
+Connection ~ 9450 1550
+Wire Wire Line
+	9150 1750 9350 1750
+Wire Wire Line
+	9350 1750 9350 1850
+Wire Wire Line
+	9350 1850 9450 1850
+Connection ~ 9450 1850
+Wire Wire Line
+	9450 1850 9650 1850
+Wire Wire Line
+	8450 1550 8400 1550
+Wire Wire Line
+	8400 1550 8400 1650
+Connection ~ 8400 1650
+Wire Wire Line
+	8400 1650 8450 1650
 $EndSCHEMATC

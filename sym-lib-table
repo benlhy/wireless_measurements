@@ -1,0 +1,3 @@
+(sym_lib_table
+  (lib (name wireless_measurement_ard-rescue)(type Legacy)(uri ${KIPRJMOD}/wireless_measurement_ard-rescue.lib)(options "")(descr ""))
+)

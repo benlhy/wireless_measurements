@@ -153,11 +153,93 @@ X ~ 2 0 -150 50 U 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
-# MCU_SiliconLabs_EFM8LB1
+# Mechanical_MountingHole_Pad
 #
-DEF MCU_SiliconLabs_EFM8LB1 U 0 40 Y Y 1 F N
+DEF Mechanical_MountingHole_Pad H 0 40 N N 1 F N
+F0 "H" 0 250 50 H V C CNN
+F1 "Mechanical_MountingHole_Pad" 0 175 50 H V C CNN
+F2 "" 0 0 50 H I C CNN
+F3 "" 0 0 50 H I C CNN
+$FPLIST
+ MountingHole*Pad*
+$ENDFPLIST
+DRAW
+C 0 50 50 0 1 50 N
+X 1 1 0 -100 100 U 50 50 1 1 I
+ENDDRAW
+ENDDEF
+#
+# Switch_SW_SPDT
+#
+DEF Switch_SW_SPDT SW 0 0 Y N 1 F N
+F0 "SW" 0 170 50 H V C CNN
+F1 "Switch_SW_SPDT" 0 -200 50 H V C CNN
+F2 "" 0 0 50 H I C CNN
+F3 "" 0 0 50 H I C CNN
+DRAW
+C -80 0 20 0 0 0 N
+C 80 -100 20 0 0 0 N
+C 80 100 20 0 1 0 N
+P 2 0 1 0 -60 10 65 90 N
+X A 1 200 100 100 L 50 50 1 1 P
+X B 2 -200 0 100 R 50 50 1 1 P
+X C 3 200 -100 100 L 50 50 1 1 P
+ENDDRAW
+ENDDEF
+#
+# ben_common_MAX44284
+#
+DEF ben_common_MAX44284 U 0 40 Y Y 1 F N
+F0 "U" 0 -200 50 H V C CNN
+F1 "ben_common_MAX44284" 0 200 50 H V C CNN
+F2 "Package_TO_SOT_SMD:SOT-23-6_Handsoldering" 0 -200 50 H I C CNN
+F3 "" 0 -200 50 H I C CNN
+DRAW
+S -250 150 250 -150 1 1 0 f
+S 150 100 150 100 1 1 0 N
+X VDD 1 -350 0 100 R 50 50 1 1 I
+X GND 2 -350 -100 100 R 50 50 1 1 I
+X RS+ 3 350 -100 100 L 50 50 1 1 I
+X RS- 4 350 0 100 L 50 50 1 1 I
+X OUT 5 350 100 100 L 50 50 1 1 O
+X !SHDN 6 -350 100 100 R 50 50 1 1 I
+ENDDRAW
+ENDDEF
+#
+# power_+3.3V
+#
+DEF power_+3.3V #PWR 0 0 Y Y 1 F P
+F0 "#PWR" 0 -150 50 H I C CNN
+F1 "power_+3.3V" 0 140 50 H V C CNN
+F2 "" 0 0 50 H I C CNN
+F3 "" 0 0 50 H I C CNN
+ALIAS +3.3V
+DRAW
+P 2 0 1 0 -30 50 0 100 N
+P 2 0 1 0 0 0 0 100 N
+P 2 0 1 0 0 100 30 50 N
+X +3V3 1 0 0 0 U 50 50 1 1 W N
+ENDDRAW
+ENDDEF
+#
+# power_GND
+#
+DEF power_GND #PWR 0 0 Y Y 1 F P
+F0 "#PWR" 0 -250 50 H I C CNN
+F1 "power_GND" 0 -150 50 H V C CNN
+F2 "" 0 0 50 H I C CNN
+F3 "" 0 0 50 H I C CNN
+DRAW
+P 6 0 1 0 0 0 0 -50 50 -50 0 -100 -50 -50 0 -50 N
+X GND 1 0 0 0 D 50 50 1 1 W N
+ENDDRAW
+ENDDEF
+#
+# wireless_measurement_ard-rescue_EFM8LB1-MCU_SiliconLabs
+#
+DEF wireless_measurement_ard-rescue_EFM8LB1-MCU_SiliconLabs U 0 40 Y Y 1 F N
 F0 "U" 0 -500 50 H V C CNN
-F1 "MCU_SiliconLabs_EFM8LB1" 0 900 50 H V C CNN
+F1 "wireless_measurement_ard-rescue_EFM8LB1-MCU_SiliconLabs" 0 900 50 H V C CNN
 F2 "Package_DFN_QFN:QFN-32-1EP_4x4mm_P0.4mm_EP2.9x2.9mm" 50 200 50 H I C CNN
 F3 "" 50 200 50 H I C CNN
 DRAW
@@ -198,74 +280,11 @@ X P3.1 9 -600 -50 100 R 50 50 1 1 I
 ENDDRAW
 ENDDEF
 #
-# Mechanical_MountingHole_Pad
+# wireless_measurement_ard-rescue_EFM8LB1x-QFP32-gen_lib-wireless_measurement_ard-rescue
 #
-DEF Mechanical_MountingHole_Pad H 0 40 N N 1 F N
-F0 "H" 0 250 50 H V C CNN
-F1 "Mechanical_MountingHole_Pad" 0 175 50 H V C CNN
-F2 "" 0 0 50 H I C CNN
-F3 "" 0 0 50 H I C CNN
-$FPLIST
- MountingHole*Pad*
-$ENDFPLIST
-DRAW
-C 0 50 50 0 1 50 N
-X 1 1 0 -100 100 U 50 50 1 1 I
-ENDDRAW
-ENDDEF
-#
-# Switch_SW_SPDT
-#
-DEF Switch_SW_SPDT SW 0 0 Y N 1 F N
-F0 "SW" 0 170 50 H V C CNN
-F1 "Switch_SW_SPDT" 0 -200 50 H V C CNN
-F2 "" 0 0 50 H I C CNN
-F3 "" 0 0 50 H I C CNN
-DRAW
-C -80 0 20 0 0 0 N
-C 80 -100 20 0 0 0 N
-C 80 100 20 0 1 0 N
-P 2 0 1 0 -60 10 65 90 N
-X A 1 200 100 100 L 50 50 1 1 P
-X B 2 -200 0 100 R 50 50 1 1 P
-X C 3 200 -100 100 L 50 50 1 1 P
-ENDDRAW
-ENDDEF
-#
-# power_+3.3V
-#
-DEF power_+3.3V #PWR 0 0 Y Y 1 F P
-F0 "#PWR" 0 -150 50 H I C CNN
-F1 "power_+3.3V" 0 140 50 H V C CNN
-F2 "" 0 0 50 H I C CNN
-F3 "" 0 0 50 H I C CNN
-ALIAS +3.3V
-DRAW
-P 2 0 1 0 -30 50 0 100 N
-P 2 0 1 0 0 0 0 100 N
-P 2 0 1 0 0 100 30 50 N
-X +3V3 1 0 0 0 U 50 50 1 1 W N
-ENDDRAW
-ENDDEF
-#
-# power_GND
-#
-DEF power_GND #PWR 0 0 Y Y 1 F P
-F0 "#PWR" 0 -250 50 H I C CNN
-F1 "power_GND" 0 -150 50 H V C CNN
-F2 "" 0 0 50 H I C CNN
-F3 "" 0 0 50 H I C CNN
-DRAW
-P 6 0 1 0 0 0 0 -50 50 -50 0 -100 -50 -50 0 -50 N
-X GND 1 0 0 0 D 50 50 1 1 W N
-ENDDRAW
-ENDDEF
-#
-# wireless_measurement_ard-rescue_EFM8LB1x-QFP32-gen_lib
-#
-DEF wireless_measurement_ard-rescue_EFM8LB1x-QFP32-gen_lib U 0 40 Y Y 1 F N
+DEF wireless_measurement_ard-rescue_EFM8LB1x-QFP32-gen_lib-wireless_measurement_ard-rescue U 0 40 Y Y 1 F N
 F0 "U" 0 950 50 H V C CNN
-F1 "wireless_measurement_ard-rescue_EFM8LB1x-QFP32-gen_lib" 0 -900 50 H V C CNN
+F1 "wireless_measurement_ard-rescue_EFM8LB1x-QFP32-gen_lib-wireless_measurement_ard-rescue" 0 -900 50 H V C CNN
 F2 "Package_QFP:LQFP-32_7x7mm_P0.8mm" 0 -250 50 H I C CNN
 F3 "" 0 -250 50 H I C CNN
 DRAW
@@ -305,11 +324,11 @@ X P3.1 9 -500 0 100 R 50 50 1 1 I
 ENDDRAW
 ENDDEF
 #
-# wireless_measurement_ard-rescue_JDY-08-jdy-08
+# wireless_measurement_ard-rescue_JDY-08-jdy-08-wireless_measurement_ard-rescue
 #
-DEF wireless_measurement_ard-rescue_JDY-08-jdy-08 U 0 40 Y Y 1 F N
+DEF wireless_measurement_ard-rescue_JDY-08-jdy-08-wireless_measurement_ard-rescue U 0 40 Y Y 1 F N
 F0 "U" 0 1000 60 H V C CNN
-F1 "wireless_measurement_ard-rescue_JDY-08-jdy-08" 0 -950 60 H V C CNN
+F1 "wireless_measurement_ard-rescue_JDY-08-jdy-08-wireless_measurement_ard-rescue" 0 -950 60 H V C CNN
 F2 "" 1850 -100 60 H I C CNN
 F3 "" 1850 -100 60 H I C CNN
 $FPLIST
@@ -354,11 +373,11 @@ X P13/IO2 9 700 600 200 L 50 50 1 1 O
 ENDDRAW
 ENDDEF
 #
-# wireless_measurement_ard-rescue_MAX9938-gen_lib
+# wireless_measurement_ard-rescue_MAX9938-gen_lib-wireless_measurement_ard-rescue
 #
-DEF wireless_measurement_ard-rescue_MAX9938-gen_lib U 0 40 Y Y 1 F N
+DEF wireless_measurement_ard-rescue_MAX9938-gen_lib-wireless_measurement_ard-rescue U 0 40 Y Y 1 F N
 F0 "U" 0 200 50 H V C CNN
-F1 "wireless_measurement_ard-rescue_MAX9938-gen_lib" 0 -200 50 H V C CNN
+F1 "wireless_measurement_ard-rescue_MAX9938-gen_lib-wireless_measurement_ard-rescue" 0 -200 50 H V C CNN
 F2 "Package_TO_SOT_SMD:SOT-23-5_HandSoldering" 100 -300 50 H I C CNN
 F3 "" 0 50 50 H I C CNN
 DRAW
@@ -372,11 +391,11 @@ X RS+ 5 350 100 100 L 50 50 1 1 I
 ENDDRAW
 ENDDEF
 #
-# wireless_measurement_ard-rescue_MCP16415-gen_lib
+# wireless_measurement_ard-rescue_MCP16415-gen_lib-wireless_measurement_ard-rescue
 #
-DEF wireless_measurement_ard-rescue_MCP16415-gen_lib U 0 40 Y Y 1 F N
+DEF wireless_measurement_ard-rescue_MCP16415-gen_lib-wireless_measurement_ard-rescue U 0 40 Y Y 1 F N
 F0 "U" 0 400 50 H V C CNN
-F1 "wireless_measurement_ard-rescue_MCP16415-gen_lib" 0 -350 50 H V C CNN
+F1 "wireless_measurement_ard-rescue_MCP16415-gen_lib-wireless_measurement_ard-rescue" 0 -350 50 H V C CNN
 F2 "Package_SO:MSOP-10_3x3mm_P0.5mm" 50 -450 50 H I C CNN
 F3 "" 0 0 50 H I C CNN
 DRAW
