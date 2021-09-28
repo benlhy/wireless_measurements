@@ -478,7 +478,7 @@ BATT
 Text GLabel 10300 3450 0    50   Input ~ 0
 VIN
 $Comp
-L MCU_SiliconLabs:EFM8LB1 U1
+L wireless_measurement_ard-rescue:EFM8LB1-MCU_SiliconLabs U1
 U 1 1 611E9E7B
 P 5850 2000
 F 0 "U1" H 5850 3015 50  0000 C CNN
@@ -700,4 +700,26 @@ Text GLabel 6450 1850 2    50   Input ~ 0
 A4
 Text GLabel 9300 3300 0    50   Input ~ 0
 A4
+$Comp
+L Device:C C7
+U 1 1 6152B86D
+P 5250 1100
+F 0 "C7" H 5000 1150 50  0000 L CNN
+F 1 "4.7uF" H 4950 1050 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0603_1608Metric_Pad1.08x0.95mm_HandSolder" H 5288 950 50  0001 C CNN
+F 3 "~" H 5250 1100 50  0001 C CNN
+	1    5250 1100
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:+3.3V #PWR0102
+U 1 1 6152C109
+P 5250 950
+F 0 "#PWR0102" H 5250 800 50  0001 C CNN
+F 1 "+3.3V" H 5265 1123 50  0000 C CNN
+F 2 "" H 5250 950 50  0001 C CNN
+F 3 "" H 5250 950 50  0001 C CNN
+	1    5250 950 
+	1    0    0    -1  
+$EndComp
 $EndSCHEMATC
