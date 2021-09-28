@@ -99,7 +99,7 @@ SI_INTERRUPT(ADC0EOC_ISR, ADC0EOC_IRQn)
               adc2 = uA;
 #endif
 #ifdef MINI
-              adc2= (uint32_t)((result * 2400 * 100) / (16383*SCALE));// convert to mV so no decimals
+              adc2= (uint32_t)((result * 2400) / (16383*SCALE));// convert to mV so no decimals
 #endif
               break;
             case 2:

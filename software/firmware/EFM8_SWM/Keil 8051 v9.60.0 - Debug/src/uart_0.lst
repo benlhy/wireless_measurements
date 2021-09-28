@@ -1,4 +1,4 @@
-C51 COMPILER V9.60.0.0   UART_0                                                            09/24/2021 14:35:20 PAGE 1   
+C51 COMPILER V9.60.0.0   UART_0                                                            09/27/2021 09:12:38 PAGE 1   
 
 
 C51 COMPILER V9.60.0.0, COMPILATION OF MODULE UART_0
@@ -63,7 +63,7 @@ line level    source
   48          
   49          void UART0_initTxPolling()
   50          {
-C51 COMPILER V9.60.0.0   UART_0                                                            09/24/2021 14:35:20 PAGE 2   
+C51 COMPILER V9.60.0.0   UART_0                                                            09/27/2021 09:12:38 PAGE 2   
 
   51   1        DECL_PAGE;
   52   1        SET_PAGE(0x00);
@@ -128,7 +128,7 @@ line level    source
  111   1        DECL_PAGE;
  112   1        SET_PAGE(0x00);
  113   1        SCON0 &= ~(SCON0_SMODE__BMASK
-C51 COMPILER V9.60.0.0   UART_0                                                            09/24/2021 14:35:20 PAGE 3   
+C51 COMPILER V9.60.0.0   UART_0                                                            09/27/2021 09:12:38 PAGE 3   
 
  114   1                   | SCON0_MCE__BMASK
  115   1                   | SCON0_REN__BMASK);
@@ -193,7 +193,7 @@ line level    source
                 }
               
                 if ((flags & SCON0_TI__SET))
-C51 COMPILER V9.60.0.0   UART_0                                                            09/24/2021 14:35:20 PAGE 4   
+C51 COMPILER V9.60.0.0   UART_0                                                            09/27/2021 09:12:38 PAGE 4   
 
                 {
                   if (txRemaining){
@@ -258,7 +258,7 @@ line level    source
  236          
  237          #if EFM8PDL_UART0_USE_STDIO == 1
  238          
-C51 COMPILER V9.60.0.0   UART_0                                                            09/24/2021 14:35:20 PAGE 5   
+C51 COMPILER V9.60.0.0   UART_0                                                            09/27/2021 09:12:38 PAGE 5   
 
  239          #if defined __C51__
  240          
@@ -323,7 +323,7 @@ line level    source
 MODULE INFORMATION:   STATIC OVERLAYABLE
    CODE SIZE        =    270    ----
    CONSTANT SIZE    =   ----    ----
-C51 COMPILER V9.60.0.0   UART_0                                                            09/24/2021 14:35:20 PAGE 6   
+C51 COMPILER V9.60.0.0   UART_0                                                            09/27/2021 09:12:38 PAGE 6   
 
    XDATA SIZE       =   ----    ----
    PDATA SIZE       =   ----    ----

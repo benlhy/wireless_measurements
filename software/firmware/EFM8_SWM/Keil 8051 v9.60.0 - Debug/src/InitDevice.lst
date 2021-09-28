@@ -1,4 +1,4 @@
-C51 COMPILER V9.60.0.0   INITDEVICE                                                        09/24/2021 14:35:18 PAGE 1   
+C51 COMPILER V9.60.0.0   INITDEVICE                                                        09/27/2021 09:12:36 PAGE 1   
 
 
 C51 COMPILER V9.60.0.0, COMPILATION OF MODULE INITDEVICE
@@ -63,7 +63,7 @@ line level    source
   48   1      
   49   1      }
   50          
-C51 COMPILER V9.60.0.0   INITDEVICE                                                        09/24/2021 14:35:18 PAGE 2   
+C51 COMPILER V9.60.0.0   INITDEVICE                                                        09/27/2021 09:12:36 PAGE 2   
 
   51          //================================================================================
   52          // WDT_0_enter_DefaultMode_from_RESET
@@ -128,7 +128,7 @@ line level    source
  111   1            | P0MDOUT_B5__OPEN_DRAIN | P0MDOUT_B6__OPEN_DRAIN
  112   1            | P0MDOUT_B7__OPEN_DRAIN;
  113   1        // [P0MDOUT - Port 0 Output Mode]$
-C51 COMPILER V9.60.0.0   INITDEVICE                                                        09/24/2021 14:35:18 PAGE 3   
+C51 COMPILER V9.60.0.0   INITDEVICE                                                        09/27/2021 09:12:36 PAGE 3   
 
  114   1      
  115   1        // $[P0MDIN - Port 0 Input Mode]
@@ -193,7 +193,7 @@ line level    source
  174          
  175          //================================================================================
  176          // PORTS_1_enter_DefaultMode_from_RESET
-C51 COMPILER V9.60.0.0   INITDEVICE                                                        09/24/2021 14:35:18 PAGE 4   
+C51 COMPILER V9.60.0.0   INITDEVICE                                                        09/27/2021 09:12:36 PAGE 4   
 
  177          //================================================================================
  178          extern void
@@ -258,7 +258,7 @@ line level    source
  237   1        // [P1MAT - Port 1 Match]$
  238   1      
  239   1      }
-C51 COMPILER V9.60.0.0   INITDEVICE                                                        09/24/2021 14:35:18 PAGE 5   
+C51 COMPILER V9.60.0.0   INITDEVICE                                                        09/27/2021 09:12:36 PAGE 5   
 
  240          
  241          //================================================================================
@@ -323,7 +323,7 @@ line level    source
  300   1         - UART1 CTS1 unavailable at Port pin
  301   1         ***********************************************************************/
  302   1        SFRPAGE = 0x00;
-C51 COMPILER V9.60.0.0   INITDEVICE                                                        09/24/2021 14:35:18 PAGE 6   
+C51 COMPILER V9.60.0.0   INITDEVICE                                                        09/27/2021 09:12:36 PAGE 6   
 
  303   1        XBR2 = XBR2_WEAKPUD__PULL_UPS_ENABLED | XBR2_XBARE__ENABLED
  304   1            | XBR2_URT1E__DISABLED | XBR2_URT1RTSE__DISABLED
@@ -388,7 +388,7 @@ line level    source
  363   1        // $[ADC0CF2 - ADC0 Power Control]
  364   1        /***********************************************************************
  365   1         - The ADC0 ground reference is the GND pin
-C51 COMPILER V9.60.0.0   INITDEVICE                                                        09/24/2021 14:35:18 PAGE 7   
+C51 COMPILER V9.60.0.0   INITDEVICE                                                        09/27/2021 09:12:36 PAGE 7   
 
  366   1         - The ADC0 voltage reference is the VREF pin 
  367   1         - Power Up Delay Time = 0x06
@@ -453,7 +453,7 @@ line level    source
  426          //================================================================================
  427          // CIP51_0_enter_DefaultMode_from_RESET
  428          //================================================================================
-C51 COMPILER V9.60.0.0   INITDEVICE                                                        09/24/2021 14:35:18 PAGE 8   
+C51 COMPILER V9.60.0.0   INITDEVICE                                                        09/27/2021 09:12:36 PAGE 8   
 
  429          extern void
  430          CIP51_0_enter_DefaultMode_from_RESET (void)
@@ -518,7 +518,7 @@ line level    source
  489   1        // $[Timer Restoration]
  490   1        //Restore Timer Configuration
  491   1        TCON |= (TCON_save & TCON_TR0__BMASK) | (TCON_save & TCON_TR1__BMASK);
-C51 COMPILER V9.60.0.0   INITDEVICE                                                        09/24/2021 14:35:18 PAGE 9   
+C51 COMPILER V9.60.0.0   INITDEVICE                                                        09/27/2021 09:12:36 PAGE 9   
 
  492   1      
  493   1        // [Timer Restoration]$
@@ -583,7 +583,7 @@ line level    source
  552   1        // $[Timer Restoration]
  553   1        // Restore Timer Configuration
  554   1        TMR2CN0 |= TMR2CN0_TR2_save;
-C51 COMPILER V9.60.0.0   INITDEVICE                                                        09/24/2021 14:35:18 PAGE 10  
+C51 COMPILER V9.60.0.0   INITDEVICE                                                        09/27/2021 09:12:36 PAGE 10  
 
  555   1        // [Timer Restoration]$
  556   1      
@@ -648,7 +648,7 @@ line level    source
  615   1        // $[EIE1 - Extended Interrupt Enable 1]
  616   1        /***********************************************************************
  617   1         - Enable interrupt requests generated by the ADINT flag
-C51 COMPILER V9.60.0.0   INITDEVICE                                                        09/24/2021 14:35:18 PAGE 11  
+C51 COMPILER V9.60.0.0   INITDEVICE                                                        09/27/2021 09:12:36 PAGE 11  
 
  618   1         - Disable ADC0 Window Comparison interrupt
  619   1         - Disable CP0 interrupts
@@ -713,7 +713,7 @@ line level    source
  678          {
  679   1        // $[REF0CN - Voltage Reference Control]
  680   1        /***********************************************************************
-C51 COMPILER V9.60.0.0   INITDEVICE                                                        09/24/2021 14:35:18 PAGE 12  
+C51 COMPILER V9.60.0.0   INITDEVICE                                                        09/27/2021 09:12:36 PAGE 12  
 
  681   1         - 2.4 V reference output to VREF pin
  682   1         ***********************************************************************/
@@ -778,7 +778,7 @@ line level    source
  741   1          ;
  742   1        // [Wait for LFOSC Ready]$
  743   1      
-C51 COMPILER V9.60.0.0   INITDEVICE                                                        09/24/2021 14:35:18 PAGE 13  
+C51 COMPILER V9.60.0.0   INITDEVICE                                                        09/27/2021 09:12:36 PAGE 13  
 
  744   1      }
  745          
@@ -843,7 +843,7 @@ line level    source
  804   1        // $[TMR3CN0]
  805   1        /***********************************************************************
  806   1         - Start Timer 3 running
-C51 COMPILER V9.60.0.0   INITDEVICE                                                        09/24/2021 14:35:18 PAGE 14  
+C51 COMPILER V9.60.0.0   INITDEVICE                                                        09/27/2021 09:12:36 PAGE 14  
 
  807   1         ***********************************************************************/
  808   1        TMR3CN0 |= TMR3CN0_TR3__RUN;
@@ -908,7 +908,7 @@ line level    source
  867   1        // [TMR4RLH - Timer 4 Reload High Byte]$
  868   1      
  869   1        // $[TMR4RLL - Timer 4 Reload Low Byte]
-C51 COMPILER V9.60.0.0   INITDEVICE                                                        09/24/2021 14:35:18 PAGE 15  
+C51 COMPILER V9.60.0.0   INITDEVICE                                                        09/27/2021 09:12:36 PAGE 15  
 
  870   1        /***********************************************************************
  871   1         - Timer 4 Reload Low Byte = 0xFE
