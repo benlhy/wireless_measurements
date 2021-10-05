@@ -35,8 +35,6 @@ F 3 "https://ww1.microchip.com/downloads/en/DeviceDoc/MCP1641X-Family-Data-Sheet
 	1    9350 4500
 	1    0    0    -1  
 $EndComp
-Text GLabel 9300 3000 0    50   Input ~ 0
-A1
 Wire Wire Line
 	10250 1550 10350 1550
 Wire Wire Line
@@ -100,43 +98,13 @@ F 3 "" H 2450 1350 50  0001 C CNN
 $EndComp
 Text GLabel 2450 1850 0    50   Input ~ 0
 PWRC
-$Comp
-L Connector_Generic:Conn_01x08 J1
-U 1 1 60FC6837
-P 9500 3100
-F 0 "J1" H 9580 3092 50  0000 L CNN
-F 1 "Conn_01x08" H 9580 3001 50  0000 L CNN
-F 2 "Connector_PinHeader_2.54mm:PinHeader_1x08_P2.54mm_Horizontal" H 9500 3100 50  0001 C CNN
-F 3 "~" H 9500 3100 50  0001 C CNN
-	1    9500 3100
-	1    0    0    -1  
-$EndComp
-Text GLabel 9300 3200 0    50   Input ~ 0
-VHIGH
-Text GLabel 9300 3100 0    50   Input ~ 0
-A2
-$Comp
-L power:GND #PWR0106
-U 1 1 60F9306D
-P 9100 3500
-F 0 "#PWR0106" H 9100 3250 50  0001 C CNN
-F 1 "GND" V 9100 3300 50  0000 C CNN
-F 2 "" H 9100 3500 50  0001 C CNN
-F 3 "" H 9100 3500 50  0001 C CNN
-	1    9100 3500
-	0    1    1    0   
-$EndComp
 Text GLabel 10800 1650 2    50   Input ~ 0
 C1_IN
 Wire Wire Line
 	10650 1650 10800 1650
 Wire Wire Line
 	10650 1550 10800 1550
-Text GLabel 9300 2800 0    50   Input ~ 0
-C1_IN
 Text GLabel 10800 1550 2    50   Input ~ 0
-C1_OUT
-Text GLabel 9300 2900 0    50   Input ~ 0
 C1_OUT
 Text GLabel 8550 4250 0    50   Input ~ 0
 VIN
@@ -348,30 +316,6 @@ Wire Wire Line
 Connection ~ 8700 5000
 Wire Wire Line
 	8700 5000 8850 5000
-Text GLabel 10250 2800 0    50   Input ~ 0
-BATT
-$Comp
-L Connector_Generic:Conn_01x02 Battery1
-U 1 1 60FE7457
-P 10450 2800
-F 0 "Battery1" H 10530 2792 50  0000 L CNN
-F 1 "Conn_01x02" H 10530 2701 50  0000 L CNN
-F 2 "Connector_PinSocket_2.54mm:PinSocket_1x02_P2.54mm_Vertical" H 10450 2800 50  0001 C CNN
-F 3 "~" H 10450 2800 50  0001 C CNN
-	1    10450 2800
-	1    0    0    -1  
-$EndComp
-$Comp
-L power:GND #PWR0117
-U 1 1 60FE7F19
-P 10250 2900
-F 0 "#PWR0117" H 10250 2650 50  0001 C CNN
-F 1 "GND" H 10255 2727 50  0000 C CNN
-F 2 "" H 10250 2900 50  0001 C CNN
-F 3 "" H 10250 2900 50  0001 C CNN
-	1    10250 2900
-	1    0    0    -1  
-$EndComp
 $Comp
 L power:+3.3V #PWR0118
 U 1 1 6100B7A7
@@ -445,21 +389,6 @@ Text GLabel 2900 3800 0    50   Input ~ 0
 C2CK
 Wire Wire Line
 	8550 4450 8950 4450
-$Comp
-L Switch:SW_SPDT SW1
-U 1 1 61043960
-P 10500 3450
-F 0 "SW1" H 10500 3735 50  0000 C CNN
-F 1 "SW_SPDT" H 10500 3644 50  0000 C CNN
-F 2 "Button_Switch_SMD:SW_SPDT_CK-JS102011SAQN" H 10500 3450 50  0001 C CNN
-F 3 "~" H 10500 3450 50  0001 C CNN
-	1    10500 3450
-	1    0    0    -1  
-$EndComp
-Text GLabel 10700 3350 2    50   Input ~ 0
-BATT
-Text GLabel 10300 3450 0    50   Input ~ 0
-VIN
 $Comp
 L wireless_measurement_ard-rescue:EFM8LB1-MCU_SiliconLabs U1
 U 1 1 611E9E7B
@@ -588,21 +517,6 @@ Connection ~ 4900 1550
 Text GLabel 2900 3700 0    50   Input ~ 0
 BATT
 $Comp
-L power:+3.3V #PWR0105
-U 1 1 612F90A4
-P 9100 3400
-F 0 "#PWR0105" H 9100 3250 50  0001 C CNN
-F 1 "+3.3V" V 9150 3600 50  0000 C CNN
-F 2 "" H 9100 3400 50  0001 C CNN
-F 3 "" H 9100 3400 50  0001 C CNN
-	1    9100 3400
-	0    -1   -1   0   
-$EndComp
-Wire Wire Line
-	9100 3400 9300 3400
-Wire Wire Line
-	9100 3500 9300 3500
-$Comp
 L Device:R R7
 U 1 1 6131256B
 P 9800 1550
@@ -627,8 +541,6 @@ $EndComp
 Text GLabel 9450 1900 2    50   Input ~ 0
 MAX_SHDN
 Text GLabel 6450 1850 2    50   Input ~ 0
-A4
-Text GLabel 9300 3300 0    50   Input ~ 0
 A4
 $Comp
 L Device:C C7
@@ -730,4 +642,92 @@ $EndComp
 Wire Wire Line
 	9450 1700 9800 1700
 Connection ~ 9800 1700
+Text GLabel 9300 3300 0    50   Input ~ 0
+A4
+Wire Wire Line
+	9100 3500 9300 3500
+Wire Wire Line
+	9100 3400 9300 3400
+$Comp
+L power:+3.3V #PWR0105
+U 1 1 612F90A4
+P 9100 3400
+F 0 "#PWR0105" H 9100 3250 50  0001 C CNN
+F 1 "+3.3V" V 9150 3600 50  0000 C CNN
+F 2 "" H 9100 3400 50  0001 C CNN
+F 3 "" H 9100 3400 50  0001 C CNN
+	1    9100 3400
+	0    -1   -1   0   
+$EndComp
+Text GLabel 10300 3450 0    50   Input ~ 0
+VIN
+Text GLabel 10700 3350 2    50   Input ~ 0
+BATT
+$Comp
+L Switch:SW_SPDT SW1
+U 1 1 61043960
+P 10500 3450
+F 0 "SW1" H 10500 3735 50  0000 C CNN
+F 1 "SW_SPDT" H 10500 3644 50  0000 C CNN
+F 2 "Button_Switch_SMD:SW_SPDT_CK-JS102011SAQN" H 10500 3450 50  0001 C CNN
+F 3 "~" H 10500 3450 50  0001 C CNN
+	1    10500 3450
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR0117
+U 1 1 60FE7F19
+P 10250 2900
+F 0 "#PWR0117" H 10250 2650 50  0001 C CNN
+F 1 "GND" H 10255 2727 50  0000 C CNN
+F 2 "" H 10250 2900 50  0001 C CNN
+F 3 "" H 10250 2900 50  0001 C CNN
+	1    10250 2900
+	1    0    0    -1  
+$EndComp
+$Comp
+L Connector_Generic:Conn_01x02 Battery1
+U 1 1 60FE7457
+P 10450 2800
+F 0 "Battery1" H 10530 2792 50  0000 L CNN
+F 1 "Conn_01x02" H 10530 2701 50  0000 L CNN
+F 2 "Connector_PinSocket_2.54mm:PinSocket_1x02_P2.54mm_Vertical" H 10450 2800 50  0001 C CNN
+F 3 "~" H 10450 2800 50  0001 C CNN
+	1    10450 2800
+	1    0    0    -1  
+$EndComp
+Text GLabel 10250 2800 0    50   Input ~ 0
+BATT
+Text GLabel 9300 2900 0    50   Input ~ 0
+C1_OUT
+Text GLabel 9300 2800 0    50   Input ~ 0
+C1_IN
+$Comp
+L power:GND #PWR0106
+U 1 1 60F9306D
+P 9100 3500
+F 0 "#PWR0106" H 9100 3250 50  0001 C CNN
+F 1 "GND" V 9100 3300 50  0000 C CNN
+F 2 "" H 9100 3500 50  0001 C CNN
+F 3 "" H 9100 3500 50  0001 C CNN
+	1    9100 3500
+	0    1    1    0   
+$EndComp
+Text GLabel 9300 3100 0    50   Input ~ 0
+A2
+Text GLabel 9300 3200 0    50   Input ~ 0
+VHIGH
+$Comp
+L Connector_Generic:Conn_01x08 J1
+U 1 1 60FC6837
+P 9500 3100
+F 0 "J1" H 9580 3092 50  0000 L CNN
+F 1 "Conn_01x08" H 9580 3001 50  0000 L CNN
+F 2 "Connector_PinHeader_2.54mm:PinHeader_1x08_P2.54mm_Horizontal" H 9500 3100 50  0001 C CNN
+F 3 "~" H 9500 3100 50  0001 C CNN
+	1    9500 3100
+	1    0    0    -1  
+$EndComp
+Text GLabel 9300 3000 0    50   Input ~ 0
+A1
 $EndSCHEMATC

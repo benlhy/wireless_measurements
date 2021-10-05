@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="100.0mm"
+   height="100.0mm"
+   viewBox="0 0 100.0 100.0"
+   version="1.1"
+   id="svg5"
+   sodipodi:docname="drawing.svg"
+   inkscape:version="1.1.1 (3bf5ae0d25, 2021-09-20)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:document-units="mm"
+     showgrid="false"
+     inkscape:zoom="2.8934905"
+     inkscape:cx="249.87122"
+     inkscape:cy="164.68"
+     inkscape:window-width="1920"
+     inkscape:window-height="1001"
+     inkscape:window-x="-9"
+     inkscape:window-y="41"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="g19" />
+  <defs
+     id="defs2" />
+  <g
+     inkscape:label="[fixed] BG"
+     inkscape:groupmode="layer"
+     sodipodi:insensitive="true"
+     id="g17">
+    <rect
+       x="0"
+       y="0"
+       width="100.0"
+       height="100.0"
+       style="fill:#FFFFFF;fill-opacity:1;stroke:none"
+       id="rect15" />
+  </g>
+  <g
+     inkscape:label="F.SilkS"
+     inkscape:groupmode="layer"
+     id="g19">
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 14.630542,49.743841 c 0,0 20.848522,-28.163792 24.140393,-29.261083 3.291872,-1.09729 36.942117,15.727833 36.942117,15.727833 l 16.093596,12.801725 c 0,0 -13.167487,22.311574 -14.63054,21.214283 C 75.713052,69.129309 84.857142,40.965516 66.203202,43.525863 47.54926,46.086207 57.424875,83.759851 31.821429,73.152708 6.2179802,62.545565 14.630542,49.743841 14.630542,49.743841 Z"
+       id="path100" />
+  </g>
+</svg>
