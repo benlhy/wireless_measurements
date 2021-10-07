@@ -177,6 +177,18 @@ X C 3 200 -100 100 L 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
+# ben_common_Logo
+#
+DEF ben_common_Logo U 0 40 Y Y 1 F N
+F0 "U" 0 0 50 H V C CNN
+F1 "ben_common_Logo" 0 -50 50 H V C CNN
+F2 "icons:icon" 0 0 50 H I C CNN
+F3 "" 0 0 50 H I C CNN
+DRAW
+S -100 50 100 -100 0 1 0 f
+ENDDRAW
+ENDDEF
+#
 # ben_common_MAX40204
 #
 DEF ben_common_MAX40204 U 0 40 Y Y 1 F N

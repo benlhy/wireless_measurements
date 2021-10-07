@@ -1,0 +1,4 @@
+Ref,Val,Package,PosX,PosY,Rot,Side
+"D1","LED","LED_0603_1608Metric",133.388100,-88.239700,90.000000,top
+"R2","1R","R_0805_2012Metric_Pad1.20x1.40mm_HandSolder",133.413500,-84.217000,90.000000,top
+"R3","1k","R_0603_1608Metric_Pad1.05x0.95mm_HandSolder",133.364000,-91.071700,0.000000,top
