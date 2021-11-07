@@ -10,6 +10,7 @@ You can retrieve the data with Python, NRF Connect App, or the Flutter app desig
 # Contents
 1. Mini - Contains the KiCAD files required for the mini board version
 2. Stick - Contains the KiCAD files required for the standard board version
+3. Arduino - Contains the KiCAD files required for the arduino implementation.
 
 # Technology
 
@@ -31,14 +32,14 @@ The total cost of the board comes up to roughly $15, which makes it cheap enough
 
 ## Specs
 
-| Current draw | Voltage | Status   | Version |
-| ------------ | ------- | -------- | ------- |
-| 48 mA        | 1.2V    | Fully On | JDY-08  |
-| 15 mA        | 3.3V    | Fully On | JDY-08  |
-| 35 mA        | 1.2V    | Fully On, Connected    | JDY-23  |
-| 31 mA        | 1.2V    | Fully On, Broadcasting | JDY-23  |
-| 9 mA         | 3.3V    | Fully On, Connected    | JDY-23  |
-| 8 mA         | 3.3V    | Fully On, Broadcasting | JDY-23  |
+| Measured Current draw | Supplied Voltage | Status        | Version |
+| --------------------- | ---------------- | --------      | ------- |
+| 48 mA                 | 1.2V    | Fully On               | JDY-08  |
+| 15 mA                 | 3.3V    | Fully On               | JDY-08  |
+| 35 mA                 | 1.2V    | Fully On, Connected    | JDY-23  |
+| 31 mA                 | 1.2V    | Fully On, Broadcasting | JDY-23  |
+| 9 mA                  | 3.3V    | Fully On, Connected    | JDY-23  |
+| 8 mA                  | 3.3V    | Fully On, Broadcasting | JDY-23  |
 
 
 # Arduino Version
