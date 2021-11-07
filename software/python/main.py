@@ -7,8 +7,6 @@ DEVICE_MAC = "A8:A9:8B:B2:B0:78"
 
 
 async def run():
-
-
     def notification_handler(sender, data):
         """Simple notification handler which prints the data received."""
         print("{0}: {1}".format(sender, data))

@@ -1,0 +1,20 @@
+Designator,Val,Package,Mid X,Mid Y,Rotation,Layer
+C1,10uF,C_0603_1608Metric_Pad1.05x0.95mm_HandSolder,119.394,-87.5538,180,bottom
+C2,1uF,C_0603_1608Metric_Pad1.05x0.95mm_HandSolder,119.3914,-89.1286,180,bottom
+C3,1uF,C_0603_1608Metric_Pad1.05x0.95mm_HandSolder,131.572,-92.216,270,bottom
+C4,10uF,C_0603_1608Metric_Pad1.05x0.95mm_HandSolder,129.794,-92.202,270,bottom
+C5,4.7uF,C_0603_1608Metric_Pad1.05x0.95mm_HandSolder,126.351,-85.979,0,bottom
+C6,0.1uF,C_0603_1608Metric_Pad1.05x0.95mm_HandSolder,126.351,-87.757,0,bottom
+C7,4.7uF,C_0603_1608Metric_Pad1.08x0.95mm_HandSolder,126.3,-84.3,180,bottom
+L1,4.7uH,L_Bourns-SRN4018,130.81,-87.63,270,bottom
+R1,1R,R_0805_2012Metric_Pad1.15x1.40mm_HandSolder,134.5692,-78.5786,90,bottom
+R4,866k,R_0603_1608Metric_Pad1.05x0.95mm_HandSolder,119.4054,-91.7588,270,bottom
+R5,360k,R_0603_1608Metric_Pad1.05x0.95mm_HandSolder,121.1072,-91.7702,90,bottom
+R6,1k,R_0603_1608Metric_Pad0.98x0.95mm_HandSolder,125.4995,-93.726,0,bottom
+R7,110k,R_0603_1608Metric_Pad0.98x0.95mm_HandSolder,129.032,-78.6365,270,bottom
+R8,110k,R_0603_1608Metric_Pad0.98x0.95mm_HandSolder,131.4685,-79.502,180,bottom
+SW1,SW_SPDT,SW_SPDT_CK-JS102011SAQN,115.062,-95.758,180,bottom
+U1,EFM8LB1,QFN-32-1EP_4x4mm_P0.4mm_EP2.9x2.9mm,121.412,-84.074,90,bottom
+U3,MCP16415,MSOP-10_3x3mm_P0.5mm,125.222,-90.932,0,bottom
+U4,MAX40204,BGA-8_4x2_1.468x0.848mm,131.8049,-77.216,180,bottom
+U5,MAX40204,BGA-8_4x2_1.468x0.848mm,134.6708,-83.9089,180,bottom

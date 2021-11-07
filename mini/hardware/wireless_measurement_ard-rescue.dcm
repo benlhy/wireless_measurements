@@ -1,0 +1,8 @@
+EESchema-DOCLIB  Version 2.0
+#
+$CMP MAX44284
+D 36V, Input Common-Mode, High-Precision,  Low-Power Current-Sense Amplifier
+F https://datasheets.maximintegrated.com/en/ds/MAX44284.pdf
+$ENDCMP
+#
+#End Doc Library
