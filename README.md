@@ -3,6 +3,14 @@ The Simple Wireless Measurement (SWM) board is just that - it is a simple board 
 
 You can retrieve the data with Python, NRF Connect App, or the Flutter app designed to display this data.
 
+## Related Repos
+* Software - Coming soon!
+* Android/iOS - Coming soon!
+
+# Contents
+1. Mini - Contains the KiCAD files required for the mini board version
+2. Stick - Contains the KiCAD files required for the standard board version
+
 # Technology
 
 The SWM board uses an EFM8LB12 microcontroller from Silabs to do the analog measurements. The EFM8 is capable of 14-bit ADC measurements with multiple inputs.
