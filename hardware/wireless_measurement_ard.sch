@@ -618,7 +618,7 @@ MAX_SHDN
 Text GLabel 6450 2650 2    50   Input ~ 0
 A0
 $Comp
-L ben_common:MAX40204 U4
+L wireless_measurement_ard-rescue:MAX40204-ben_common U4
 U 1 1 61604BD6
 P 9100 1750
 F 0 "U4" H 9100 2125 50  0000 C CNN
@@ -629,7 +629,7 @@ F 3 "" H 9100 1750 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	7900 2050 8250 2050
+	7900 2050 8050 2050
 Connection ~ 8250 2050
 Text GLabel 2600 5050 0    50   Input ~ 0
 A4
@@ -791,7 +791,7 @@ RS2-
 Text GLabel 8750 2400 0    50   Input ~ 0
 GAIN2
 $Comp
-L ben_common:MAX40204 U5
+L wireless_measurement_ard-rescue:MAX40204-ben_common U5
 U 1 1 616414F4
 P 9100 2450
 F 0 "U5" H 9100 2825 50  0000 C CNN
@@ -841,7 +841,7 @@ F 3 "" H 5250 950 50  0001 C CNN
 	-1   0    0    1   
 $EndComp
 $Comp
-L ben_common:Logo U6
+L wireless_measurement_ard-rescue:Logo-ben_common U6
 U 1 1 615ED4AF
 P 6250 850
 F 0 "U6" H 6378 871 50  0000 L CNN
@@ -907,4 +907,15 @@ Connection ~ 8950 3550
 Wire Wire Line
 	8950 3550 9050 3550
 Connection ~ 8800 3250
+Text GLabel 7900 1850 0    50   Input ~ 0
+A5
+Wire Wire Line
+	8050 2050 8050 1850
+Wire Wire Line
+	8050 1850 7900 1850
+Connection ~ 8050 2050
+Wire Wire Line
+	8050 2050 8250 2050
+Text GLabel 6450 2350 2    50   Input ~ 0
+A5
 $EndSCHEMATC
