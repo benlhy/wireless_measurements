@@ -12,6 +12,12 @@ You can retrieve the data with Python, NRF Connect App, or the Flutter app desig
 2. Stick - Contains the KiCAD files required for the standard board version
 3. Arduino - Contains the KiCAD files required for the arduino implementation.
 
+# How to use
+1. Open the project in KiCAD. Export the gerber files and send it to the manufacturer of your choice. Some I've used before are JLCPCB and PCBway.
+2. Assemble the board
+3. Refer to the software repo to flash the software for the board you are using
+4. Test the board using nRF Connect or the Python script or the Flutter App 
+
 # Technology
 
 The SWM board uses an EFM8LB12 microcontroller from Silabs to do the analog measurements. The EFM8 is capable of 14-bit ADC measurements with multiple inputs.
